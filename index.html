@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f0e17">
+  <meta name="description" content="私藏食譜本 — 收錄各式家常料理，材料、步驟一目了然。支援手機安裝。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="食譜本">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>私藏食譜本 🍜</title>
+</head>
+<body>
+
+<!-- Background orbs -->
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+
+<div id="app">
+
+  <!-- ===== SIDEBAR (Desktop) ===== -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🍜</div>
+      <h1>私藏食譜本</h1>
+      <p>My Secret Cookbook</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">瀏覽</div>
+      <button class="nav-btn active" data-nav="home" id="nav-home">
+        <span class="nav-icon">🏠</span> 所有食譜
+      </button>
+
+      <div class="nav-section-label">其他</div>
+      <button class="nav-btn" data-nav="about" id="nav-about">
+        <span class="nav-icon">📖</span> 關於食譜本
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <p>✨ 用愛烹飪，用心記錄</p>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content">
+
+    <!-- Top Bar -->
+    <div class="topbar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="search-input" placeholder="搜尋食譜、食材…" autocomplete="off">
+      </div>
+      <span class="count-badge" id="count-badge">— 道食譜</span>
+    </div>
+
+    <!-- ===== HOME VIEW ===== -->
+    <div class="page-view active" id="view-home">
+      <div class="filter-row" id="filter-row">
+        <!-- Dynamically filled by JS -->
+      </div>
+      <div class="recipe-grid" id="recipe-grid">
+        <!-- Dynamically filled by JS -->
+      </div>
+    </div>
+
+    <!-- ===== DETAIL VIEW ===== -->
+    <div class="page-view" id="view-detail">
+      <!-- Dynamically filled by JS -->
+    </div>
+
+    <!-- ===== ABOUT VIEW ===== -->
+    <div class="page-view" id="view-about">
+      <div class="about-page">
+        <div class="about-hero">
+          <div class="hero-emoji">🍳</div>
+          <h2>私藏食譜本</h2>
+          <p>一個用來收藏自己喜歡的食譜的地方。<br>
+            每道菜都有詳細的材料與步驟，可以直接在廚房邊看邊做。<br>
+            支援手機安裝，離線也能瀏覽。
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>📋 新增食譜格式</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:12px;line-height:1.7">
+            把以下格式貼給 AI，AI 會自動轉換成 JSON 加入 <code style="color:var(--accent)">recipes.js</code>：
+          </p>
+          <div class="format-block">【菜名】xxx（subtitle）
+【描述】一兩句介紹
+【分類】便當 / 湯品 / 點心
+【標籤】快速, 微波料理, 日式
+【時間】10 分鐘
+【難度】簡單 / 中等
+【份量】1 人份
+【圖片】images/xxx.png
+
+【材料】
+- 食材名稱：份量（加☆代表調味料）
+- 牛奶：2 大匙 ☆
+
+【作法】
+1. 步驟一
+2. 步驟二
+
+【小撇步】選填，額外備註</div>
+        </div>
+
+        <div class="about-card" style="margin-top:16px">
+          <h3>📱 安裝到手機</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7">
+            用 Safari（iOS）或 Chrome（Android）開啟網頁後，<br>
+            點選「分享」→「加入主畫面」即可安裝成 App。<br>
+            安裝後可以離線瀏覽所有食譜。
+          </p>
+        </div>
+
+        <div class="about-card" style="margin-top:16px">
+          <h3>⚡ 互動功能</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7">
+            進入食譜詳情頁後：<br>
+            • 點擊食材 → 打勾已準備好的材料<br>
+            • 點擊步驟 → 追蹤烹飪進度<br>
+            • ☆ 標記 = 調味料類
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end main-content -->
+
+</div><!-- end app -->
+
+<!-- ===== BOTTOM NAV (Mobile) ===== -->
+<nav class="bottom-nav">
+  <button class="bottom-nav-btn active" data-nav="home" id="bnav-home">
+    <span class="bnav-icon">🏠</span>
+    <span class="bnav-label">食譜</span>
+  </button>
+  <button class="bottom-nav-btn" data-nav="about" id="bnav-about">
+    <span class="bnav-icon">📖</span>
+    <span class="bnav-label">關於</span>
+  </button>
+</nav>
+
+<script src="js/recipes.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
