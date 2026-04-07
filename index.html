@@ -19,7 +19,6 @@
 </head>
 <body>
 
-<!-- Background orbs -->
 <div class="bg-orb bg-orb-1"></div>
 <div class="bg-orb bg-orb-2"></div>
 <div class="bg-orb bg-orb-3"></div>
@@ -33,19 +32,16 @@
       <h1>私藏食譜本</h1>
       <p>My Secret Cookbook</p>
     </div>
-
     <nav class="sidebar-nav">
       <div class="nav-section-label">瀏覽</div>
-      <button class="nav-btn active" data-nav="home" id="nav-home">
+      <button class="nav-btn active" data-nav="home">
         <span class="nav-icon">🏠</span> 所有食譜
       </button>
-
       <div class="nav-section-label">其他</div>
-      <button class="nav-btn" data-nav="about" id="nav-about">
+      <button class="nav-btn" data-nav="about">
         <span class="nav-icon">📖</span> 關於食譜本
       </button>
     </nav>
-
     <div class="sidebar-footer">
       <p>✨ 用愛烹飪，用心記錄</p>
     </div>
@@ -58,25 +54,32 @@
     <div class="topbar">
       <div class="search-wrap">
         <span class="search-icon">🔍</span>
-        <input type="search" id="search-input" placeholder="搜尋食譜、食材…" autocomplete="off">
+        <input type="search" id="search-input" placeholder="搜尋食譜、食材、國籍料理…" autocomplete="off">
       </div>
+      <button class="filter-toggle-btn" id="filter-toggle-btn" onclick="toggleFilterPanel()">
+        <span>篩選</span>
+        <span class="filter-toggle-icon">⚙️</span>
+        <span class="filter-badge" id="filter-toggle-badge" style="display:none"></span>
+      </button>
       <span class="count-badge" id="count-badge">— 道食譜</span>
     </div>
 
     <!-- ===== HOME VIEW ===== -->
     <div class="page-view active" id="view-home">
-      <div class="filter-row" id="filter-row">
-        <!-- Dynamically filled by JS -->
+
+      <!-- Filter Panel (collapsible) -->
+      <div class="filter-panel" id="filter-panel">
+        <!-- Built by JS -->
       </div>
-      <div class="recipe-grid" id="recipe-grid">
-        <!-- Dynamically filled by JS -->
-      </div>
+
+      <!-- Active filter chips summary -->
+      <div id="active-filter-summary"></div>
+
+      <div class="recipe-grid" id="recipe-grid"></div>
     </div>
 
     <!-- ===== DETAIL VIEW ===== -->
-    <div class="page-view" id="view-detail">
-      <!-- Dynamically filled by JS -->
-    </div>
+    <div class="page-view" id="view-detail"></div>
 
     <!-- ===== ABOUT VIEW ===== -->
     <div class="page-view" id="view-about">
@@ -91,62 +94,72 @@
         </div>
 
         <div class="about-card">
-          <h3>📋 新增食譜格式</h3>
-          <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:12px;line-height:1.7">
-            把以下格式貼給 AI，AI 會自動轉換成 JSON 加入 <code style="color:var(--accent)">recipes.js</code>：
-          </p>
+          <h3>📋 新增食譜格式（貼給 AI 即可）</h3>
           <div class="format-block">【菜名】xxx（subtitle）
 【描述】一兩句介紹
-【分類】便當 / 湯品 / 點心
-【標籤】快速, 微波料理, 日式
+【國籍料理】日式 / 韓式 / 中式 / 義式 / 法式 / 泰式 / 美式 / 台式
+【分類】便當 / 湯品 / 炒菜 / 點心 / 早餐
+【主食類型】麵條 / 飯 / 湯品 / 點心
+【標籤】快速, 微波料理, 辣, 清淡
 【時間】10 分鐘
-【難度】簡單 / 中等
+【難度】簡單 / 中等 / 困難
 【份量】1 人份
-【圖片】images/xxx.png
 
-【材料】
-- 食材名稱：份量（加☆代表調味料）
-- 牛奶：2 大匙 ☆
+【材料】  ← 格式: 名稱：數量 單位 [標籤1,標籤2] (☆=調味料)
+- 冷凍烏龍麵：1 塊 [主食]
+- 牛奶：2 大匙 [乳製品] ☆
+- 黑胡椒：適量 [香料] ☆
 
 【作法】
 1. 步驟一
 2. 步驟二
 
-【小撇步】選填，額外備註</div>
+【小撇步】選填備註</div>
+        </div>
+
+        <div class="about-card" style="margin-top:16px">
+          <h3>🏷 食材分類標籤</h3>
+          <div class="ing-tag-legend" id="ing-tag-legend"></div>
+        </div>
+
+        <div class="about-card" style="margin-top:16px">
+          <h3>🌍 支援國籍料理分類</h3>
+          <div class="cuisine-legend">
+            日式 🇯🇵｜韓式 🇰🇷｜中式 🇨🇳｜義式 🇮🇹｜法式 🇫🇷｜泰式 🇹🇭｜美式 🇺🇸｜台式 🇹🇼｜日義融合｜其他
+          </div>
         </div>
 
         <div class="about-card" style="margin-top:16px">
           <h3>📱 安裝到手機</h3>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7">
-            用 Safari（iOS）或 Chrome（Android）開啟網頁後，<br>
-            點選「分享」→「加入主畫面」即可安裝成 App。<br>
-            安裝後可以離線瀏覽所有食譜。
+            iOS Safari → 分享 → 加入主畫面<br>
+            Android Chrome → 選單 → 安裝應用程式<br>
+            安裝後可離線瀏覽所有食譜。
           </p>
         </div>
 
-        <div class="about-card" style="margin-top:16px">
+        <div class="about-card" style="margin-top:16px;margin-bottom:40px">
           <h3>⚡ 互動功能</h3>
           <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7">
-            進入食譜詳情頁後：<br>
-            • 點擊食材 → 打勾已準備好的材料<br>
+            • 點擊食材 → 打勾已準備材料<br>
             • 點擊步驟 → 追蹤烹飪進度<br>
-            • ☆ 標記 = 調味料類
+            • ＋ / − 按鈕 → 調整份量，自動換算所有食材數量<br>
+            • ⚙️ 篩選按鈕 → 多維度搜尋（國籍、主食、標籤、食材類別）
           </p>
         </div>
       </div>
     </div>
 
-  </div><!-- end main-content -->
-
-</div><!-- end app -->
+  </div>
+</div>
 
 <!-- ===== BOTTOM NAV (Mobile) ===== -->
 <nav class="bottom-nav">
-  <button class="bottom-nav-btn active" data-nav="home" id="bnav-home">
+  <button class="bottom-nav-btn active" data-nav="home">
     <span class="bnav-icon">🏠</span>
     <span class="bnav-label">食譜</span>
   </button>
-  <button class="bottom-nav-btn" data-nav="about" id="bnav-about">
+  <button class="bottom-nav-btn" data-nav="about">
     <span class="bnav-icon">📖</span>
     <span class="bnav-label">關於</span>
   </button>
@@ -154,5 +167,17 @@
 
 <script src="js/recipes.js"></script>
 <script src="js/app.js"></script>
+
+<script>
+  // Build the ingredient tag legend on About page
+  document.addEventListener('DOMContentLoaded', () => {
+    const legend = document.getElementById('ing-tag-legend');
+    if (legend) {
+      legend.innerHTML = Object.entries(INGREDIENT_TAG_COLORS).map(([name, c]) =>
+        `<span class="ing-tag" style="background:${c.bg};border-color:${c.border};color:${c.text}">${name}</span>`
+      ).join('');
+    }
+  });
+</script>
 </body>
 </html>
