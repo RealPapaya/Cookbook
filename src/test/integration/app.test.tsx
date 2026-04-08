@@ -84,11 +84,11 @@ describe('app integration routes', () => {
 
     await screen.findAllByText('Test Recipe');
 
-    const input = screen.getByPlaceholderText('Search recipes, ingredients, categories');
+    const input = screen.getByPlaceholderText('搜尋食譜、食材、分類...');
     await userEvent.type(input, 'non-match');
 
     await waitFor(() => {
-      expect(screen.getByText('No matching recipes')).toBeInTheDocument();
+      expect(screen.getByText('找不到符合的食譜')).toBeInTheDocument();
     });
   });
 
