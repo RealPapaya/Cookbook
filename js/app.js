@@ -837,7 +837,7 @@ window.switchVersion = function(recipeId, versionId) {
 // Servings Control
 // ============================================================
 window.changeServings = function(delta, recipeId) {
-  const newVal = Math.max(1, Math.min(20, state.currentServings + delta));
+  const newVal = Math.max(1, Math.min(50, state.currentServings + delta));
   if (newVal === state.currentServings) return;
   state.currentServings = newVal;
   document.getElementById('srv-display').textContent = newVal;
@@ -853,8 +853,11 @@ function updateServingBars(recipeId, servings) {
 
   // ── Time bar ──────────────────────────────────────────
   const baseMin = parseInt(r.time_estimate) || 30;
-  // Time scales sub-linearly: each doubling of servings adds ~50% more time
-  const scaledMin = Math.round(baseMin * Math.pow(ratio, 0.65));
+  // 烹煮時間曲線隨份量遞減，讓 15 份與 20 份的時間差不多
+  const timeMultiplier = ratio >= 1 
+      ? 1 + (ratio - 1) / (1 + 0.25 * (ratio - 1))
+      : Math.pow(ratio, 0.65);
+  const scaledMin = Math.round(baseMin * timeMultiplier);
   const timePct = Math.min(100, Math.round(scaledMin / 60 * 100));
 
   const timeBar = document.querySelector('.detail-bar-item:first-child .detail-bar-fill');
@@ -866,9 +869,9 @@ function updateServingBars(recipeId, servings) {
   // Base pct from static difficulty, then nudge by ratio
   const diffMap = { '簡單': 33, '中等': 66, '困難': 100 };
   const basePct = diffMap[r.difficulty] ?? 50;
-  // Each extra ratio beyond 1 nudges pct by up to +20 (logarithmic)
-  const nudge = ratio > 1 ? Math.round(Math.log2(ratio) * 14) : 0;
-  const diffPct = Math.min(100, basePct + nudge);
+  // 難度隨份量增加而上升，但也逐漸趨緩
+  const diffNudge = ratio > 1 ? (ratio - 1) / (1 + 0.1 * (ratio - 1)) * 5 : 0;
+  const diffPct = Math.min(100, basePct + diffNudge);
 
   // Colour transitions: green → amber → red
   const diffColor = diffPct <= 40 ? '#4ade80' : diffPct <= 70 ? 'var(--accent)' : '#f87171';
@@ -1110,7 +1113,7 @@ function buildAddRecipeModal() {
             </div>
             <div class="form-field">
               <label>份量（人）</label>
-              <input type="number" name="base_servings" value="1" min="1" max="20">
+              <input type="number" name="base_servings" value="1" min="1" max="50">
             </div>
           </div>
           <div class="form-field">
@@ -1287,12 +1290,6 @@ function buildKitchenPanel() {
       <button class="kitchen-close-btn" onclick="closeKitchenPanel()">✕ 關閉</button>
     </div>
 
-    <div class="kitchen-selected-bar" id="kitchen-selected-bar" style="display:none">
-      <span class="kitchen-sel-label">已選：</span>
-      <div class="kitchen-sel-chips" id="kitchen-sel-chips"></div>
-      <button class="kitchen-clear-sel" onclick="clearKitchenIngredients()">清除</button>
-    </div>
-
     <div class="kitchen-body">
       <div class="kitchen-left">
         <div class="kitchen-left-header">
@@ -1308,8 +1305,13 @@ function buildKitchenPanel() {
         </div>
         <div id="kitchen-categories"></div>
       </div>
-      <div class="kitchen-right">
-        <div id="kitchen-results-area">
+      <div class="kitchen-right" style="display:flex; flex-direction:column; padding:0; overflow-y:hidden;">
+        <div class="kitchen-selected-bar" id="kitchen-selected-bar" style="display:none; padding:12px 24px;">
+          <span class="kitchen-sel-label">已選：</span>
+          <div class="kitchen-sel-chips" id="kitchen-sel-chips"></div>
+          <button class="kitchen-clear-sel" onclick="clearKitchenIngredients()">清除</button>
+        </div>
+        <div id="kitchen-results-area" style="flex:1; overflow-y:auto; padding:20px 24px;">
           <div class="kitchen-placeholder">
             <div class="kitchen-placeholder-icon">🥘</div>
             <p>選擇食材後，這裡會顯示能做的料理</p>
