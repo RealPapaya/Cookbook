@@ -137,6 +137,7 @@ export default [
       { id: 'dried_chili--whole',  label: '乾辣椒（整根）', state: 'dried' },
       { id: 'dried_chili--flakes', label: '辣椒片',         state: 'dried' },
       { id: 'dried_chili--powder', label: '辣椒粉',         state: 'powdered' },
+      { id: 'dried_chili--korean_powder', label: '韓式辣椒粉', state: 'powdered' },
     ],
     nutrition_per_100g: { calories: 318, protein: 12, fat: 17, carbs: 56, fiber: 28, sodium: 30 },
     substitutes: ['chili_fresh'],

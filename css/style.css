@@ -196,9 +196,11 @@ body {
 .card-cuisine-row { display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap; }
 .cuisine-badge { font-size:.68rem;padding:2px 9px;border-radius:50px;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.4);color:#a78bfa; }
 .mealtype-badge { font-size:.68rem;padding:2px 9px;border-radius:50px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.4);color:#60a5fa; }
+.cal-badge { font-size:.68rem;padding:2px 9px;border-radius:50px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#f87171; }
 .card-desc { font-size:.82rem;color:var(--text-secondary);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px; }
-.card-meta { display:flex;gap:16px; }
+.card-meta { display:flex;gap:16px;flex-wrap:wrap; }
 .card-meta-item { display:flex;align-items:center;gap:5px;font-size:.78rem;color:var(--text-muted); }
+.card-meta-cals { color:#f87171; font-weight:600; margin-left:auto; }
 .card-tags { display:flex;flex-wrap:wrap;gap:6px;margin-top:10px; }
 .tag { font-size:.7rem;padding:2px 9px;border-radius:50px;background:rgba(255,255,255,.06);color:var(--text-muted);border:1px solid var(--border); }
 
@@ -315,7 +317,47 @@ body {
 .detail-tag--texture {
   background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.3);color:#6ee7b7;
 }
+.detail-tag--texture.primary {
+  background:rgba(52,211,153,.2);border-color:rgba(52,211,153,.5);font-weight:700;color:#a7f3d0;font-size:0.8rem;padding:4px 12px;
+}
+.detail-tag--texture.secondary {
+  opacity:0.75;font-size:0.7rem;
+}
 .detail-tag-none { font-size:.75rem;color:var(--text-muted);font-style:italic; }
+
+.taste-radar-wrap { width: 100%; display:flex; justify-content:center; align-items:center; padding: 10px 0; }
+.taste-radar-svg { max-width: 160px; height: auto; display: block; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2)); }
+
+/* Nutrition Panel */
+.nutrition-btn-row { padding: 0 0 4px; }
+.nutrition-toggle-btn {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%; text-align: left;
+  background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.3);
+  color: #f87171; border-radius: var(--radius-sm);
+  padding: 10px 16px; font-size: .88rem; font-weight: 600;
+  cursor: pointer; transition: all var(--transition);
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.nutrition-toggle-btn:hover, .nutrition-toggle-btn.active {
+  background: rgba(239,68,68,.14); border-color: rgba(239,68,68,.5);
+}
+.nutr-per-label { font-size: .75rem; font-weight: 400; color: var(--text-muted); }
+.nutr-expand-icon { margin-left: auto; font-size: .78rem; color: var(--text-muted); letter-spacing:.02em; }
+.nutrition-panel {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-top: none; border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  padding: 16px;
+}
+.nutr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; margin-bottom: 10px; }
+.nutr-item {
+  display: flex; flex-direction: column; align-items: center;
+  background: rgba(255,255,255,.04); border-radius: var(--radius-xs);
+  padding: 10px 8px; border: 1px solid var(--border);
+}
+.nutr-val { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); line-height: 1; }
+.nutr-label { font-size: .65rem; color: var(--text-muted); margin-top: 4px; }
+.nutr-disclaimer { font-size: .65rem; color: var(--text-muted); margin: 0; font-style: italic; }
 
 .section-title {
   font-size:1.05rem;font-weight:700;color:var(--text-primary);
@@ -361,6 +403,7 @@ body {
 }
 .ing-amount { font-size:.82rem;color:var(--text-muted);white-space:nowrap;flex-shrink:0;text-align:right;padding-top:2px; }
 .ing-amount.scalable { color:var(--accent);font-weight:500; }
+.ing-cal-meta { font-size: 0.68rem; color: var(--text-muted); font-family: monospace; }
 
 /* ===========================
    Steps

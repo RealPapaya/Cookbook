@@ -162,11 +162,24 @@ function getFilteredRecipes() {
     }
 
     if (state.tastes.size) {
-      let recipeTastes = new Set();
+      let tasteCounts = { '鹹': 0, '甜': 0, '酸': 0, '辣': 0, '苦': 0 };
       r.ingredients.forEach(i => {
         const found = getIngredient(i.ingredient_id);
-        if (found && found.tastes) found.tastes.forEach(t => recipeTastes.add(t));
+        if (found && found.tastes) {
+          found.tastes.forEach(t => {
+            if (tasteCounts[t] !== undefined) tasteCounts[t]++;
+          });
+        }
       });
+      
+      let scores = [...new Set(Object.values(tasteCounts))].filter(s => s > 0).sort((a,b) => b - a);
+      let allowedScores = [scores[0], scores[1]].filter(s => s !== undefined);
+      
+      let recipeTastes = new Set();
+      for (const [t, count] of Object.entries(tasteCounts)) {
+        if (allowedScores.includes(count)) recipeTastes.add(t);
+      }
+      
       for (const t of state.tastes) { if (!recipeTastes.has(t)) return false; }
     }
 
@@ -301,7 +314,12 @@ function renderGrid() {
     return;
   }
 
-  grid.innerHTML = filtered.map(r => `
+  grid.innerHTML = filtered.map(r => {
+    const cardCals = Math.round(r.ingredients.reduce((sum, ing) => {
+      return sum + estimateIngredientCalories(ing, r.base_servings, r.base_servings);
+    }, 0));
+    const cardCalsStr = cardCals > 0 ? `<div class="card-meta-item card-meta-cals"><span>🔥</span><span>${cardCals} kcal</span></div>` : '';
+    return `
     <div class="recipe-card" onclick="navigateTo('detail', ${r.id})">
       <div class="card-image-wrap">
         <img src="${r.image}" alt="${r.title}" loading="lazy">
@@ -320,13 +338,15 @@ function renderGrid() {
         <div class="card-meta">
           <div class="card-meta-item"><span>⏱</span><span>${r.time_estimate}</span></div>
           <div class="card-meta-item"><span>👤</span><span>${r.base_servings} 份</span></div>
+          ${cardCalsStr}
         </div>
         <div class="card-tags">
           ${r.tags.map(t => `<span class="tag">${t}</span>`).join('')}
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 // ============================================================
@@ -358,27 +378,170 @@ function renderDetail(id) {
   });
   const methodsStr = Array.from(methodSet).join('、') || '無標示';
 
-  const tasteSet = new Set();
-  const textureSet = new Set();
-  r.ingredients.forEach(ing => {
-    const item = getIngredient(ing.ingredient_id);
-    if (item) {
-      if (item.tastes) item.tastes.forEach(t => tasteSet.add(t));
-      if (item.textures) item.textures.forEach(t => textureSet.add(t));
-    }
+  const tasteCounts = { '鹹': 0, '甜': 0, '酸': 0, '辣': 0, '苦': 0 };
+  const textureCounts = {};
+  let totalCalories = 0;
+
+  r.ingredients.forEach(ingRef => {
+    const item = getIngredient(ingRef.ingredient_id);
+    if (!item) return;
+
+    if (item.tastes) item.tastes.forEach(t => { 
+      if (tasteCounts[t] !== undefined) tasteCounts[t]++; 
+    });
+    if (item.textures) item.textures.forEach(t => {
+      textureCounts[t] = (textureCounts[t] || 0) + 1;
+    });
+
+    const cals = estimateIngredientCalories(ingRef, r.base_servings, state.currentServings);
+    totalCalories += cals;
   });
-  const difficultyMap = { '\u7c21\u55ae': { pct: 33, color: '#4ade80' }, '\u4e2d\u7b49': { pct: 66, color: 'var(--accent)' }, '\u56f0\u96e3': { pct: 100, color: '#f87171' } };
+
+  const difficultyMap = { '簡單': { pct: 33, color: '#4ade80' }, '中等': { pct: 66, color: 'var(--accent)' }, '困難': { pct: 100, color: '#f87171' } };
   const difficultyInfo = difficultyMap[r.difficulty] || { pct: 50, color: 'var(--accent)' };
 
   const timeMinutes = parseInt(r.time_estimate) || 30;
   const timePct = Math.min(100, Math.round(timeMinutes / 60 * 100));
 
-  const tasteEmoji = { '\u9178': '\ud83c\udf4b', '\u751c': '\ud83c\udf6f', '\u82e6': '\u2615', '\u8fa3': '\ud83c\udf36\ufe0f', '\u9b79': '\ud83e\uddc2' };
-  const methodEmoji = { '\u5fae\u6ce2': '\ud83c\udf2a\ufe0f', '\u652a\u62cc': '\ud83e\udd44', '\u6df7\u5408': '\ud83e\udd44', '\u84b8': '\ud83e\udd2a', '\u7092': '\ud83d\udd25', '\u70b8': '\ud83e\udeb4', '\u71c9': '\ud83e\udea8', '\u70e4': '\ud83d\udd25', '\u9183\u6f2c': '\u23f3' };
+  const tasteEmoji = { '酸': '🍋', '甜': '🍯', '苦': '☕', '辣': '🌶️', '鹹': '🧂' };
+  const methodEmoji = { '微波': '🌪️', '攪拌': '🥄', '混合': '🥄', '蒸': '♨️', '炒': '🔥', '炸': '🧆', '燉': '🍲', '烤': '🔥', '醃漬': '⏳' };
 
-  const methodTags = Array.from(methodSet).map(m => `<span class="detail-tag detail-tag--method">${methodEmoji[m] || '\ud83d\udd2a'} ${m}</span>`).join('');
-  const tasteTags = Array.from(tasteSet).map(t => `<span class="detail-tag detail-tag--taste">${tasteEmoji[t] || ''} ${t}</span>`).join('') || '<span class="detail-tag-none">\u7121\u6a19\u793a</span>';
-  const textureTags = Array.from(textureSet).map(t => `<span class="detail-tag detail-tag--texture">${t}</span>`).join('') || '<span class="detail-tag-none">\u7121\u6a19\u793a</span>';
+  const methodTags = Array.from(methodSet).map(m => `<span class="detail-tag detail-tag--method">${methodEmoji[m] || '🔪'} ${m}</span>`).join('');
+
+  // Generate Radar Chart for Tastes
+  const renderTasteRadar = () => {
+    const labels = ['鹹', '甜', '酸', '辣', '苦'];
+    const maxVal = Math.max(1, ...labels.map(l => tasteCounts[l]));
+    const center = 120; // Changed center to 120
+    
+    let pts = labels.map((l, i) => {
+      let rAxis = 20 + (tasteCounts[l] / maxVal) * 65;
+      let angle = Math.PI * 2 * i / 5 - Math.PI / 2;
+      return `${center + rAxis * Math.cos(angle)},${center + rAxis * Math.sin(angle)}`;
+    }).join(' ');
+
+    let bgRungs = [35, 60, 85];
+    let bgHtml = bgRungs.map(rBase => {
+      let rPts = [];
+      for (let i = 0; i < 5; i++) {
+        let angle = Math.PI * 2 * i / 5 - Math.PI / 2;
+        rPts.push(`${center + rBase * Math.cos(angle)},${center + rBase * Math.sin(angle)}`);
+      }
+      return `<polygon points="${rPts.join(' ')}" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />`;
+    }).join('');
+
+    let axesHtml = labels.map((l, i) => {
+      let angle = Math.PI * 2 * i / 5 - Math.PI / 2;
+      let x = center + 85 * Math.cos(angle);
+      let y = center + 85 * Math.sin(angle);
+      let lx = center + 105 * Math.cos(angle);
+      let ly = center + 105 * Math.sin(angle);
+      return `
+        <line x1="${center}" y1="${center}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+        <text x="${lx}" y="${ly}" fill="var(--text-muted)" font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="middle">${l}</text>
+      `;
+    }).join('');
+
+    return `
+      <div class="taste-radar-wrap">
+        <svg width="240" height="240" viewBox="0 0 240 240" class="taste-radar-svg">
+          ${bgHtml}
+          ${axesHtml}
+          <polygon points="${pts}" fill="rgba(139,92,246,0.25)" stroke="#c4b5fd" stroke-width="2" stroke-linejoin="round" />
+          ${labels.map((l, i) => {
+            let rAxis = 20 + (tasteCounts[l] / maxVal) * 65;
+            let angle = Math.PI * 2 * i / 5 - Math.PI / 2;
+            let cx = center + rAxis * Math.cos(angle);
+            let cy = center + rAxis * Math.sin(angle);
+            return `<circle cx="${cx}" cy="${cy}" r="3" fill="#c4b5fd" />`;
+          }).join('')}
+        </svg>
+      </div>
+    `;
+  };
+
+  // Generate Grouped Tags for Textures
+  const renderTextureBubbles = () => {
+    let entries = Object.entries(textureCounts).sort((a,b) => b[1] - a[1]);
+    if (entries.length === 0) return '<span class="detail-tag-none">無標示</span>';
+    
+    let maxCount = entries[0][1];
+    let primary = [];
+    let secondary = [];
+    
+    entries.forEach(([tex, count]) => {
+      // Top counts are primary, rest are secondary
+      if (count >= maxCount * 0.6) primary.push(tex);
+      else secondary.push(tex);
+    });
+
+    const renderTags = (tags, type) => tags.map(t => `<span class="detail-tag detail-tag--texture ${type}">${t}</span>`).join('');
+    
+    let html = '';
+    if (primary.length > 0) {
+      html += `<div class="texture-group"><span style="font-size:0.65rem;color:var(--text-muted);display:block;margin-bottom:6px;">主要口感</span><div class="detail-tag-list" style="margin-bottom:12px;">${renderTags(primary, 'primary')}</div></div>`;
+    }
+    if (secondary.length > 0) {
+      html += `<div class="texture-group"><span style="font-size:0.65rem;color:var(--text-muted);display:block;margin-bottom:6px;">次要口感</span><div class="detail-tag-list">${renderTags(secondary, 'secondary')}</div></div>`;
+    }
+    
+    return `<div style="display:flex;flex-direction:column;">${html}</div>`;
+  };
+
+  const calsDisplay = Math.round(totalCalories) > 0 ? `${Math.round(totalCalories)} kcal` : '--';
+
+  // Calculate aggregated nutrition totals
+  const nutritionTotals = { calories: 0, protein: 0, fat: 0, carbs: 0, fiber: 0, sodium: 0 };
+  r.ingredients.forEach(ingRef => {
+    const item = getIngredient(ingRef.ingredient_id);
+    if (!item || !item.nutrition_per_100g || ingRef.qty === null) return;
+    const scaledQty = ingRef.scalable ? scaleQty(ingRef.qty, r.base_servings, state.currentServings) : ingRef.qty;
+    const u = (ingRef.unit || '').trim();
+    let grams = 0;
+    if (u === 'g' || u === 'ml' || u === 'c.c.') grams = scaledQty;
+    else if (u === 'kg' || u === 'L') grams = scaledQty * 1000;
+    else if (u === '片') grams = scaledQty * 20;
+    else if (u === '顆') grams = scaledQty * 50;
+    else if (u === '塊' || u === '盒' || u === '保鮮盒') grams = scaledQty * 200;
+    else if (u === '瓣') grams = scaledQty * 5;
+    else if (u === '匙' || u === '大匙' || u === 'tbsp' || u === 'T') grams = scaledQty * 15;
+    else if (u === '茶匙' || u === '小匙' || u === 'tsp' || u === 't') grams = scaledQty * 5;
+    else if (u === '杯' || u === 'cup') grams = scaledQty * 240;
+    else if (u === 'cm') grams = scaledQty * 2;
+    else grams = scaledQty * 10;
+    const ratio = grams / 100;
+    const n = item.nutrition_per_100g;
+    nutritionTotals.calories += (n.calories || 0) * ratio;
+    nutritionTotals.protein  += (n.protein || 0) * ratio;
+    nutritionTotals.fat      += (n.fat || 0) * ratio;
+    nutritionTotals.carbs    += (n.carbs || 0) * ratio;
+    nutritionTotals.fiber    += (n.fiber || 0) * ratio;
+    nutritionTotals.sodium   += (n.sodium || 0) * ratio;
+  });
+  const hasNutrition = nutritionTotals.calories > 0;
+  const nutritionPanelHtml = hasNutrition ? `
+    <div class="detail-panel-row nutrition-panel-row" onclick="toggleNutrition(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:background 0.2s;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:1.1rem;">🔥</span>
+        <div style="display:flex; flex-direction:column; gap:2px;">
+          <span style="font-size:.9rem; font-weight:600; color:var(--text-primary); line-height:1;">${calsDisplay}</span>
+          <span style="font-size:.68rem; color:var(--text-muted);">${state.currentServings} 人份估算熱量</span>
+        </div>
+      </div>
+      <span class="nutr-expand-icon" style="font-size:.75rem; color:var(--accent);">▸ 查看成分</span>
+    </div>
+    <div class="nutrition-panel detail-panel-row" hidden style="background:rgba(255,255,255,0.015); padding-top:16px;">
+      <div class="nutr-grid">
+        <div class="nutr-item"><span class="nutr-val">${Math.round(nutritionTotals.calories)}</span><span class="nutr-label">熱量 kcal</span></div>
+        <div class="nutr-item"><span class="nutr-val">${nutritionTotals.protein.toFixed(1)}</span><span class="nutr-label">蛋白質 g</span></div>
+        <div class="nutr-item"><span class="nutr-val">${nutritionTotals.fat.toFixed(1)}</span><span class="nutr-label">脂肪 g</span></div>
+        <div class="nutr-item"><span class="nutr-val">${nutritionTotals.carbs.toFixed(1)}</span><span class="nutr-label">碳水 g</span></div>
+        ${nutritionTotals.fiber > 0 ? `<div class="nutr-item"><span class="nutr-val">${nutritionTotals.fiber.toFixed(1)}</span><span class="nutr-label">纖維 g</span></div>` : ''}
+        ${nutritionTotals.sodium > 0 ? `<div class="nutr-item"><span class="nutr-val">${Math.round(nutritionTotals.sodium)}</span><span class="nutr-label">鈉 mg</span></div>` : ''}
+      </div>
+      <p class="nutr-disclaimer" style="font-size:.65rem; color:var(--text-muted); font-style:italic; margin:0; margin-top:8px;">* 依食材標準值推估，僅供參考</p>
+    </div>
+  ` : '';
 
   const detail = document.getElementById('view-detail');
   detail.innerHTML = `
@@ -401,10 +564,10 @@ function renderDetail(id) {
           <span class="mealtype-badge">${r.meal_type}</span>
         </div>
         <div class="servings-ctrl">
-          <span style="font-size:0.75rem;color:var(--text-muted);margin-right:4px;">\u4efd\u91cf</span>
+          <span style="font-size:0.75rem;color:var(--text-muted);margin-right:4px;">份量</span>
           <button class="srv-btn" onclick="changeServings(-1, ${r.id})">-</button>
           <span class="srv-num" id="srv-display">${state.currentServings}</span>
-          <span style="font-size:0.78rem;color:var(--text-muted)">\u4eba\u4efd</span>
+          <span style="font-size:0.78rem;color:var(--text-muted)">人份</span>
           <button class="srv-btn" onclick="changeServings(1, ${r.id})">+</button>
         </div>
       </div>
@@ -431,23 +594,26 @@ function renderDetail(id) {
         </div>
       </div>
 
+      <!-- Nutrition button (above methods) -->
+      ${nutritionPanelHtml}
+
       <!-- Row 3: Methods tags -->
       <div class="detail-panel-row">
         <div class="detail-tag-section">
-          <span class="detail-tag-label">\ud83d\udd25 \u70f9\u6cd5</span>
-          <div class="detail-tag-list">${methodTags || '<span class="detail-tag-none">\u7121\u6a19\u793a</span>'}</div>
+          <span class="detail-tag-label">🔥 烹法</span>
+          <div class="detail-tag-list">${methodTags || '<span class="detail-tag-none">無標示</span>'}</div>
         </div>
       </div>
 
       <!-- Row 4: Taste + Texture tags -->
       <div class="detail-panel-row detail-panel-row--split">
-        <div class="detail-tag-section">
-          <span class="detail-tag-label">\ud83d\ude0b \u53e3\u5473</span>
-          <div class="detail-tag-list">${tasteTags}</div>
+        <div class="detail-tag-section" style="align-items:center;">
+          <span class="detail-tag-label" style="align-self:flex-start;">😋 口味</span>
+          ${renderTasteRadar()}
         </div>
         <div class="detail-tag-section">
-          <span class="detail-tag-label">\u270c\ufe0f \u53e3\u611f</span>
-          <div class="detail-tag-list">${textureTags}</div>
+          <span class="detail-tag-label">✌️ 口感</span>
+          ${renderTextureBubbles()}
         </div>
       </div>
     </div>
@@ -496,6 +662,35 @@ function renderDetail(id) {
 
 // ── 食材清單 ────────────────────────────────────────────────
 
+function estimateIngredientCalories(ingRef, baseServings, currentServings) {
+  if (ingRef.qty === null) return 0;
+  
+  const scaledQty = ingRef.scalable
+      ? scaleQty(ingRef.qty, baseServings, currentServings)
+      : ingRef.qty;
+      
+  const item = getIngredient(ingRef.ingredient_id);
+  if (!item || !item.nutrition_per_100g) return 0;
+  
+  const calsPer100g = item.nutrition_per_100g.calories;
+  let grams = 0;
+  
+  const u = (ingRef.unit || '').trim();
+  if (u === 'g' || u === 'ml' || u === 'c.c.') grams = scaledQty;
+  else if (u === 'kg' || u === 'L') grams = scaledQty * 1000;
+  else if (u === '片') grams = scaledQty * 20;
+  else if (u === '顆') grams = scaledQty * 50;
+  else if (u === '塊' || u === '盒' || u === '保鮮盒') grams = scaledQty * 200;
+  else if (u === '瓣') grams = scaledQty * 5;
+  else if (u === '匙' || u === '大匙' || u === 'tbsp' || u === 'T') grams = scaledQty * 15;
+  else if (u === '茶匙' || u === '小匙' || u === 'tsp' || u === 't') grams = scaledQty * 5;
+  else if (u === '杯' || u === 'cup') grams = scaledQty * 240;
+  else if (u === 'cm') grams = scaledQty * 2; 
+  else grams = scaledQty * 10;
+  
+  return (grams / 100) * calsPer100g;
+}
+
 function scaleQty(qty, baseServings, currentServings) {
   if (qty === null) return null;
   return parseFloat((qty * (currentServings / baseServings)).toFixed(2));
@@ -528,6 +723,8 @@ function renderIngredients(id) {
     }).join('');
 
     const variantLabel = getIngVariantLabel(ing);
+    const itemCals = estimateIngredientCalories(ing, r.base_servings, state.currentServings);
+    const calsStr = itemCals > 0 ? `<span class="ing-cal-meta">${Math.round(itemCals)} kcal</span>` : '';
 
     return `
       <div class="ingredient-item ${checked ? 'checked' : ''}" id="ing-${i}" onclick="toggleIng(${i}, ${id})">
@@ -545,7 +742,10 @@ function renderIngredients(id) {
             </div>
           </div>
         </div>
-        <span class="ing-amount ${ing.scalable ? 'scalable' : ''}" id="ing-amount-${i}">${amountStr}</span>
+        <div class="ingredient-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+          <span class="ing-amount ${ing.scalable ? 'scalable' : ''}" id="ing-amount-${i}">${amountStr}</span>
+          ${calsStr}
+        </div>
       </div>
     `;
   }).join('');
@@ -612,6 +812,19 @@ window.toggleStep = function(idx, total) {
   const textEl = document.getElementById('step-progress-text');
   if (textEl) textEl.textContent = `${state.doneSteps.size} / ${total}`;
   renderSteps(state.currentRecipeId);
+};
+
+window.toggleNutrition = function(row) {
+  const panel = row.nextElementSibling;
+  const icon  = row.querySelector('.nutr-expand-icon');
+  const open  = panel.hasAttribute('hidden');
+  if (open) {
+    panel.removeAttribute('hidden');
+    icon.textContent = '▾ 收合成分';
+  } else {
+    panel.setAttribute('hidden', '');
+    icon.textContent = '▸ 查看成分';
+  }
 };
 
 window.switchVersion = function(recipeId, versionId) {
