@@ -11,7 +11,6 @@ import { CATEGORY_LIST, CUISINE_LIST, MEALTYPE_LIST } from '../domain/recipesCat
 import { getActiveFilterCount, getFilteredRecipes } from '../domain/helpers/filter';
 import { estimateIngredientCalories } from '../domain/helpers/servings';
 import { baseJoin } from '../domain/recipeApi';
-import IngredientBrowser from '../components/IngredientBrowser';
 import type { FilterState, RecipeIndexEntry } from '../domain/types';
 
 interface HomePageProps {
@@ -254,7 +253,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           filteredRecipes.map((recipe) => {
             const calories = Math.round(
               (recipe.ingredients || []).reduce((sum, ingredient) => {
-                return sum + estimateIngredientCalories(ingredient, recipe.base_servings, recipe.base_servings);
+                return sum + estimateIngredientCalories(ingredient, recipe.base_servings, 1);
               }, 0)
             );
 
@@ -287,7 +286,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
                     </div>
                     <div className="card-meta-item">
                       <span></span>
-                      <span>{recipe.base_servings} 人份</span>
+                      <span>1 人份</span>
                     </div>
                     {calories > 0 && (
                       <div className="card-meta-item card-meta-cals">
@@ -308,8 +307,6 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
             );
           })}
       </div>
-
-      <IngredientBrowser />
     </div>
   );
 }

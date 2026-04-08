@@ -43,7 +43,7 @@ export default function RecipeDetailPage() {
         if (!mounted) return;
         setRecipe(data);
         if (data) {
-          setServings(data.base_servings || 1);
+          setServings(1);
           setVersionId(data.versions[0]?.id || null);
         }
         setCheckedIngredients(new Set());
@@ -180,7 +180,10 @@ export default function RecipeDetailPage() {
             <div className="detail-bar-track">
               <div
                 className="detail-bar-fill"
-                style={{ width: `${difficultyPct}%`, background: difficultyPct <= 40 ? '#4ade80' : difficultyPct <= 70 ? 'var(--accent)' : '#f87171' }}
+                style={{ 
+                  width: `${Math.max(5, difficultyPct)}%`, 
+                  background: difficultyPct <= 30 ? '#4ade80' : difficultyPct <= 55 ? 'var(--accent)' : difficultyPct <= 80 ? '#f97316' : '#f87171' 
+                }}
               />
             </div>
           </div>

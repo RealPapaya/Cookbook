@@ -140,8 +140,16 @@ export default function IngredientBrowser() {
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return INGREDIENTS.filter((ing) => {
-      const catMatch = !selectedCat || ing.categories.includes(selectedCat);
-      const searchMatch = !q || ing.name.toLowerCase().includes(q) || ing.name_en?.toLowerCase().includes(q);
+      // 安全防護：確保 categories 是陣列
+      if (!Array.isArray(ing.categories)) return false;
+      // 分類篩選：必須是非空字串才過濾，null 表示全部
+      const catMatch = typeof selectedCat !== 'string' || selectedCat.length === 0
+        ? true
+        : ing.categories.some(c => c === selectedCat);
+      // 搜尋篩選：只比對名稱
+      const searchMatch = !q ||
+        ing.name.toLowerCase().includes(q) ||
+        (ing.name_en?.toLowerCase().includes(q) ?? false);
       return catMatch && searchMatch;
     });
   }, [selectedCat, search]);
@@ -157,10 +165,13 @@ export default function IngredientBrowser() {
           <input
             type="search"
             className="ing-browser-search"
-            placeholder="搜尋食材..."
+            placeholder="搜尋名稱或分類..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+          {search && (
+            <button className="ing-browser-search-clear" onClick={() => setSearch('')}>✕</button>
+          )}
         </div>
       </div>
 
@@ -181,7 +192,11 @@ export default function IngredientBrowser() {
               type="button"
               className={`ing-browser-cat-btn ${selectedCat === cat ? 'active' : ''}`}
               style={selectedCat === cat && color ? { background: color.bg, borderColor: color.border, color: color.text } : {}}
-              onClick={() => setSelectedCat(selectedCat === cat ? null : cat)}
+              onClick={() => {
+                const next = selectedCat === cat ? null : cat;
+                setSelectedCat(next);
+                setSearch(''); // 切換分類時清空搜尋
+              }}
             >
               {cat}（{count}）
             </button>

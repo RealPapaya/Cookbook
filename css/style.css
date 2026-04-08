@@ -612,6 +612,7 @@ body {
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 12px;
@@ -2559,9 +2560,7 @@ body {
    Ingredient Browser
    =========================== */
 .ing-browser-section {
-  margin-top: 56px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
+  padding-top: 8px;
 }
 
 .ing-browser-header {
@@ -2586,25 +2585,51 @@ body {
 }
 
 .ing-browser-search-wrap {
+  position: relative;
   flex-shrink: 0;
 }
 
 .ing-browser-search {
-  padding: 8px 16px;
+  padding: 8px 40px 8px 16px;
   border-radius: 50px;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   background: var(--bg-card);
   color: var(--text-primary);
   font-family: 'Noto Sans TC', sans-serif;
   font-size: 0.85rem;
   outline: none;
-  width: 220px;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  width: 260px;
+  transition: all 0.2s ease;
 }
 
 .ing-browser-search:focus {
-  border-color: var(--border-accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
+  width: 300px;
+}
+
+.ing-browser-search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.ing-browser-search-clear:hover {
+  opacity: 1;
+  color: var(--text-primary);
 }
 
 .ing-browser-search::placeholder {

@@ -3,14 +3,21 @@ import type { RecipeDetail, RecipeIngredientRef } from '../types';
 
 const VOLUME_TO_GRAMS: Record<string, number> = {
   g: 1,
+  '克': 1,
   ml: 1,
+  '毫升': 1,
   'c.c.': 1,
   kg: 1000,
+  '公斤': 1000,
   l: 1000,
+  '升': 1000,
+  '公升': 1000,
   tsp: 5,
   t: 5,
+  '小匙': 5,
   tbsp: 15,
   T: 15,
+  '大匙': 15,
   cup: 240,
   cm: 2
 };
@@ -32,13 +39,27 @@ function toGrams(qty: number, unitRaw: string): number {
     return qty * VOLUME_TO_GRAMS[unit];
   }
 
-  if (unit === 'slice') return qty * 20;
+  // 常見中文料理單位
+  if (unit === '片') return qty * 18;      // 薄切片：培根/肉片約 15-20g
+  if (unit === '塊') return qty * 200;     // 一塊：烏龍麵/豆腐等約 200g
+  if (unit === '顆') return qty * 50;      // 一顆：雞蛋/番茄等
+  if (unit === '個') return qty * 80;      // 一個：一般食材
+  if (unit === '把') return qty * 150;     // 一把：蔬菜/蔥
+  if (unit === '條') return qty * 100;     // 一條：玉米/香腸等
+  if (unit === '根') return qty * 30;      // 一根：蔥/辣椒等
+  if (unit === '束') return qty * 100;     // 一束：蔬菜
+  if (unit === '包') return qty * 200;     // 一包
+  if (unit === '罐') return qty * 400;     // 一罐
+  if (unit === '碗') return qty * 240;     // 一碗
+  if (unit === 'slice') return qty * 18;
   if (unit === 'egg') return qty * 50;
   if (unit === 'clove') return qty * 5;
   if (unit === 'bowl') return qty * 240;
   if (unit === 'tbsp_local') return qty * 15;
   if (unit === 'tsp_local') return qty * 5;
-  return qty * 10;
+  // 未知單位：若數值很大（>50）可能是公克但沒標對，若很小（<10）可能是個/顆
+  if (qty > 50) return qty; // 猜測是公克
+  return qty * 20; // 猜測是平均重量
 }
 
 export function estimateIngredientCalories(

@@ -3,6 +3,7 @@ import { NavLink, Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import AddRecipeModal from './components/AddRecipeModal';
 import KitchenPanel from './components/KitchenPanel';
 import AboutPage from './pages/AboutPage';
+import IngredientsPage from './pages/IngredientsPage';
 import HomePage from './pages/HomePage';
 import MyRecipeDetailPage from './pages/MyRecipeDetailPage';
 import MyRecipesPage from './pages/MyRecipesPage';
@@ -99,6 +100,9 @@ export default function App() {
               <span className="nav-icon"></span> 我的食譜
             </NavLink>
             <div className="nav-section-label">資訊</div>
+            <NavLink to="/ingredients" className={({ isActive }) => navClassName(isActive)}>
+              <span className="nav-icon"></span> 食材百科
+            </NavLink>
             <NavLink to="/about" className={({ isActive }) => navClassName(isActive)}>
               <span className="nav-icon"></span> 關於本站
             </NavLink>
@@ -137,6 +141,7 @@ export default function App() {
             />
             <Route path="/my-recipes/:myRecipeId" element={<MyRecipeDetailPage recipes={myRecipes} />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/ingredients" element={<IngredientsPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
@@ -150,6 +155,10 @@ export default function App() {
         <NavLink to="/my-recipes" className={({ isActive }) => bottomNavClassName(isActive)}>
           <span className="bnav-icon"></span>
           <span className="bnav-label">我的食譜</span>
+        </NavLink>
+        <NavLink to="/ingredients" className={({ isActive }) => bottomNavClassName(isActive)}>
+          <span className="bnav-icon"></span>
+          <span className="bnav-label">食材</span>
         </NavLink>
         <NavLink to="/about" className={({ isActive }) => bottomNavClassName(isActive)}>
           <span className="bnav-icon"></span>
