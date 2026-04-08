@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getCookingMethod, METHOD_TYPES } from '../domain/cookingMethods';
 import { getIngredient, INGREDIENT_TAG_COLORS } from '../domain/ingredients';
-import { fetchRecipeDetailById } from '../domain/recipeApi';
+import { baseJoin, fetchRecipeDetailById } from '../domain/recipeApi';
 import { aggregateNutrition, estimateIngredientCalories, estimateScaledTime, formatQty, scaleQty } from '../domain/helpers/servings';
 import type { RecipeDetail, RecipeIngredientRef } from '../domain/types';
 
@@ -98,7 +98,7 @@ export default function RecipeDetailPage() {
       <div className="page-view active" id="view-detail">
         <div className="empty-state" style={{ marginTop: 80 }}>
           <div className="empty-icon">...</div>
-          <p>Loading recipe...</p>
+          <p>載入食譜中...</p>
         </div>
       </div>
     );
@@ -109,9 +109,9 @@ export default function RecipeDetailPage() {
       <div className="page-view active" id="view-detail">
         <div className="empty-state" style={{ marginTop: 80 }}>
           <div className="empty-icon">ERR</div>
-          <p>Recipe not found.</p>
+          <p>找不到該食譜。</p>
           <button className="filter-clear-btn" type="button" style={{ marginTop: 10 }} onClick={() => navigate('/')}>
-            Back Home
+            回到首頁
           </button>
         </div>
       </div>
@@ -119,20 +119,20 @@ export default function RecipeDetailPage() {
   }
 
   const scaledTime = estimateScaledTime(recipe.time_estimate, ratio);
-  const difficultyLabels = ['Easy', 'Medium', 'Hard'];
+  const difficultyLabels = ['簡單', '中等', '困難'];
   const difficultyIndex = Math.max(0, difficultyLabels.indexOf(recipe.difficulty));
   const difficultyShift = ratio > 1.5 ? 1 : 0;
   const currentDifficulty = difficultyLabels[Math.min(difficultyLabels.length - 1, difficultyIndex + difficultyShift)];
-  const difficultyPct = currentDifficulty === 'Easy' ? 33 : currentDifficulty === 'Medium' ? 66 : 100;
+  const difficultyPct = currentDifficulty === '簡單' ? 33 : currentDifficulty === '中等' ? 66 : 100;
 
   return (
     <div className="page-view active" id="view-detail">
       <button className="detail-back" type="button" onClick={() => navigate('/')}>
-        Back to Home
+        回到首頁
       </button>
 
       <div className="detail-hero">
-        <img src={recipe.image} alt={recipe.title} />
+        <img src={baseJoin(recipe.image)} alt={recipe.title} />
         <div className="detail-hero-overlay">
           <div className="detail-title">{recipe.title}</div>
           <div className="detail-subtitle">{recipe.subtitle}</div>
@@ -147,7 +147,7 @@ export default function RecipeDetailPage() {
             <span className="mealtype-badge">{recipe.meal_type}</span>
           </div>
           <div className="servings-ctrl">
-            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginRight: 4 }}>Servings</span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginRight: 4 }}>份量</span>
             <button className="srv-btn" type="button" onClick={() => setServings((value) => Math.max(1, value - 1))}>-</button>
             <span className="srv-num" id="srv-display">{servings}</span>
             <button className="srv-btn" type="button" onClick={() => setServings((value) => Math.min(50, value + 1))}>+</button>
@@ -157,8 +157,8 @@ export default function RecipeDetailPage() {
         <div className="detail-panel-row detail-panel-row--bars">
           <div className="detail-bar-item">
             <div className="detail-bar-label">
-              <span>Time</span>
-              <span className="detail-bar-value">{scaledTime} min</span>
+              <span>時間</span>
+              <span className="detail-bar-value">{scaledTime} 分鐘</span>
             </div>
             <div className="detail-bar-track">
               <div
@@ -170,7 +170,7 @@ export default function RecipeDetailPage() {
 
           <div className="detail-bar-item">
             <div className="detail-bar-label">
-              <span>Difficulty</span>
+              <span>難度</span>
               <span className="detail-bar-value">{currentDifficulty}</span>
             </div>
             <div className="detail-bar-track">
@@ -192,7 +192,7 @@ export default function RecipeDetailPage() {
           }}
         >
           <div className="nutrition-summary-head">
-            <span className="nutr-title">Nutrition for {servings} servings</span>
+            <span className="nutr-title">{servings} 人份營養標示</span>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <span style={{ fontSize: '.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1 }}>
                 {totalCalories > 0 ? `${totalCalories} kcal` : '--'}
@@ -200,28 +200,28 @@ export default function RecipeDetailPage() {
             </div>
           </div>
           <span className="nutr-expand-icon" style={{ fontSize: '.75rem', color: 'var(--accent)' }}>
-            {nutritionOpen ? 'Hide' : 'Show'}
+            {nutritionOpen ? '隱藏' : '展開'}
           </span>
         </div>
 
         {nutritionOpen && (
           <div className="nutrition-panel detail-panel-row" style={{ background: 'rgba(255,255,255,0.015)', paddingTop: 16 }}>
             <div className="nutr-grid">
-              <div className="nutr-item"><span className="nutr-val">{Math.round(nutrition.calories)}</span><span className="nutr-label">kcal</span></div>
-              <div className="nutr-item"><span className="nutr-val">{nutrition.protein.toFixed(1)}</span><span className="nutr-label">Protein g</span></div>
-              <div className="nutr-item"><span className="nutr-val">{nutrition.fat.toFixed(1)}</span><span className="nutr-label">Fat g</span></div>
-              <div className="nutr-item"><span className="nutr-val">{nutrition.carbs.toFixed(1)}</span><span className="nutr-label">Carbs g</span></div>
-              {nutrition.fiber > 0 && <div className="nutr-item"><span className="nutr-val">{nutrition.fiber.toFixed(1)}</span><span className="nutr-label">Fiber g</span></div>}
-              {nutrition.sodium > 0 && <div className="nutr-item"><span className="nutr-val">{Math.round(nutrition.sodium)}</span><span className="nutr-label">Sodium mg</span></div>}
+              <div className="nutr-item"><span className="nutr-val">{Math.round(nutrition.calories)}</span><span className="nutr-label">大卡</span></div>
+              <div className="nutr-item"><span className="nutr-val">{nutrition.protein.toFixed(1)}</span><span className="nutr-label">蛋白質 (g)</span></div>
+              <div className="nutr-item"><span className="nutr-val">{nutrition.fat.toFixed(1)}</span><span className="nutr-label">脂肪 (g)</span></div>
+              <div className="nutr-item"><span className="nutr-val">{nutrition.carbs.toFixed(1)}</span><span className="nutr-label">碳水 (g)</span></div>
+              {nutrition.fiber > 0 && <div className="nutr-item"><span className="nutr-val">{nutrition.fiber.toFixed(1)}</span><span className="nutr-label">纖維 (g)</span></div>}
+              {nutrition.sodium > 0 && <div className="nutr-item"><span className="nutr-val">{Math.round(nutrition.sodium)}</span><span className="nutr-label">鈉 (mg)</span></div>}
             </div>
           </div>
         )}
 
         <div className="detail-panel-row">
           <div className="detail-tag-section">
-            <span className="detail-tag-label">Methods</span>
+            <span className="detail-tag-label">烹調方式</span>
             <div className="detail-tag-list">
-              {methodTags.length === 0 ? <span className="detail-tag-none">None</span> : methodTags.map((tag) => <span key={tag} className="detail-tag detail-tag--method">{tag}</span>)}
+              {methodTags.length === 0 ? <span className="detail-tag-none">無</span> : methodTags.map((tag) => <span key={tag} className="detail-tag detail-tag--method">{tag}</span>)}
             </div>
           </div>
         </div>
@@ -229,7 +229,7 @@ export default function RecipeDetailPage() {
 
       <div className="detail-desc">{recipe.description}</div>
 
-      <div className="section-title">Ingredients</div>
+      <div className="section-title">食材</div>
       <div className="ingredients-grid" id="ing-grid">
         {recipe.ingredients.map((ingredientRef, index) => {
           const scaledQty = ingredientRef.scalable ? scaleQty(ingredientRef.qty, recipe.base_servings, servings) : ingredientRef.qty;
@@ -271,7 +271,7 @@ export default function RecipeDetailPage() {
                         </span>
                       );
                     })}
-                    {ingredientRef.optional ? <span className="ing-tag" style={{ opacity: 0.6 }}>optional</span> : null}
+                    {ingredientRef.optional ? <span className="ing-tag" style={{ opacity: 0.6 }}>可選</span> : null}
                   </div>
                 </div>
               </div>
@@ -298,11 +298,11 @@ export default function RecipeDetailPage() {
       )}
 
       <div className="progress-wrap">
-        <div className="progress-label"><span>Step Progress</span><span id="step-progress-text">{doneSteps.size} / {stepTotal}</span></div>
+        <div className="progress-label"><span>步驟進度</span><span id="step-progress-text">{doneSteps.size} / {stepTotal}</span></div>
         <div className="progress-bar"><div className="progress-fill" id="step-progress-fill" style={{ width: `${stepTotal ? Math.round((doneSteps.size / stepTotal) * 100) : 0}%` }} /></div>
       </div>
 
-      <div className="section-title">Steps</div>
+      <div className="section-title">步驟</div>
 
       <div className="steps-list" id="steps-list">
         {currentVersion.steps.map((step, index) => {
@@ -344,7 +344,7 @@ export default function RecipeDetailPage() {
 
       {recipe.tips ? (
         <div className="tips-box">
-          <div className="tips-label">Tips</div>
+          <div className="tips-label">小撇步</div>
           <p>{recipe.tips}</p>
         </div>
       ) : null}

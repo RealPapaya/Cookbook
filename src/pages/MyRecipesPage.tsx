@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteMyRecipe } from '../domain/myRecipes';
+import { baseJoin } from '../domain/recipeApi';
 import type { MyRecipe } from '../domain/types';
 
 interface MyRecipesPageProps {
@@ -20,28 +21,28 @@ export default function MyRecipesPage({ recipes, onOpenAddModal, onDelete }: MyR
     <div className="page-view active" id="view-my-recipes">
       <div className="my-recipes-header">
         <div>
-          <h2 className="my-recipes-title">My Recipes</h2>
-          <p className="my-recipes-sub">Your saved online recipes and custom notes live here.</p>
+          <h2 className="my-recipes-title">我的食譜</h2>
+          <p className="my-recipes-sub">你儲存的線上食譜與自訂筆記都在這裡。</p>
         </div>
         <button className="add-recipe-btn" type="button" onClick={onOpenAddModal}>
-          Add Recipe
+          新增食譜
         </button>
       </div>
 
       {sorted.length === 0 ? (
         <div className="empty-state">
           <div className="empty-icon">NA</div>
-          <p>No saved recipes yet.</p>
+          <p>目前還沒有儲存的食譜。</p>
           <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: 6 }}>
-            Add one from the online list or create your own.
+            你可以從線上食譜清單加入，或是建立你自己的食譜。
           </p>
           <button className="add-recipe-btn" type="button" style={{ marginTop: 16 }} onClick={onOpenAddModal}>
-            Add First Recipe
+            建立第一份食譜
           </button>
         </div>
       ) : (
         <>
-          <div className="my-count-label">{sorted.length} recipes</div>
+          <div className="my-count-label">共 {sorted.length} 道食譜</div>
           <div className="recipe-grid">
             {sorted.map((recipe) => {
               const isOnline = recipe.source === 'online';
@@ -65,11 +66,11 @@ export default function MyRecipesPage({ recipes, onOpenAddModal, onDelete }: MyR
                   }}
                 >
                   <div className="card-image-wrap">
-                    {recipe.image ? <img src={recipe.image} alt={recipe.title} loading="lazy" /> : <div className="my-card-no-img">TXT</div>}
+                    {recipe.image ? <img src={baseJoin(recipe.image)} alt={recipe.title} loading="lazy" /> : <div className="my-card-no-img">TXT</div>}
                     <div className="card-image-overlay" />
-                    <span className="card-category">{recipe.category || 'Recipe'}</span>
+                    <span className="card-category">{recipe.category || '食譜'}</span>
                     <span className={`my-source-badge ${isOnline ? 'source-online' : 'source-custom'}`}>
-                      {isOnline ? 'Online' : 'Custom'}
+                      {isOnline ? '線上' : '自訂'}
                     </span>
                   </div>
 
@@ -100,18 +101,18 @@ export default function MyRecipesPage({ recipes, onOpenAddModal, onDelete }: MyR
                     </div>
 
                     <div className="my-card-footer">
-                      <span className="my-added-date">Saved on {new Date(recipe.added_at).toLocaleDateString('zh-TW')}</span>
+                      <span className="my-added-date">儲存於 {new Date(recipe.added_at).toLocaleDateString('zh-TW')}</span>
                       <button
                         className="my-delete-btn"
                         type="button"
                         onClick={(event) => {
                           event.stopPropagation();
-                          if (!window.confirm('Delete this recipe?')) return;
+                          if (!window.confirm('確定要刪除這份食譜嗎？')) return;
                           deleteMyRecipe(recipe.my_id);
                           onDelete();
                         }}
                       >
-                        Delete
+                        刪除
                       </button>
                     </div>
                   </div>

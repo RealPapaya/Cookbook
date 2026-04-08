@@ -10,6 +10,7 @@ import {
 import { CATEGORY_LIST, CUISINE_LIST, MEALTYPE_LIST } from '../domain/recipesCatalog';
 import { getActiveFilterCount, getFilteredRecipes } from '../domain/helpers/filter';
 import { estimateIngredientCalories } from '../domain/helpers/servings';
+import { baseJoin } from '../domain/recipeApi';
 import type { FilterState, RecipeIndexEntry } from '../domain/types';
 
 interface HomePageProps {
@@ -89,7 +90,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           <input
             type="search"
             id="search-input"
-            placeholder="Search recipes, ingredients, categories"
+            placeholder="搜尋食譜、食材、分類..."
             autoComplete="off"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
@@ -102,7 +103,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           type="button"
           onClick={() => setFilterOpen((current) => !current)}
         >
-          <span>Filter</span>
+          <span>篩選</span>
           <span className="filter-toggle-icon">FL</span>
           <span
             className="filter-badge"
@@ -115,17 +116,17 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
 
         <button className="kitchen-toggle-btn" id="kitchen-toggle-btn" type="button" onClick={onOpenKitchenPanel}>
           <span className="kitchen-toggle-icon">KT</span>
-          <span>Kitchen</span>
+          <span>廚房</span>
         </button>
 
         <span className="count-badge" id="count-badge">
-          {loading ? 'Loading...' : `${filteredRecipes.length} recipes`}
+          {loading ? '載入中...' : `${filteredRecipes.length} 道食譜`}
         </span>
       </div>
 
       <div className={`filter-panel ${filterOpen ? 'open' : ''}`} id="filter-panel">
         <div className="filter-section">
-          <div className="filter-section-title">Cuisine</div>
+          <div className="filter-section-title">菜系</div>
           <div className="filter-chips">
             {CUISINE_LIST.map((value) => (
               <button
@@ -141,7 +142,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         </div>
 
         <div className="filter-section">
-          <div className="filter-section-title">Meal Type</div>
+          <div className="filter-section-title">餐點類型</div>
           <div className="filter-chips">
             {MEALTYPE_LIST.map((value) => (
               <button
@@ -157,7 +158,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         </div>
 
         <div className="filter-section">
-          <div className="filter-section-title">Category</div>
+          <div className="filter-section-title">分類</div>
           <div className="filter-chips">
             {CATEGORY_LIST.map((value) => (
               <button
@@ -173,7 +174,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         </div>
 
         <div className="filter-section">
-          <div className="filter-section-title">Method</div>
+          <div className="filter-section-title">烹飪方式</div>
           <div className="filter-chips">
             {Object.entries(METHOD_TYPES).map(([methodId, label]) => (
               <button
@@ -189,7 +190,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         </div>
 
         <div className="filter-section">
-          <div className="filter-section-title">Ingredient Tags</div>
+          <div className="filter-section-title">食材標籤</div>
           <div className="filter-chips">
             {(ingTagOptions.length ? ingTagOptions : INGREDIENT_CATEGORIES).map((tag) => {
               const colors = INGREDIENT_TAG_COLORS[tag] || { bg: '', border: '', text: '' };
@@ -209,7 +210,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         </div>
 
         <div className="filter-section">
-          <div className="filter-section-title">Taste</div>
+          <div className="filter-section-title">口味</div>
           <div className="filter-chips">
             {INGREDIENT_TASTES.map((value) => (
               <button
@@ -225,7 +226,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         </div>
 
         <div className="filter-section">
-          <div className="filter-section-title">Texture</div>
+          <div className="filter-section-title">口感</div>
           <div className="filter-chips">
             {INGREDIENT_TEXTURES.map((value) => (
               <button
@@ -241,7 +242,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         </div>
 
         <div className="filter-section">
-          <div className="filter-section-title">Recipe Tags</div>
+          <div className="filter-section-title">食譜標籤</div>
           <div className="filter-chips">
             {recipeTagOptions.map((tag) => (
               <button
@@ -258,7 +259,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
 
         <div className="filter-actions">
           <button className="filter-clear-btn" type="button" onClick={clearAllFilters}>
-            Clear Filters
+            清除篩選
           </button>
         </div>
       </div>
@@ -266,7 +267,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
       <div id="active-filter-summary" style={{ margin: '0 28px 10px' }}>
         {activeFilterCount > 0 && (
           <div className="card-tags">
-            <span className="tag">{activeFilterCount} filters active</span>
+            <span className="tag">已套用 {activeFilterCount} 個篩選條件</span>
           </div>
         )}
       </div>
@@ -275,9 +276,9 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         {!loading && filteredRecipes.length === 0 && (
           <div className="empty-state" style={{ gridColumn: '1 / -1' }}>
             <div className="empty-icon">NA</div>
-            <p>No matching recipes</p>
+            <p>找不到符合的食譜</p>
             <button className="filter-clear-btn" type="button" style={{ marginTop: 12 }} onClick={clearAllFilters}>
-              Reset
+              重置
             </button>
           </div>
         )}
@@ -299,7 +300,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
                 onClick={() => navigate(`/recipes/${recipe.id}`)}
               >
                 <div className="card-image-wrap">
-                  <img src={recipe.image} alt={recipe.title} loading="lazy" />
+                  <img src={baseJoin(recipe.image)} alt={recipe.title} loading="lazy" />
                   <div className="card-image-overlay" />
                   <span className="card-category">{recipe.category}</span>
                   <span className="card-difficulty">{recipe.difficulty}</span>
@@ -319,7 +320,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
                     </div>
                     <div className="card-meta-item">
                       <span>SV</span>
-                      <span>{recipe.base_servings} servings</span>
+                      <span>{recipe.base_servings} 人份</span>
                     </div>
                     {calories > 0 && (
                       <div className="card-meta-item card-meta-cals">

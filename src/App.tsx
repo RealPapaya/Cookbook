@@ -90,22 +90,22 @@ export default function App() {
           </div>
 
           <nav className="sidebar-nav">
-            <div className="nav-section-label">Main</div>
+            <div className="nav-section-label">主選單</div>
             <NavLink to="/" end className={({ isActive }) => navClassName(isActive)}>
-              <span className="nav-icon">HM</span> Home
+              <span className="nav-icon">HM</span> 首頁
             </NavLink>
-            <div className="nav-section-label">Saved</div>
+            <div className="nav-section-label">我的收藏</div>
             <NavLink to="/my-recipes" className={({ isActive }) => navClassName(isActive)}>
-              <span className="nav-icon">MY</span> My Recipes
+              <span className="nav-icon">MY</span> 我的食譜
             </NavLink>
-            <div className="nav-section-label">Info</div>
+            <div className="nav-section-label">資訊</div>
             <NavLink to="/about" className={({ isActive }) => navClassName(isActive)}>
-              <span className="nav-icon">AB</span> About
+              <span className="nav-icon">AB</span> 關於本站
             </NavLink>
           </nav>
 
           <div className="sidebar-footer">
-            <p>Powered by React + TypeScript</p>
+            <p>React + TypeScript 驅動</p>
           </div>
         </aside>
 
@@ -130,7 +130,7 @@ export default function App() {
                   onOpenAddModal={() => setAddModalOpen(true)}
                   onDelete={() => {
                     refreshMyRecipes();
-                    showToast('Recipe removed.');
+                    showToast('已移除食譜。');
                   }}
                 />
               }
@@ -145,15 +145,15 @@ export default function App() {
       <nav className="bottom-nav">
         <NavLink to="/" end className={({ isActive }) => bottomNavClassName(isActive)}>
           <span className="bnav-icon">HM</span>
-          <span className="bnav-label">Home</span>
+          <span className="bnav-label">首頁</span>
         </NavLink>
         <NavLink to="/my-recipes" className={({ isActive }) => bottomNavClassName(isActive)}>
           <span className="bnav-icon">MY</span>
-          <span className="bnav-label">Mine</span>
+          <span className="bnav-label">我的食譜</span>
         </NavLink>
         <NavLink to="/about" className={({ isActive }) => bottomNavClassName(isActive)}>
           <span className="bnav-icon">AB</span>
-          <span className="bnav-label">About</span>
+          <span className="bnav-label">關於本站</span>
         </NavLink>
       </nav>
 
@@ -171,7 +171,7 @@ export default function App() {
         onClose={() => setAddModalOpen(false)}
         onRecipesChanged={() => {
           refreshMyRecipes();
-          showToast('My recipes updated.');
+          showToast('我的食譜已更新。');
         }}
         onToast={showToast}
       />

@@ -1,6 +1,7 @@
 import { FormEvent, useMemo, useState } from 'react';
 import { addMyRecipe } from '../domain/myRecipes';
 import { CATEGORY_LIST, CUISINE_LIST, DIFFICULTY_LIST, MEALTYPE_LIST } from '../domain/recipesCatalog';
+import { baseJoin } from '../domain/recipeApi';
 import type { MyRecipe, RecipeIndexEntry } from '../domain/types';
 
 interface AddRecipeModalProps {
@@ -46,12 +47,12 @@ export default function AddRecipeModal({
     });
 
     if (!saved) {
-      onToast('Recipe already saved.');
+      onToast('食譜已經在清單中了。');
       return;
     }
 
     onRecipesChanged();
-    onToast(`Added: ${recipe.title}`);
+    onToast(`已新增：${recipe.title}`);
   };
 
   const submitCustomRecipe = (event: FormEvent<HTMLFormElement>): void => {
@@ -86,7 +87,7 @@ export default function AddRecipeModal({
 
     addMyRecipe(recipe);
     onRecipesChanged();
-    onToast(`Created: ${title}`);
+    onToast(`已建立：${title}`);
     onClose();
     event.currentTarget.reset();
     setTab('online');
@@ -103,7 +104,7 @@ export default function AddRecipeModal({
     >
       <div className="modal-box" onClick={(event) => event.stopPropagation()}>
         <div className="modal-header">
-          <h3>Add Recipe</h3>
+          <h3>新增食譜</h3>
           <button className="modal-close-btn" type="button" onClick={onClose}>
             X
           </button>
@@ -116,7 +117,7 @@ export default function AddRecipeModal({
             type="button"
             onClick={() => setTab('online')}
           >
-            Add from Online List
+            從線上清單新增
           </button>
           <button
             className={`modal-tab ${tab === 'custom' ? 'active' : ''}`}
@@ -124,7 +125,7 @@ export default function AddRecipeModal({
             type="button"
             onClick={() => setTab('custom')}
           >
-            Create Custom Recipe
+            建立自訂食譜
           </button>
         </div>
 
@@ -142,7 +143,7 @@ export default function AddRecipeModal({
                   }}
                 >
                   <div className="online-pick-img">
-                    <img src={recipe.image} alt={recipe.title} loading="lazy" />
+                    <img src={baseJoin(recipe.image)} alt={recipe.title} loading="lazy" />
                   </div>
                   <div className="online-pick-info">
                     <div className="online-pick-title">{recipe.title}</div>
@@ -152,10 +153,10 @@ export default function AddRecipeModal({
                   </div>
                   <div className="online-pick-action">
                     {added ? (
-                      <span className="pick-added-badge">Added</span>
+                      <span className="pick-added-badge">已新增</span>
                     ) : (
                       <button className="pick-add-btn" type="button">
-                        Add
+                        新增
                       </button>
                     )}
                   </div>
@@ -170,24 +171,24 @@ export default function AddRecipeModal({
             <div className="form-row">
               <div className="form-field">
                 <label>
-                  Title <span className="required-star">*</span>
+                  標題 <span className="required-star">*</span>
                 </label>
-                <input type="text" name="title" placeholder="Example: Garlic Butter Shrimp" required />
+                <input type="text" name="title" placeholder="例如：蒜香奶油蝦" required />
               </div>
               <div className="form-field">
-                <label>Subtitle</label>
-                <input type="text" name="subtitle" placeholder="Optional subtitle" />
+                <label>副標題</label>
+                <input type="text" name="subtitle" placeholder="選填的副標題" />
               </div>
             </div>
 
             <div className="form-field">
-              <label>Description</label>
-              <textarea name="description" rows={2} placeholder="Short summary" />
+              <label>描述</label>
+              <textarea name="description" rows={2} placeholder="簡短的描述" />
             </div>
 
             <div className="form-row three-col">
               <div className="form-field">
-                <label>Cuisine</label>
+                <label>菜系</label>
                 <select name="cuisine">
                   {CUISINE_LIST.map((value) => (
                     <option key={value} value={value}>
@@ -198,7 +199,7 @@ export default function AddRecipeModal({
               </div>
 
               <div className="form-field">
-                <label>Category</label>
+                <label>分類</label>
                 <select name="category">
                   {CATEGORY_LIST.map((value) => (
                     <option key={value} value={value}>
@@ -209,7 +210,7 @@ export default function AddRecipeModal({
               </div>
 
               <div className="form-field">
-                <label>Meal Type</label>
+                <label>餐點類型</label>
                 <select name="meal_type">
                   {MEALTYPE_LIST.map((value) => (
                     <option key={value} value={value}>
@@ -222,7 +223,7 @@ export default function AddRecipeModal({
 
             <div className="form-row three-col">
               <div className="form-field">
-                <label>Difficulty</label>
+                <label>難度</label>
                 <select name="difficulty">
                   {DIFFICULTY_LIST.map((value) => (
                     <option key={value} value={value}>
@@ -233,50 +234,50 @@ export default function AddRecipeModal({
               </div>
 
               <div className="form-field">
-                <label>Time</label>
-                <input type="text" name="time_estimate" placeholder="Example: 30 min" />
+                <label>時間</label>
+                <input type="text" name="time_estimate" placeholder="例如：30 分鐘" />
               </div>
 
               <div className="form-field">
-                <label>Servings</label>
+                <label>份量</label>
                 <input type="number" name="base_servings" defaultValue={1} min={1} max={50} />
               </div>
             </div>
 
             <div className="form-field">
               <label>
-                Tags <span className="form-hint">comma separated</span>
+                標籤 <span className="form-hint">請以半形逗點分隔</span>
               </label>
-              <input type="text" name="tags" placeholder="Example: quick, weekday" />
+              <input type="text" name="tags" placeholder="例如：快速, 家常" />
             </div>
 
             <div className="form-field">
               <label>
-                Ingredients <span className="form-hint">one per line</span>
+                食材 <span className="form-hint">一行一項</span>
               </label>
-              <textarea name="text_ingredients" rows={5} placeholder="Chicken breast 200g&#10;Garlic 1 tsp" />
+              <textarea name="text_ingredients" rows={5} placeholder="雞胸肉 200g&#10;大蒜 1 小匙" />
             </div>
 
             <div className="form-field">
               <label>
-                Steps <span className="form-hint">one per line</span>
+                步驟 <span className="form-hint">一行一項</span>
               </label>
-              <textarea name="text_steps" rows={6} placeholder="Heat oil&#10;Add garlic and stir" />
+              <textarea name="text_steps" rows={6} placeholder="熱油&#10;放入大蒜爆香" />
             </div>
 
             <div className="form-field">
               <label>
-                Tips <span className="form-hint">optional</span>
+                小撇步 <span className="form-hint">選填</span>
               </label>
-              <textarea name="tips" rows={2} placeholder="Optional cooking notes" />
+              <textarea name="tips" rows={2} placeholder="選填的烹飪筆記" />
             </div>
 
             <div className="form-actions">
               <button className="filter-clear-btn" type="button" onClick={onClose}>
-                Cancel
+                取消
               </button>
               <button className="submit-recipe-btn" type="submit">
-                Save Recipe
+                儲存食譜
               </button>
             </div>
           </form>

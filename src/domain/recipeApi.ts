@@ -4,7 +4,7 @@ import type { RecipeDetail, RecipeIndexEntry, RecipeVersion } from './types';
 const detailCache = new Map<number, RecipeDetail>();
 let indexCache: RecipeIndexEntry[] | null = null;
 
-function baseJoin(path: string): string {
+export function baseJoin(path: string): string {
   const base = import.meta.env.BASE_URL || '/';
   const normalizedBase = base.endsWith('/') ? base : `${base}/`;
   return `${normalizedBase}${path.replace(/^\//, '')}`;

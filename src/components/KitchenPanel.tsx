@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { INGREDIENTS, INGREDIENT_CATEGORIES, INGREDIENT_TAG_COLORS } from '../domain/ingredients';
 import { getKitchenResults } from '../domain/helpers/kitchen';
+import { baseJoin } from '../domain/recipeApi';
 import type { Ingredient, RecipeIndexEntry } from '../domain/types';
 
 interface KitchenPanelProps {
@@ -73,18 +74,18 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
     <div id="kitchen-panel" className={`kitchen-panel ${open ? 'open' : ''}`}>
       <div className="kitchen-topbar">
         <div className="kitchen-title-area">
-          <span className="kitchen-title">Kitchen Matcher</span>
-          <span className="kitchen-subtitle">Select ingredients and find compatible recipes fast.</span>
+          <span className="kitchen-title">智能廚房</span>
+          <span className="kitchen-subtitle">選擇手邊有的食材，快速找出能做的料理。</span>
         </div>
         <button className="kitchen-close-btn" type="button" onClick={onClose}>
-          Close
+          關閉
         </button>
       </div>
 
       <div className="kitchen-body">
         <div className="kitchen-left">
           <div className="kitchen-left-header">
-            <div className="kitchen-left-title">Ingredient Categories</div>
+            <div className="kitchen-left-title">食材分類</div>
             <div className="kitchen-expand-ctrls">
               <button
                 className="kitchen-exp-btn"
@@ -93,10 +94,10 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
                   setExpanded(new Set(Object.keys(filteredGrouped)));
                 }}
               >
-                Expand All
+                全部展開
               </button>
               <button className="kitchen-exp-btn" type="button" onClick={() => setExpanded(new Set())}>
-                Collapse All
+                全部收合
               </button>
             </div>
           </div>
@@ -108,7 +109,7 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
             <input
               type="search"
               id="kitchen-search-input"
-              placeholder="Search ingredient name"
+              placeholder="搜尋食材名稱..."
               autoComplete="off"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
@@ -171,7 +172,7 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
             id="kitchen-selected-bar"
             style={{ display: selectedList.length > 0 ? 'flex' : 'none', padding: '12px 24px' }}
           >
-            <span className="kitchen-sel-label">Selected</span>
+            <span className="kitchen-sel-label">已選：</span>
             <div className="kitchen-sel-chips" id="kitchen-sel-chips">
               {selectedList.map((item) => (
                 <span
@@ -195,7 +196,7 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
                 setSelectedIngredients(new Set());
               }}
             >
-              Clear
+              清除
             </button>
           </div>
 
@@ -203,13 +204,12 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
             {results.length === 0 ? (
               <div className="kitchen-placeholder">
                 <div className="kitchen-placeholder-icon">NA</div>
-                <p>No matching recipes yet.</p>
-                <p className="kitchen-placeholder-sub">Select at least one ingredient on the left.</p>
+                <p>選擇食材後，這裡會顯示能做的料理</p>
               </div>
             ) : (
               <>
                 <div className="kitchen-results-header">
-                  Found <strong>{results.length}</strong> related recipes
+                  找到 <strong>{results.length}</strong> 道相關食譜
                 </div>
                 <div className="kitchen-results-list">
                   {results.map(({ recipe, matchCount, recipeTotal }) => (
@@ -221,7 +221,7 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
                       onClick={() => onSelectRecipe(recipe.id)}
                     >
                       <div className="kitchen-result-img">
-                        <img src={recipe.image} alt={recipe.title} loading="lazy" />
+                        <img src={baseJoin(recipe.image)} alt={recipe.title} loading="lazy" />
                       </div>
                       <div className="kitchen-result-info">
                         <div className="kitchen-result-title">{recipe.title}</div>
@@ -236,7 +236,7 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
                             />
                           </div>
                           <span className="kitchen-match-label">
-                            Match {matchCount}/{recipeTotal} ingredients
+                            符合 {matchCount}/{recipeTotal} 項食材
                           </span>
                         </div>
                       </div>
