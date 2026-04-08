@@ -348,39 +348,106 @@ function renderDetail(id) {
       </div>`
     : '';
 
+  const methodSet = new Set();
+  const methodMap = { microwave:'微波', stir:'攪拌', mix:'混合', steam:'蒸', stir_fry:'炒', deep_fry:'炸', stew:'燉', roast:'烤', marinate:'醃漬' };
+  currentVersion.steps.forEach(s => {
+    if (s.method_id) {
+      const m = getCookingMethod(s.method_id);
+      if (m) methodSet.add(methodMap[m.type] || m.type);
+    }
+  });
+  const methodsStr = Array.from(methodSet).join('、') || '無標示';
+
+  const tasteSet = new Set();
+  const textureSet = new Set();
+  r.ingredients.forEach(ing => {
+    const item = getIngredient(ing.ingredient_id);
+    if (item) {
+      if (item.tastes) item.tastes.forEach(t => tasteSet.add(t));
+      if (item.textures) item.textures.forEach(t => textureSet.add(t));
+    }
+  });
+  const difficultyMap = { '\u7c21\u55ae': { pct: 33, color: '#4ade80' }, '\u4e2d\u7b49': { pct: 66, color: 'var(--accent)' }, '\u56f0\u96e3': { pct: 100, color: '#f87171' } };
+  const difficultyInfo = difficultyMap[r.difficulty] || { pct: 50, color: 'var(--accent)' };
+
+  const timeMinutes = parseInt(r.time_estimate) || 30;
+  const timePct = Math.min(100, Math.round(timeMinutes / 60 * 100));
+
+  const tasteEmoji = { '\u9178': '\ud83c\udf4b', '\u751c': '\ud83c\udf6f', '\u82e6': '\u2615', '\u8fa3': '\ud83c\udf36\ufe0f', '\u9b79': '\ud83e\uddc2' };
+  const methodEmoji = { '\u5fae\u6ce2': '\ud83c\udf2a\ufe0f', '\u652a\u62cc': '\ud83e\udd44', '\u6df7\u5408': '\ud83e\udd44', '\u84b8': '\ud83e\udd2a', '\u7092': '\ud83d\udd25', '\u70b8': '\ud83e\udeb4', '\u71c9': '\ud83e\udea8', '\u70e4': '\ud83d\udd25', '\u9183\u6f2c': '\u23f3' };
+
+  const methodTags = Array.from(methodSet).map(m => `<span class="detail-tag detail-tag--method">${methodEmoji[m] || '\ud83d\udd2a'} ${m}</span>`).join('');
+  const tasteTags = Array.from(tasteSet).map(t => `<span class="detail-tag detail-tag--taste">${tasteEmoji[t] || ''} ${t}</span>`).join('') || '<span class="detail-tag-none">\u7121\u6a19\u793a</span>';
+  const textureTags = Array.from(textureSet).map(t => `<span class="detail-tag detail-tag--texture">${t}</span>`).join('') || '<span class="detail-tag-none">\u7121\u6a19\u793a</span>';
+
   const detail = document.getElementById('view-detail');
   detail.innerHTML = `
-    <button class="detail-back" onclick="navigateTo('home')">← 返回食譜</button>
+    <button class="detail-back" onclick="navigateTo('home')">\u2190 \u8fd4\u56de\u98df\u8b5c</button>
 
     <div class="detail-hero">
       <img src="${r.image}" alt="${r.title}">
       <div class="detail-hero-overlay">
-        <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-          <span class="category-badge">${r.category}</span>
-          <span class="cuisine-badge">${r.cuisine}</span>
-          <span class="mealtype-badge">${r.meal_type}</span>
-        </div>
         <div class="detail-title">${r.title}</div>
         <div class="detail-subtitle">${r.subtitle}</div>
       </div>
     </div>
 
-    <div class="detail-meta-row">
-      <div class="detail-meta-item">
-        <span class="meta-label">烹飪時間</span>
-        <span class="meta-value">⏱ ${r.time_estimate}</span>
-      </div>
-      <div class="detail-meta-item">
-        <span class="meta-label">難度</span>
-        <span class="meta-value">📊 ${r.difficulty}</span>
-      </div>
-      <div class="detail-meta-item">
-        <span class="meta-label">份量調整</span>
+    <div class="detail-info-panel">
+      <!-- Row 1: Cuisine badges + Servings -->
+      <div class="detail-panel-row detail-panel-row--top">
+        <div class="detail-badges">
+          <span class="category-badge">${r.category}</span>
+          <span class="cuisine-badge">${r.cuisine}</span>
+          <span class="mealtype-badge">${r.meal_type}</span>
+        </div>
         <div class="servings-ctrl">
-          <button class="srv-btn" onclick="changeServings(-1, ${r.id})">−</button>
+          <span style="font-size:0.75rem;color:var(--text-muted);margin-right:4px;">\u4efd\u91cf</span>
+          <button class="srv-btn" onclick="changeServings(-1, ${r.id})">-</button>
           <span class="srv-num" id="srv-display">${state.currentServings}</span>
-          <span style="font-size:0.78rem;color:var(--text-muted)">人份</span>
-          <button class="srv-btn" onclick="changeServings(1, ${r.id})">＋</button>
+          <span style="font-size:0.78rem;color:var(--text-muted)">\u4eba\u4efd</span>
+          <button class="srv-btn" onclick="changeServings(1, ${r.id})">+</button>
+        </div>
+      </div>
+
+      <!-- Row 2: Time + Difficulty bars -->
+      <div class="detail-panel-row detail-panel-row--bars">
+        <div class="detail-bar-item">
+          <div class="detail-bar-label">
+            <span>\u23f1 \u70f9\u98ea\u6642\u9593</span>
+            <span class="detail-bar-value">${r.time_estimate}</span>
+          </div>
+          <div class="detail-bar-track">
+            <div class="detail-bar-fill" style="width:${timePct}%;background:linear-gradient(90deg,var(--accent),var(--accent-2))"></div>
+          </div>
+        </div>
+        <div class="detail-bar-item">
+          <div class="detail-bar-label">
+            <span>\ud83d\udcca \u96e3\u5ea6</span>
+            <span class="detail-bar-value">${r.difficulty}</span>
+          </div>
+          <div class="detail-bar-track">
+            <div class="detail-bar-fill" style="width:${difficultyInfo.pct}%;background:${difficultyInfo.color}"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Methods tags -->
+      <div class="detail-panel-row">
+        <div class="detail-tag-section">
+          <span class="detail-tag-label">\ud83d\udd25 \u70f9\u6cd5</span>
+          <div class="detail-tag-list">${methodTags || '<span class="detail-tag-none">\u7121\u6a19\u793a</span>'}</div>
+        </div>
+      </div>
+
+      <!-- Row 4: Taste + Texture tags -->
+      <div class="detail-panel-row detail-panel-row--split">
+        <div class="detail-tag-section">
+          <span class="detail-tag-label">\ud83d\ude0b \u53e3\u5473</span>
+          <div class="detail-tag-list">${tasteTags}</div>
+        </div>
+        <div class="detail-tag-section">
+          <span class="detail-tag-label">\u270c\ufe0f \u53e3\u611f</span>
+          <div class="detail-tag-list">${textureTags}</div>
         </div>
       </div>
     </div>
@@ -562,6 +629,42 @@ window.changeServings = function(delta, recipeId) {
   state.currentServings = newVal;
   document.getElementById('srv-display').textContent = newVal;
   renderIngredients(recipeId);
+  updateServingBars(recipeId, newVal);
+};
+
+function updateServingBars(recipeId, servings) {
+  const r = RECIPES.find(x => x.id === recipeId);
+  if (!r) return;
+
+  const ratio = servings / r.base_servings;
+
+  // ── Time bar ──────────────────────────────────────────
+  const baseMin = parseInt(r.time_estimate) || 30;
+  // Time scales sub-linearly: each doubling of servings adds ~50% more time
+  const scaledMin = Math.round(baseMin * Math.pow(ratio, 0.65));
+  const timePct = Math.min(100, Math.round(scaledMin / 60 * 100));
+
+  const timeBar = document.querySelector('.detail-bar-item:first-child .detail-bar-fill');
+  const timeVal = document.querySelector('.detail-bar-item:first-child .detail-bar-value');
+  if (timeBar) timeBar.style.width = timePct + '%';
+  if (timeVal) timeVal.textContent = scaledMin + ' 分鐘';
+
+  // ── Difficulty bar ─────────────────────────────────────
+  // Base pct from static difficulty, then nudge by ratio
+  const diffMap = { '簡單': 33, '中等': 66, '困難': 100 };
+  const basePct = diffMap[r.difficulty] ?? 50;
+  // Each extra ratio beyond 1 nudges pct by up to +20 (logarithmic)
+  const nudge = ratio > 1 ? Math.round(Math.log2(ratio) * 14) : 0;
+  const diffPct = Math.min(100, basePct + nudge);
+
+  // Colour transitions: green → amber → red
+  const diffColor = diffPct <= 40 ? '#4ade80' : diffPct <= 70 ? 'var(--accent)' : '#f87171';
+  const diffLabel = diffPct <= 40 ? '簡單' : diffPct <= 70 ? '中等' : '困難';
+
+  const diffBar = document.querySelector('.detail-bar-item:last-child .detail-bar-fill');
+  const diffVal = document.querySelector('.detail-bar-item:last-child .detail-bar-value');
+  if (diffBar) { diffBar.style.width = diffPct + '%'; diffBar.style.background = diffColor; }
+  if (diffVal) diffVal.textContent = diffLabel;
 };
 
 // ============================================================
@@ -979,9 +1082,15 @@ function buildKitchenPanel() {
 
     <div class="kitchen-body">
       <div class="kitchen-left">
-        <div class="kitchen-left-title">點選你有的食材</div>
-        <div class="search-wrap" style="margin-bottom:16px;">
-          <span class="search-icon">🔍</span>
+        <div class="kitchen-left-header">
+          <div class="kitchen-left-title">點選你有的食材</div>
+          <div class="kitchen-expand-ctrls">
+            <button class="kitchen-exp-btn" onclick="expandAllKitchen()">全部展開</button>
+            <button class="kitchen-exp-btn" onclick="collapseAllKitchen()">全部收起</button>
+          </div>
+        </div>
+        <div class="search-wrap" style="margin-bottom:16px; padding:0 20px;">
+          <span class="search-icon" style="left:34px;">🔍</span>
           <input type="search" id="kitchen-search-input" placeholder="搜尋食材名稱…" autocomplete="off">
         </div>
         <div id="kitchen-categories"></div>
@@ -1017,6 +1126,18 @@ function buildKitchenPanel() {
   }
 }
 
+window.expandAllKitchen = function() {
+  document.querySelectorAll('.kitchen-accordion').forEach(acc => {
+    if (acc.style.display !== 'none') acc.classList.add('open');
+  });
+};
+
+window.collapseAllKitchen = function() {
+  document.querySelectorAll('.kitchen-accordion').forEach(acc => {
+    acc.classList.remove('open');
+  });
+};
+
 function buildKitchenCategories() {
   const container = document.getElementById('kitchen-categories');
   if (!container) return;
@@ -1040,7 +1161,7 @@ function buildKitchenCategories() {
       const ings = byCategory[cat];
       const colors = INGREDIENT_TAG_COLORS[cat] || {};
       return `
-        <div class="kitchen-accordion ${i < 2 ? 'open' : ''}">
+        <div class="kitchen-accordion">
           <button class="kitchen-acc-header" onclick="toggleKitchenAccordion(this)">
             <span class="kitchen-acc-cat">
               <span class="kitchen-acc-dot" style="background:${colors.border || 'var(--accent)'}"></span>

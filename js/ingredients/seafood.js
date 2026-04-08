@@ -63,6 +63,8 @@ export default [
     },
     substitutes: ['shrimp_white', 'shrimp_prawn'],
     allergens: ['shellfish'],
+    tastes: ['鹹'],
+    textures: ['嚼勁', '多汁'],
     storage_tip: '冷凍可保存三個月；烹調前於冷藏解凍。',
     verified_source: 'https://fdc.nal.usda.gov/',
     verified_at: '2024-11-01',

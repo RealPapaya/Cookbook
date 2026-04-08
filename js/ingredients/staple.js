@@ -30,6 +30,8 @@ export default [
     nutrition_per_100g: { calories: 149, protein: 3.7, fat: 0.4, carbs: 31.5, fiber: 0.9, sodium: 210 },
     substitutes: ['soba', 'ramen_noodles', 'rice_noodles'],
     allergens: ['gluten'],
+    tastes: ['鹹'],
+    textures: ['嚼勁', '滑順'],
     storage_tip: '冷凍烏龍麵開封後請盡速食用，生麵放冷藏 2 天內使用。',
     verified_source: 'https://fooddb.mext.go.jp/',
     verified_at: '2024-11-01',

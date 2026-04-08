@@ -22,6 +22,8 @@ export default [
     },
     substitutes: ['pickled_cabbage', 'sauerkraut'],
     allergens: ['fish'],
+    tastes: ['酸', '辣', '鹹'],
+    textures: ['清脆', '嚼勁'],
     season: '全年',
     storage_tip: '冷藏密封保存，發酵越久味道越酸。',
     verified_source: 'https://fdc.nal.usda.gov/food-details/1100535/nutrients',
