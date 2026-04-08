@@ -74,6 +74,14 @@ Style consistent with Japanese food anime illustration — clean lines, vivid co
   - ❌ 特級初榨橄欖油 → ✅ 橄欖油
   - ❌ 無鹽奶油 → ✅ 奶油 (除非食譜有特別強調理需要區分)
   - 保留真正的食材基元來撰寫作法，確保與 App 中的食材庫匹配一致。
+- **食材名稱顯示規則（重要）**：
+  - UI 中食材的**主標題**永遠顯示 `INGREDIENTS` 中的 `name` 欄位（即基底名稱）。
+  - 食材的狀態、處理方式或品種等資訊，應放在對應食材的 `variants[].label` 中，
+    App 會自動在主標題下方以**副標題**形式呈現（若 variant.label ≠ base name）。
+  - ❌ 食譜中禁止用「冷凍烏龍麵」當作食材條目的名稱
+  - ✅ 應用 `id: 'udon'`（名稱為「烏龍麵」），搭配 `variant_id: 'udon--frozen'`（label「冷凍烏龍麵」），
+    UI 顯示為：  主標題：烏龍麵  /  副標題：冷凍烏龍麵
+  - 如果現有食材沒有符合的 variant，**先新增該 variant**，再使用它。
 - versions: 至少一個 stovetop 版本，步驟根據食譜流程撰寫
 
 ### Step 5：更新 service-worker.js

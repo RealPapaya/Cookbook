@@ -19,7 +19,6 @@
  * @property {string}  variant_id     - 對應 variant.id（含加工狀態）
  * @property {number}  qty            - 數量（null = 適量）
  * @property {string}  unit           - 單位
- * @property {string}  [unit_note]    - 單位補充說明（例：「管裝蒜泥」）
  * @property {boolean} scalable       - 是否隨份量等比例縮放
  * @property {boolean} optional       - 是否為選填食材
  * @property {boolean} is_seasoning   - 是否為調味料（顯示 ☆）
@@ -78,7 +77,7 @@ export const RECIPES = [
     id: 1,
     title: '奶油培根蛋烏龍便當',
     subtitle: 'Carbonara Style',
-    description: '被作者戲稱為連羅馬士兵都會驚訝的美味！奶香濃郁，起司拉絲，一顆生蛋攪下去瞬間升華。',
+    description: '被作者戲稱為連羅馬士兵都會驚訝的美味！奶香濃郁，起司片拉絲，一顆生蛋攪下去瞬間升華。',
     category: '中餐',
     cuisine: '其他',
     meal_type: '麵',
@@ -98,7 +97,7 @@ export const RECIPES = [
       {
         ingredient_id: 'milk',
         variant_id:    'milk--raw',
-        qty: 2, unit: '大匙',
+        qty: 30, unit: 'ml',
         scalable: true, optional: false, is_seasoning: true,
       },
       {
@@ -116,7 +115,7 @@ export const RECIPES = [
       {
         ingredient_id: 'mayonnaise',
         variant_id:    'mayonnaise--japanese',
-        qty: 1, unit: '大匙',
+        qty: 15, unit: 'ml',
         scalable: true, optional: false, is_seasoning: true,
       },
       {
@@ -128,20 +127,20 @@ export const RECIPES = [
       {
         ingredient_id: 'garlic_paste',
         variant_id:    'garlic_paste--tube',
-        qty: 2, unit: 'cm', unit_note: '管裝蒜泥',
+        qty: 2, unit: 'cm',
         scalable: true, optional: false, is_seasoning: true,
       },
       {
         ingredient_id: 'chicken_powder',
         variant_id:    'chicken_powder--granule',
-        qty: 1, unit: '小匙弱',
+        qty: 4, unit: 'g',
         scalable: true, optional: false, is_seasoning: true,
       },
       {
         ingredient_id: 'black_pepper',
         variant_id:    'black_pepper--ground',
-        qty: null, unit: '適量',
-        scalable: false, optional: true, is_seasoning: true,
+        qty: 1, unit: 'g',
+        scalable: true, optional: true, is_seasoning: true,
       },
     ],
 
@@ -153,7 +152,7 @@ export const RECIPES = [
         steps: [
           {
             order: 1,
-            instruction: '在保鮮盒中放入冷凍烏龍麵，依序疊上培根、起司，再加入牛奶、蒜泥、雞粉、美乃滋。',
+            instruction: '在保鮮盒中放入烏龍麵，依序疊上培根、起司片，再加入牛奶、大蒜、雞粉、美乃滋。',
             ingredient_ids: ['udon--frozen', 'bacon--sliced', 'cheese_slice--raw', 'milk--raw'],
           },
           {
@@ -164,7 +163,7 @@ export const RECIPES = [
           },
           {
             order: 3,
-            instruction: '趁熱打入一顆生雞蛋，用力攪拌均勻即可享用！',
+            instruction: '趁熱打入一顆雞蛋，用力攪拌均勻即可享用！',
             method_id: 'mix_raw',
             ingredient_ids: ['egg_chicken--raw'],
           },
@@ -184,21 +183,21 @@ export const RECIPES = [
           },
           {
             order: 2,
-            instruction: '同鍋加入蒜泥爆香，放入解凍後的烏龍麵，大火翻炒 1 分鐘。',
+            instruction: '同鍋加入大蒜爆香，放入解凍後的烏龍麵，大火翻炒 1 分鐘。',
             method_id: 'stir_fry_high_heat',
             duration_s: 60,
             ingredient_ids: ['udon--frozen', 'garlic_paste--tube'],
           },
           {
             order: 3,
-            instruction: '加入牛奶、起司片、美乃滋，轉小火攪拌至起司融化，關火。',
+            instruction: '加入牛奶、起司片、美乃滋，轉小火攪拌至起司片融化，關火。',
             method_id: 'stir_fry_medium_heat',
             duration_s: 60,
             ingredient_ids: ['milk--raw', 'cheese_slice--raw', 'mayonnaise--japanese'],
           },
           {
             order: 4,
-            instruction: '起鍋後趁熱打入生蛋，快速攪拌，利用餘熱將蛋液熟成，撒上黑胡椒即完成。',
+            instruction: '起鍋後趁熱打入雞蛋，快速攪拌，利用餘熱將蛋液熟成，撒上黑胡椒即完成。',
             method_id: 'mix_raw',
             ingredient_ids: ['egg_chicken--raw', 'black_pepper--ground'],
           },
@@ -209,10 +208,10 @@ export const RECIPES = [
     tips: '剩下的醬汁拌飯也超級好吃。',
   },
 
-  // ── 韓式豬肉泡菜烏龍 ─────────────────────────────────────
+  // ── 韓式豬肉片泡菜烏龍 ─────────────────────────────────────
   {
     id: 2,
-    title: '韓式豬肉泡菜烏龍便當',
+    title: '韓式豬肉片泡菜烏龍便當',
     subtitle: 'Kimchi Style',
     description: '香辣開胃，是清冰箱的好夥伴。泡菜的酸辣搭配麻油香氣，讓人一口接著一口。',
     category: '晚餐',
@@ -247,14 +246,14 @@ export const RECIPES = [
       {
         ingredient_id: 'sesame_oil',
         variant_id:    'sesame_oil--roasted',
-        qty: 1, unit: '小匙',
+        qty: 5, unit: 'ml',
         scalable: true, optional: false, is_seasoning: true,
       },
       {
         ingredient_id: 'gochujang',
         variant_id:    'gochujang--paste',
-        qty: 1, unit: '硬幣大小',
-        scalable: false, optional: true, is_seasoning: true,
+        qty: 10, unit: 'g',
+        scalable: true, optional: true, is_seasoning: true,
       },
       {
         ingredient_id: 'egg_chicken',
@@ -265,7 +264,7 @@ export const RECIPES = [
       {
         ingredient_id: 'mentsuyu',
         variant_id:    'mentsuyu--2x',
-        qty: 1, unit: '大匙弱',
+        qty: 10, unit: 'ml',
         scalable: true, optional: false, is_seasoning: true,
       },
       {
@@ -277,8 +276,8 @@ export const RECIPES = [
       {
         ingredient_id: 'sesame_seed',
         variant_id:    'sesame_seed--toasted',
-        qty: null, unit: '適量',
-        scalable: false, optional: true, is_seasoning: true,
+        qty: 1, unit: 'g',
+        scalable: true, optional: true, is_seasoning: true,
       },
     ],
 
@@ -289,7 +288,7 @@ export const RECIPES = [
         steps: [
           {
             order: 1,
-            instruction: '在保鮮盒中放入冷凍烏龍麵，鋪上豬肉片（盡量不重疊）、泡菜，加入麵露、麻油、韓式辣醬。',
+            instruction: '在保鮮盒中放入烏龍麵，鋪上豬肉片（盡量不重疊）、泡菜，加入麵露、麻油、韓式辣醬。',
             ingredient_ids: ['udon--frozen', 'pork_slice--raw', 'kimchi--fermented'],
           },
           {
@@ -300,7 +299,7 @@ export const RECIPES = [
           },
           {
             order: 3,
-            instruction: '務必確認豬肉是否全熟（無粉紅色），不夠熟請追加加熱。最後可加入蛋黃攪拌。',
+            instruction: '務必確認豬肉片是否全熟（無粉紅色），不夠熟請追加加熱。最後可加入蛋黃攪拌。',
             method_id: 'mix_raw',
             ingredient_ids: ['egg_chicken--raw_yolk'],
           },
@@ -376,13 +375,13 @@ export const RECIPES = [
       {
         ingredient_id: 'mentsuyu',
         variant_id:    'mentsuyu--2x',
-        qty: 2, unit: '小匙',
+        qty: 10, unit: 'ml',
         scalable: true, optional: false, is_seasoning: true,
       },
       {
         ingredient_id: 'chicken_soup_powder',
         variant_id:    'chicken_soup_powder--powder',
-        qty: 1.5, unit: '小匙',
+        qty: 7.5, unit: 'g',
         scalable: true, optional: false, is_seasoning: true,
       },
       {
@@ -400,14 +399,14 @@ export const RECIPES = [
       {
         ingredient_id: 'green_onion',
         variant_id:    'green_onion--chopped',
-        qty: null, unit: '適量',
-        scalable: false, optional: true, is_seasoning: false,
+        qty: 1, unit: 'g',
+        scalable: true, optional: true, is_seasoning: false,
       },
       {
         ingredient_id: 'black_pepper',
         variant_id:    'black_pepper--ground',
-        qty: null, unit: '適量',
-        scalable: false, optional: true, is_seasoning: true,
+        qty: 1, unit: 'g',
+        scalable: true, optional: true, is_seasoning: true,
       },
     ],
 
@@ -418,7 +417,7 @@ export const RECIPES = [
         steps: [
           {
             order: 1,
-            instruction: '在保鮮盒中放入冷凍烏龍麵，依序堆疊雞肉丸、小白菜漬、檸檬片，加入麵露與雞湯粉。',
+            instruction: '在保鮮盒中放入烏龍麵，依序堆疊雞肉丸、小白菜、檸檬，加入麵露與雞湯粉。',
             ingredient_ids: ['udon--frozen', 'chicken_meatball--frozen', 'bok_choy--pickled', 'lemon--sliced'],
           },
           {
@@ -437,14 +436,14 @@ export const RECIPES = [
       },
     ],
 
-    tips: '剩下的湯頭加入白飯和起司，做成「起司燉飯」超讚！',
+    tips: '剩下的湯頭加入白飯和起司片，做成「起司片燉飯」超讚！',
   },
   // ── 蒜香奶油番茄蝦 ────────────────────────────────────────
   {
     id: 4,
     title: '蒜香奶油番茄蝦',
     subtitle: 'Garlic Butter Cherry Tomato Shrimp',
-    description: '蒜末與奶油爆香，小番茄炒出酸甜茄汁，蝦仁彈牙鮮甜，最後以檸檬汁和巴西里收尾，清爽不膩。',
+    description: '大蒜與奶油爆香，小番茄炒出酸甜茄汁，蝦仁彈牙鮮甜，最後以檸檬汁和巴西里收尾，清爽不膩。',
     category: '晚餐',
     cuisine: '義式',
     meal_type: '料理',
@@ -487,28 +486,28 @@ export const RECIPES = [
       {
         ingredient_id: 'sake_cooking',
         variant_id:    'sake_cooking--rice',
-        qty: 1, unit: '小匙',
-        scalable: false, optional: false, is_seasoning: true,
+        qty: 5, unit: 'ml',
+        scalable: true, optional: false, is_seasoning: true,
         note: '醃蝦用',
       },
       {
         ingredient_id: 'salt',
         variant_id:    'salt--sea',
-        qty: null, unit: '少許',
-        scalable: false, optional: false, is_seasoning: true,
+        qty: 1, unit: 'g',
+        scalable: true, optional: false, is_seasoning: true,
       },
       {
         ingredient_id: 'black_pepper',
         variant_id:    'black_pepper--ground',
-        qty: null, unit: '少許',
-        scalable: false, optional: false, is_seasoning: true,
+        qty: 1, unit: 'g',
+        scalable: true, optional: false, is_seasoning: true,
       },
       // ── 烹調油脂與調味 ──
       {
         ingredient_id: 'olive_oil',
         variant_id:    'olive_oil--extra_virgin',
-        qty: 1, unit: '大匙',
-        scalable: false, optional: false, is_seasoning: true,
+        qty: 15, unit: 'ml',
+        scalable: true, optional: false, is_seasoning: true,
       },
       {
         ingredient_id: 'butter',
@@ -519,8 +518,8 @@ export const RECIPES = [
       {
         ingredient_id: 'lemon',
         variant_id:    'lemon--juice',
-        qty: 1, unit: '大匙',
-        scalable: false, optional: false, is_seasoning: true,
+        qty: 15, unit: 'ml',
+        scalable: true, optional: false, is_seasoning: true,
       },
     ],
 
@@ -546,7 +545,7 @@ export const RECIPES = [
           },
           {
             order: 3,
-            instruction: '原鍋補少許橄欖油（若鍋底偏乾），下蒜末以中火炒香約 30 秒至微微金黃，放入小番茄翻炒 1~2 分鐘壓出茄汁。',
+            instruction: '原鍋補少許橄欖油（若鍋底偏乾），下大蒜以中火炒香約 30 秒至微微金黃，放入小番茄翻炒 1~2 分鐘壓出茄汁。',
             method_id: 'stir_fry_medium_heat',
             duration_s: 90,
             ingredient_ids: ['garlic_raw--minced', 'tomato--cherry'],
@@ -560,7 +559,7 @@ export const RECIPES = [
           },
           {
             order: 5,
-            instruction: '蝦仁回鍋，加入巴西里末、鹽、少許黑胡椒，擠入檸檬汁快速翻炒均勻，即可起鍋。',
+            instruction: '蝦仁回鍋，加入巴西里末、鹽、少許黑胡椒，擠入檸檬快速翻炒均勻，即可起鍋。',
             method_id: 'stir_fry_medium_heat',
             duration_s: 60,
             ingredient_ids: ['shrimp_frozen--standard', 'parsley--fresh', 'lemon--juice', 'salt--sea'],
@@ -569,6 +568,6 @@ export const RECIPES = [
       },
     ],
 
-    tips: '奶油容易焦化，步驟 4 要轉中小火。蝦仁不要過度烹調，回鍋後快速翻炒即可，保持彈牙口感。喜歡蒜味更重的人，蒜末用量可以加倍。',
+    tips: '奶油容易焦化，步驟 4 要轉中小火。蝦仁不要過度烹調，回鍋後快速翻炒即可，保持彈牙口感。喜歡蒜味更重的人，大蒜用量可以加倍。',
   },
 ];

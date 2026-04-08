@@ -289,7 +289,9 @@ body {
 .ingredient-item.checked .ing-check { background:var(--accent);border-color:var(--accent);color:#1a1826; }
 
 .ing-info { display:flex;flex-direction:column;gap:4px;min-width:0; }
+.ing-name-wrap { display:flex;align-items:center;gap:5px; }
 .ing-name { font-size:.87rem;color:var(--text-primary);line-height:1.3; }
+.ing-variant { font-size:.72rem;color:var(--text-muted);line-height:1.2; }
 .ing-star { color:var(--accent);font-size:.8rem; }
 .ing-tags { display:flex;flex-wrap:wrap;gap:4px;margin-top:2px; }
 .ing-tag {

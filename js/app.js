@@ -92,8 +92,17 @@ window.navigateTo = navigateTo;
 function getIngName(ing) {
   const found = getIngredient(ing.ingredient_id);
   if (!found) return ing.ingredient_id;
+  return found.name; // 永遠顯示食材基底名稱，不顯示變體名稱
+}
+
+// 取得變體副標題（例：冷凍、生、熟，只有在與 base name 不同時才顯示）
+function getIngVariantLabel(ing) {
+  const found = getIngredient(ing.ingredient_id);
+  if (!found) return null;
   const variant = found.variants.find(v => v.id === ing.variant_id);
-  return variant ? variant.label : found.name;
+  if (!variant) return null;
+  // 若 variant.label 與 found.name 相同則不顯示
+  return variant.label !== found.name ? variant.label : null;
 }
 
 function getIngCategories(ing) {
@@ -451,13 +460,18 @@ function renderIngredients(id) {
       return `<span class="ing-tag" ${style}>${cat}</span>`;
     }).join('');
 
+    const variantLabel = getIngVariantLabel(ing);
+
     return `
       <div class="ingredient-item ${checked ? 'checked' : ''}" id="ing-${i}" onclick="toggleIng(${i}, ${id})">
         <div class="ingredient-left">
           <div class="ing-check">${checked ? '✓' : ''}</div>
           <div class="ing-info">
-            <span class="ing-name">${name}</span>
-            ${ing.is_seasoning ? '<span class="ing-star">☆</span>' : ''}
+            <div class="ing-name-wrap">
+              <span class="ing-name">${name}</span>
+              ${ing.is_seasoning ? '<span class="ing-star">☆</span>' : ''}
+            </div>
+            ${variantLabel ? `<span class="ing-variant">${variantLabel}</span>` : ''}
             <div class="ing-tags">
               ${tagHtml}
               ${ing.optional ? '<span class="ing-tag" style="opacity:0.6">選填</span>' : ''}
