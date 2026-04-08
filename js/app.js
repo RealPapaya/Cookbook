@@ -1,26 +1,23 @@
+import { RECIPES, CUISINE_LIST, MEALTYPE_LIST, CATEGORY_LIST } from './recipes.js';
+import { INGREDIENT_TAG_COLORS } from './ingredients.js';
+
 // ============================================================
 // State
 // ============================================================
 const state = {
   search: '',
-  cuisines: new Set(),    // multi-select
-  mealTypes: new Set(),   // multi-select
-  categories: new Set(),  // multi-select
-  recipeTags: new Set(),  // multi-select
-  ingTags: new Set(),     // multi-select (search by ingredient type)
+  cuisines: new Set(),
+  mealTypes: new Set(),
+  categories: new Set(),
+  recipeTags: new Set(),
+  ingTags: new Set(),
   currentRecipeId: null,
   currentServings: 1,
+  currentVersionId: null,
   checkedIng: new Set(),
   doneSteps: new Set(),
   filterOpen: false,
 };
-
-// ============================================================
-// Taxonomy Collections (built from RECIPES at runtime)
-// ============================================================
-const CUISINE_LIST = ['日式', '韓式', '中式', '義式', '法式', '泰式', '美式', '台式', '日義融合', '其他'];
-const MEALTYPE_LIST = ['麵條', '飯', '湯品', '點心', '沙拉', '烤物', '炒菜', '便當'];
-const CATEGORY_LIST = ['便當', '湯品', '炒菜', '點心', '早餐', '下午茶'];
 
 // ============================================================
 // Boot
@@ -57,7 +54,8 @@ function navigateTo(viewId, recipeId = null) {
     state.checkedIng = new Set();
     state.doneSteps = new Set();
     const recipe = RECIPES.find(r => r.id === recipeId);
-    state.currentServings = recipe ? recipe.servings : 1;
+    state.currentServings = recipe ? recipe.base_servings : 1;
+    state.currentVersionId = recipe?.versions?.[0]?.id ?? null;
     renderDetail(recipeId);
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -77,39 +75,41 @@ function setupSearch() {
 function getFilteredRecipes() {
   const q = state.search.toLowerCase();
   return RECIPES.filter(r => {
-    // keyword search: title, subtitle, desc, tags, ingredients, cuisine, mealType
     if (q) {
+      const ingNames = r.ingredients.map(i =>
+        i.ingredient_id === '_inline' ? (i.inline_name || '') : i.ingredient_id
+      );
+      const ingCategories = r.ingredients.map(i =>
+        i.ingredient_id === '_inline' ? (i.inline_category || '') : ''
+      );
       const hay = [
         r.title, r.subtitle, r.description,
-        r.cuisine, r.mealType, r.category,
+        r.cuisine, r.meal_type, r.category,
         ...r.tags,
-        ...r.ingredients.map(i => i.name),
-        ...r.ingredients.flatMap(i => i.tags),
+        ...ingNames,
+        ...ingCategories,
       ].join(' ').toLowerCase();
       if (!hay.includes(q)) return false;
     }
 
-    // cuisine filter
     if (state.cuisines.size && !state.cuisines.has(r.cuisine)) return false;
-
-    // meal type filter
-    if (state.mealTypes.size && !state.mealTypes.has(r.mealType)) return false;
-
-    // category filter
+    if (state.mealTypes.size && !state.mealTypes.has(r.meal_type)) return false;
     if (state.categories.size && !state.categories.has(r.category)) return false;
 
-    // recipe tag filter (AND logic: all selected tags must be present)
     if (state.recipeTags.size) {
       for (const t of state.recipeTags) {
         if (!r.tags.includes(t)) return false;
       }
     }
 
-    // ingredient tag filter: recipe must have ingredients containing ALL selected ing tags
     if (state.ingTags.size) {
-      const recipeIngTags = new Set(r.ingredients.flatMap(i => i.tags));
+      const recipeIngCategories = new Set(
+        r.ingredients.map(i =>
+          i.ingredient_id === '_inline' ? (i.inline_category || '') : ''
+        )
+      );
       for (const t of state.ingTags) {
-        if (!recipeIngTags.has(t)) return false;
+        if (!recipeIngCategories.has(t)) return false;
       }
     }
 
@@ -121,9 +121,14 @@ function getFilteredRecipes() {
 // Build Filter Panel
 // ============================================================
 function buildFilterPanel() {
-  // Collect all recipe tags
   const allRecipeTags = [...new Set(RECIPES.flatMap(r => r.tags))];
-  const allIngTags = [...new Set(RECIPES.flatMap(r => r.ingredients.flatMap(i => i.tags)))];
+  const allIngCategories = [...new Set(
+    RECIPES.flatMap(r =>
+      r.ingredients.map(i =>
+        i.ingredient_id === '_inline' ? (i.inline_category || '') : ''
+      )
+    ).filter(Boolean)
+  )];
 
   const panel = document.getElementById('filter-panel');
   panel.innerHTML = `
@@ -154,7 +159,7 @@ function buildFilterPanel() {
     <div class="filter-section">
       <div class="filter-section-title">🧂 食材類別</div>
       <div class="filter-chips" id="filter-ingtag">
-        ${allIngTags.map(c => chipBtn(c, 'ingtag')).join('')}
+        ${allIngCategories.map(c => chipBtn(c, 'ingtag')).join('')}
       </div>
     </div>
     <div class="filter-actions">
@@ -167,16 +172,16 @@ function chipBtn(label, type) {
   return `<button class="filter-chip" data-type="${type}" data-val="${label}" onclick="toggleChip(this,'${type}','${label}')">${label}</button>`;
 }
 
-function toggleChip(el, type, val) {
+window.toggleChip = function(el, type, val) {
   const sets = { cuisine: state.cuisines, mealtype: state.mealTypes, category: state.categories, rtag: state.recipeTags, ingtag: state.ingTags };
   const s = sets[type];
   if (s.has(val)) { s.delete(val); el.classList.remove('active'); }
   else { s.add(val); el.classList.add('active'); }
   renderGrid();
   updateActiveFilterCount();
-}
+};
 
-function clearAllFilters() {
+window.clearAllFilters = function() {
   state.cuisines.clear(); state.mealTypes.clear();
   state.categories.clear(); state.recipeTags.clear(); state.ingTags.clear();
   state.search = '';
@@ -184,7 +189,7 @@ function clearAllFilters() {
   document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
   renderGrid();
   updateActiveFilterCount();
-}
+};
 
 function updateActiveFilterCount() {
   const total = state.cuisines.size + state.mealTypes.size + state.categories.size + state.recipeTags.size + state.ingTags.size + (state.search ? 1 : 0);
@@ -195,13 +200,13 @@ function updateActiveFilterCount() {
   }
 }
 
-function toggleFilterPanel() {
+window.toggleFilterPanel = function() {
   state.filterOpen = !state.filterOpen;
   const panel = document.getElementById('filter-panel');
   const btn = document.getElementById('filter-toggle-btn');
   panel.classList.toggle('open', state.filterOpen);
   btn.classList.toggle('active', state.filterOpen);
-}
+};
 
 // ============================================================
 // Recipe Grid
@@ -234,12 +239,12 @@ function renderGrid() {
         <div class="card-subtitle">${r.subtitle}</div>
         <div class="card-cuisine-row">
           <span class="cuisine-badge">${r.cuisine}</span>
-          <span class="mealtype-badge">${r.mealType}</span>
+          <span class="mealtype-badge">${r.meal_type}</span>
         </div>
         <div class="card-desc">${r.description}</div>
         <div class="card-meta">
-          <div class="card-meta-item"><span>⏱</span><span>${r.time}</span></div>
-          <div class="card-meta-item"><span>👤</span><span>${r.servings} 份</span></div>
+          <div class="card-meta-item"><span>⏱</span><span>${r.time_estimate}</span></div>
+          <div class="card-meta-item"><span>👤</span><span>${r.base_servings} 份</span></div>
         </div>
         <div class="card-tags">
           ${r.tags.map(t => `<span class="tag">${t}</span>`).join('')}
@@ -252,9 +257,25 @@ function renderGrid() {
 // ============================================================
 // Recipe Detail
 // ============================================================
+window.navigateTo = navigateTo;
+
+window.renderDetail = function(id) { renderDetail(id); };
+
 function renderDetail(id) {
   const r = RECIPES.find(x => x.id === id);
   if (!r) return;
+
+  const currentVersion = r.versions.find(v => v.id === state.currentVersionId) ?? r.versions[0];
+  const totalSteps = currentVersion.steps.length;
+
+  const versionTabs = r.versions.length > 1
+    ? `<div class="version-tabs">
+        ${r.versions.map(v => `
+          <button class="version-tab ${v.id === currentVersion.id ? 'active' : ''}"
+            onclick="switchVersion(${r.id}, '${v.id}')">${v.label}</button>
+        `).join('')}
+      </div>`
+    : '';
 
   const detail = document.getElementById('view-detail');
   detail.innerHTML = `
@@ -266,7 +287,7 @@ function renderDetail(id) {
         <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
           <span class="category-badge">${r.category}</span>
           <span class="cuisine-badge">${r.cuisine}</span>
-          <span class="mealtype-badge">${r.mealType}</span>
+          <span class="mealtype-badge">${r.meal_type}</span>
         </div>
         <div class="detail-title">${r.title}</div>
         <div class="detail-subtitle">${r.subtitle}</div>
@@ -276,7 +297,7 @@ function renderDetail(id) {
     <div class="detail-meta-row">
       <div class="detail-meta-item">
         <span class="meta-label">烹飪時間</span>
-        <span class="meta-value">⏱ ${r.time}</span>
+        <span class="meta-value">⏱ ${r.time_estimate}</span>
       </div>
       <div class="detail-meta-item">
         <span class="meta-label">難度</span>
@@ -300,15 +321,17 @@ function renderDetail(id) {
     </div>
     <div class="ingredients-grid" id="ing-grid"></div>
 
+    ${versionTabs}
+
     <div class="progress-wrap">
       <div class="progress-label">
         <span>烹飪進度</span>
-        <span id="step-progress-text">0 / ${r.steps.length}</span>
+        <span id="step-progress-text">0 / ${totalSteps}</span>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="step-progress-fill" style="width:0%"></div></div>
     </div>
 
-    <div class="section-title">📋 作法</div>
+    <div class="section-title">📋 作法${currentVersion.note ? `<span style="font-size:0.72rem;font-weight:400;color:var(--text-muted);margin-left:8px">${currentVersion.note}</span>` : ''}</div>
     <div class="steps-list" id="steps-list"></div>
 
     ${r.tips ? `
@@ -327,17 +350,24 @@ function renderDetail(id) {
   renderSteps(id);
 }
 
+function getIngName(ing) {
+  if (ing.ingredient_id === '_inline') return ing.inline_name || '（未知食材）';
+  return ing.ingredient_id;
+}
+
+function getIngCategory(ing) {
+  if (ing.ingredient_id === '_inline') return ing.inline_category || '';
+  return '';
+}
+
 function scaleQty(qty, baseServings, currentServings) {
   if (qty === null) return null;
-  const scaled = qty * (currentServings / baseServings);
-  // clean up floating point
-  return parseFloat(scaled.toFixed(2));
+  return parseFloat((qty * (currentServings / baseServings)).toFixed(2));
 }
 
 function formatQty(qty, unit) {
-  if (qty === null) return unit; // "適量"
-  const n = qty % 1 === 0 ? qty : qty;
-  return `${n} ${unit}`;
+  if (qty === null) return unit;
+  return `${qty} ${unit}`;
 }
 
 function renderIngredients(id) {
@@ -346,10 +376,12 @@ function renderIngredients(id) {
   if (!r || !grid) return;
 
   grid.innerHTML = r.ingredients.map((ing, i) => {
-    const scaledQty = scaleQty(ing.qty, r.servings, state.currentServings);
+    const scaledQty = ing.scalable ? scaleQty(ing.qty, r.base_servings, state.currentServings) : ing.qty;
     const amountStr = formatQty(scaledQty, ing.unit);
     const checked = state.checkedIng.has(i);
-    const tagColors = INGREDIENT_TAG_COLORS[ing.tags[0]] || {};
+    const name = getIngName(ing);
+    const category = getIngCategory(ing);
+    const tagColors = INGREDIENT_TAG_COLORS[category] || {};
     const tagStyle = tagColors.bg
       ? `background:${tagColors.bg};border-color:${tagColors.border};color:${tagColors.text}`
       : '';
@@ -359,14 +391,11 @@ function renderIngredients(id) {
         <div class="ingredient-left">
           <div class="ing-check">${checked ? '✓' : ''}</div>
           <div class="ing-info">
-            <span class="ing-name">${ing.name}</span>
-            ${ing.star ? '<span class="ing-star">☆</span>' : ''}
+            <span class="ing-name">${name}</span>
+            ${ing.is_seasoning ? '<span class="ing-star">☆</span>' : ''}
             <div class="ing-tags">
-              ${ing.tags.map(t => {
-                const c = INGREDIENT_TAG_COLORS[t] || {};
-                const s = c.bg ? `style="background:${c.bg};border-color:${c.border};color:${c.text}"` : '';
-                return `<span class="ing-tag" ${s}>${t}</span>`;
-              }).join('')}
+              ${category ? `<span class="ing-tag" ${tagStyle ? `style="${tagStyle}"` : ''}>${category}</span>` : ''}
+              ${ing.optional ? '<span class="ing-tag" style="opacity:0.6">選填</span>' : ''}
             </div>
           </div>
         </div>
@@ -381,24 +410,27 @@ function renderSteps(id) {
   const list = document.getElementById('steps-list');
   if (!r || !list) return;
 
-  list.innerHTML = r.steps.map((step, i) => {
+  const currentVersion = r.versions.find(v => v.id === state.currentVersionId) ?? r.versions[0];
+  const steps = currentVersion.steps;
+
+  list.innerHTML = steps.map((step, i) => {
     const done = state.doneSteps.has(i);
     return `
-      <div class="step-item ${done ? 'done' : ''}" id="step-${i}" onclick="toggleStep(${i}, ${r.steps.length})">
-        <div class="step-num" id="step-num-${i}">${done ? '✓' : i + 1}</div>
-        <div class="step-text">${step}</div>
+      <div class="step-item ${done ? 'done' : ''}" id="step-${i}" onclick="toggleStep(${i}, ${steps.length})">
+        <div class="step-num" id="step-num-${i}">${done ? '✓' : step.order}</div>
+        <div class="step-text">${step.instruction}</div>
       </div>
     `;
   }).join('');
 }
 
-function toggleIng(idx, recipeId) {
+window.toggleIng = function(idx, recipeId) {
   if (state.checkedIng.has(idx)) state.checkedIng.delete(idx);
   else state.checkedIng.add(idx);
   renderIngredients(recipeId);
-}
+};
 
-function toggleStep(idx, total) {
+window.toggleStep = function(idx, total) {
   if (state.doneSteps.has(idx)) state.doneSteps.delete(idx);
   else state.doneSteps.add(idx);
 
@@ -409,18 +441,24 @@ function toggleStep(idx, total) {
   if (textEl) textEl.textContent = `${state.doneSteps.size} / ${total}`;
 
   renderSteps(state.currentRecipeId);
-}
+};
+
+window.switchVersion = function(recipeId, versionId) {
+  state.currentVersionId = versionId;
+  state.doneSteps = new Set();
+  renderDetail(recipeId);
+};
 
 // ============================================================
 // Servings Control
 // ============================================================
-function changeServings(delta, recipeId) {
+window.changeServings = function(delta, recipeId) {
   const newVal = Math.max(1, Math.min(20, state.currentServings + delta));
   if (newVal === state.currentServings) return;
   state.currentServings = newVal;
   document.getElementById('srv-display').textContent = newVal;
   renderIngredients(recipeId);
-}
+};
 
 // ============================================================
 // Service Worker

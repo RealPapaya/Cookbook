@@ -1,10 +1,12 @@
-const CACHE_NAME = 'cookbook-v1';
+const CACHE_NAME = 'cookbook-v2';
 const ASSETS = [
   '/',
   '/index.html',
   '/css/style.css',
   '/js/app.js',
   '/js/recipes.js',
+  '/js/ingredients.js',
+  '/js/cooking-methods.js',
   '/images/carbonara_udon.png',
   '/images/kimchi_udon.png',
   '/images/lemon_chicken_udon.png',
