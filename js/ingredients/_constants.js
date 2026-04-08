@@ -47,7 +47,8 @@ export const PROCESSING_STATES = {
  */
 export const INGREDIENT_CATEGORIES = [
   '主食',
-  '蛋白質',
+  '肉類',
+  '海鮮',
   '蔬菜',
   '乳製品',
   '調味料',
@@ -89,7 +90,8 @@ export const ALLERGENS = [
  */
 export const INGREDIENT_TAG_COLORS = {
   '主食':    { bg: '#3b4a6b', border: '#5c6f9e', text: '#c8d4f0' },
-  '蛋白質':  { bg: '#5c3a2e', border: '#8a5a47', text: '#f0c4b0' },
+  '肉類':    { bg: '#5c3a2e', border: '#8a5a47', text: '#f0c4b0' },
+  '海鮮':    { bg: '#2e4d5c', border: '#4a7a8a', text: '#b0d4f0' },
   '蔬菜':    { bg: '#2e4d33', border: '#4a7a52', text: '#b0dab8' },
   '乳製品':  { bg: '#4a3d6b', border: '#7060a0', text: '#d4c8f4' },
   '調味料':  { bg: '#5c4a1a', border: '#8a7030', text: '#f0d890' },
@@ -102,6 +104,20 @@ export const INGREDIENT_TAG_COLORS = {
   '菇類':    { bg: '#3a2a1a', border: '#5a4228', text: '#d0a878' },
   '水果':    { bg: '#4a2038', border: '#7a3058', text: '#f0a0c0' },
 };
+
+// ============================================================
+// 口味與口感
+// ============================================================
+
+export const INGREDIENT_TASTES = [
+  '酸', '甜', '苦', '辣', '鹹'
+];
+
+export const INGREDIENT_TEXTURES = [
+  '軟嫩', '嚼勁', '酥脆', '硬', '滑順', '黏稠', 
+  '濃郁', '綿密', '顆粒', '清脆', '油膩', '多汁', 
+  '清涼', '澀', '乾燥'
+];
 
 // ============================================================
 // JSDoc 型別定義（供其他檔案參考）
@@ -128,6 +144,8 @@ export const INGREDIENT_TAG_COLORS = {
  * @property {string}   name_en         - 英文名（便於搜尋）
  * @property {string[]} categories      - 食材分類（可多個）
  * @property {IngredientVariant[]} variants
+ * @property {string[]} [tastes]        - 包含的口味（見 INGREDIENT_TASTES）
+ * @property {string[]} [textures]      - 包含的口感（見 INGREDIENT_TEXTURES）
  * @property {NutritionPer100g} [nutrition_per_100g] - 選填；有填時 verified_source 必填
  * @property {string[]} [substitutes]   - 可替換的食材 base id
  * @property {string[]} [allergens]     - 過敏原

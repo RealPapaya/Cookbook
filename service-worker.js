@@ -1,15 +1,17 @@
-const CACHE_NAME = 'cookbook-v3';
+const CACHE_NAME = 'cookbook-v6';
 const ASSETS = [
   '/',
   '/index.html',
   '/css/style.css',
   '/js/app.js',
+  '/js/my-recipes.js',
   '/js/recipes.js',
   '/js/cooking-methods.js',
   '/js/ingredients/_constants.js',
   '/js/ingredients/_registry.js',
   '/js/ingredients/staple.js',
-  '/js/ingredients/protein.js',
+  '/js/ingredients/meat.js',
+  '/js/ingredients/seafood.js',
   '/js/ingredients/dairy.js',
   '/js/ingredients/vegetable.js',
   '/js/ingredients/seasoning.js',
@@ -20,6 +22,7 @@ const ASSETS = [
   '/images/carbonara_udon.png',
   '/images/kimchi_udon.png',
   '/images/lemon_chicken_udon.png',
+  '/images/garlic_butter_tomato_shrimp.png',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
 ];

@@ -20,11 +20,14 @@ export {
   INGREDIENT_CATEGORIES,
   ALLERGENS,
   INGREDIENT_TAG_COLORS,
+  INGREDIENT_TASTES,
+  INGREDIENT_TEXTURES,
 } from './_constants.js';
 
 // ── 各分類食材匯入 ────────────────────────────────────────
 import staple    from './staple.js';
-import protein   from './protein.js';
+import seafood   from './seafood.js';
+import meat      from './meat.js';
 import dairy     from './dairy.js';
 import vegetable from './vegetable.js';
 import seasoning from './seasoning.js';
@@ -42,7 +45,8 @@ import other     from './other.js';
  */
 export const INGREDIENTS = [
   ...staple,
-  ...protein,
+  ...seafood,
+  ...meat,
   ...dairy,
   ...vegetable,
   ...seasoning,

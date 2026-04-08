@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#0f0e17">
   <meta name="description" content="私藏食譜本 — 收錄各式家常料理，材料、步驟一目了然。支援手機安裝。">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="食譜本">
   <link rel="manifest" href="manifest.json">
@@ -37,6 +38,10 @@
       <button class="nav-btn active" data-nav="home">
         <span class="nav-icon">🏠</span> 所有食譜
       </button>
+      <div class="nav-section-label">私人</div>
+      <button class="nav-btn" data-nav="my-recipes">
+        <span class="nav-icon">📒</span> 我的食譜
+      </button>
       <div class="nav-section-label">其他</div>
       <button class="nav-btn" data-nav="about">
         <span class="nav-icon">📖</span> 關於食譜本
@@ -61,6 +66,10 @@
         <span class="filter-toggle-icon">⚙️</span>
         <span class="filter-badge" id="filter-toggle-badge" style="display:none"></span>
       </button>
+      <button class="kitchen-toggle-btn" id="kitchen-toggle-btn" onclick="openKitchenPanel()">
+        <span class="kitchen-toggle-icon">🥘</span>
+        <span>廚房</span>
+      </button>
       <span class="count-badge" id="count-badge">— 道食譜</span>
     </div>
 
@@ -80,6 +89,12 @@
 
     <!-- ===== DETAIL VIEW ===== -->
     <div class="page-view" id="view-detail"></div>
+
+    <!-- ===== MY RECIPES VIEW ===== -->
+    <div class="page-view" id="view-my-recipes"></div>
+
+    <!-- ===== MY RECIPE DETAIL (custom recipes) ===== -->
+    <div class="page-view" id="view-my-detail"></div>
 
     <!-- ===== ABOUT VIEW ===== -->
     <div class="page-view" id="view-about">
@@ -144,7 +159,8 @@
             • 點擊食材 → 打勾已準備材料<br>
             • 點擊步驟 → 追蹤烹飪進度<br>
             • ＋ / − 按鈕 → 調整份量，自動換算所有食材數量<br>
-            • ⚙️ 篩選按鈕 → 多維度搜尋（國籍、主食、標籤、食材類別）
+            • ⚙️ 篩選按鈕 → 多維度搜尋（國籍、主食、標籤、食材類別）<br>
+            • 🥘 廚房按鈕 → 選擇手邊食材，找出能做的料理
           </p>
         </div>
       </div>
@@ -159,11 +175,28 @@
     <span class="bnav-icon">🏠</span>
     <span class="bnav-label">食譜</span>
   </button>
+  <button class="bottom-nav-btn" data-nav="my-recipes">
+    <span class="bnav-icon">📒</span>
+    <span class="bnav-label">我的</span>
+  </button>
   <button class="bottom-nav-btn" data-nav="about">
     <span class="bnav-icon">📖</span>
     <span class="bnav-label">關於</span>
   </button>
 </nav>
+
+<!-- ===== KITCHEN PANEL (full-page overlay) ===== -->
+<div id="kitchen-panel" class="kitchen-panel">
+  <!-- Built by JS (buildKitchenPanel) -->
+</div>
+
+<!-- ===== ADD RECIPE MODAL ===== -->
+<div id="add-recipe-modal" class="modal-overlay" onclick="handleModalBackdrop(event)">
+  <!-- Built by JS (buildAddRecipeModal) -->
+</div>
+
+<!-- ===== TOAST ===== -->
+<div id="app-toast" class="app-toast"></div>
 
 <script type="module">
   import { INGREDIENT_TAG_COLORS } from './js/ingredients/_registry.js';

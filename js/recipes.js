@@ -439,4 +439,136 @@ export const RECIPES = [
 
     tips: '剩下的湯頭加入白飯和起司，做成「起司燉飯」超讚！',
   },
+  // ── 蒜香奶油番茄蝦 ────────────────────────────────────────
+  {
+    id: 4,
+    title: '蒜香奶油番茄蝦',
+    subtitle: 'Garlic Butter Cherry Tomato Shrimp',
+    description: '蒜末與奶油爆香，小番茄炒出酸甜茄汁，蝦仁彈牙鮮甜，最後以檸檬汁和巴西里收尾，清爽不膩。',
+    category: '晚餐',
+    cuisine: '義式',
+    meal_type: '料理',
+    tags: ['快速', '蒜香', '海鮮', '地中海'],
+    base_servings: 2,
+    time_estimate: '20 分鐘',
+    difficulty: '簡單',
+    image: 'images/garlic_butter_tomato_shrimp.png',
+
+    ingredients: [
+      // ── 主食材 ──
+      {
+        ingredient_id: 'shrimp_frozen',
+        variant_id:    'shrimp_frozen--standard',
+        qty: 200, unit: 'g',
+        scalable: true, optional: false, is_seasoning: false,
+        note: '開背去腸泥',
+      },
+      {
+        ingredient_id: 'tomato',
+        variant_id:    'tomato--cherry',
+        qty: 150, unit: 'g',
+        scalable: true, optional: false, is_seasoning: false,
+        note: '對切備用',
+      },
+      {
+        ingredient_id: 'garlic_raw',
+        variant_id:    'garlic_raw--minced',
+        qty: 4, unit: '瓣',
+        scalable: true, optional: false, is_seasoning: false,
+      },
+      {
+        ingredient_id: 'parsley',
+        variant_id:    'parsley--fresh',
+        qty: 10, unit: 'g',
+        scalable: true, optional: false, is_seasoning: false,
+        note: '細切備用',
+      },
+      // ── 蝦仁醃料 ──
+      {
+        ingredient_id: 'sake_cooking',
+        variant_id:    'sake_cooking--rice',
+        qty: 1, unit: '小匙',
+        scalable: false, optional: false, is_seasoning: true,
+        note: '醃蝦用',
+      },
+      {
+        ingredient_id: 'salt',
+        variant_id:    'salt--sea',
+        qty: null, unit: '少許',
+        scalable: false, optional: false, is_seasoning: true,
+      },
+      {
+        ingredient_id: 'black_pepper',
+        variant_id:    'black_pepper--ground',
+        qty: null, unit: '少許',
+        scalable: false, optional: false, is_seasoning: true,
+      },
+      // ── 烹調油脂與調味 ──
+      {
+        ingredient_id: 'olive_oil',
+        variant_id:    'olive_oil--extra_virgin',
+        qty: 1, unit: '大匙',
+        scalable: false, optional: false, is_seasoning: true,
+      },
+      {
+        ingredient_id: 'butter',
+        variant_id:    'butter--unsalted',
+        qty: 15, unit: 'g',
+        scalable: true, optional: false, is_seasoning: false,
+      },
+      {
+        ingredient_id: 'lemon',
+        variant_id:    'lemon--juice',
+        qty: 1, unit: '大匙',
+        scalable: false, optional: false, is_seasoning: true,
+      },
+    ],
+
+    versions: [
+      {
+        id: 'stovetop',
+        label: '爐灶版',
+        note: '全程中小火，奶油不易焦化，蝦肉保持彈嫩。',
+        steps: [
+          {
+            order: 1,
+            instruction: '蝦仁開背去腸泥，加入米酒、鹽、黑胡椒抓勻，靜置醃 10 分鐘。巴西里細切、小番茄對切、蒜頭切末備用。',
+            method_id: 'marinate',
+            duration_s: 600,
+            ingredient_ids: ['shrimp_frozen--standard', 'sake_cooking--rice', 'salt--sea', 'black_pepper--ground'],
+          },
+          {
+            order: 2,
+            instruction: '熱鍋加入橄欖油，中大火將蝦仁下鍋炒至半熟（兩面開始變紅），起鍋備用。',
+            method_id: 'stir_fry_high_heat',
+            duration_s: 90,
+            ingredient_ids: ['olive_oil--extra_virgin', 'shrimp_frozen--standard'],
+          },
+          {
+            order: 3,
+            instruction: '原鍋補少許橄欖油（若鍋底偏乾），下蒜末以中火炒香約 30 秒至微微金黃，放入小番茄翻炒 1~2 分鐘壓出茄汁。',
+            method_id: 'stir_fry_medium_heat',
+            duration_s: 90,
+            ingredient_ids: ['garlic_raw--minced', 'tomato--cherry'],
+          },
+          {
+            order: 4,
+            instruction: '加入奶油，中小火炒至完全融化並與醬汁融合。',
+            method_id: 'stir_fry_medium_heat',
+            duration_s: 60,
+            ingredient_ids: ['butter--unsalted'],
+          },
+          {
+            order: 5,
+            instruction: '蝦仁回鍋，加入巴西里末、鹽、少許黑胡椒，擠入檸檬汁快速翻炒均勻，即可起鍋。',
+            method_id: 'stir_fry_medium_heat',
+            duration_s: 60,
+            ingredient_ids: ['shrimp_frozen--standard', 'parsley--fresh', 'lemon--juice', 'salt--sea'],
+          },
+        ],
+      },
+    ],
+
+    tips: '奶油容易焦化，步驟 4 要轉中小火。蝦仁不要過度烹調，回鍋後快速翻炒即可，保持彈牙口感。喜歡蒜味更重的人，蒜末用量可以加倍。',
+  },
 ];

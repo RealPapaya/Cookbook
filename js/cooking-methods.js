@@ -64,7 +64,7 @@ export const COOKING_METHODS = [
       cover: true,
       cover_note: '蓋子蓋上',
     },
-    suitable_for: ['主食', '蛋白質', '蔬菜'],
+    suitable_for: ['主食', '肉類', '海鮮', '蔬菜'],
     tags: ['快速', '免顧爐', '無油煙'],
     safety_note: '金屬容器不可微波。',
   },
@@ -80,7 +80,7 @@ export const COOKING_METHODS = [
       cover: true,
       cover_note: '蓋子蓋上',
     },
-    suitable_for: ['主食', '蛋白質'],
+    suitable_for: ['主食', '肉類', '海鮮'],
     tags: ['快速', '免顧爐'],
   },
   {
@@ -95,7 +95,7 @@ export const COOKING_METHODS = [
       cover: true,
       cover_note: '蓋子錯開留縫隙，讓蒸氣可以排出',
     },
-    suitable_for: ['蛋白質', '主食', '蔬菜'],
+    suitable_for: ['肉類', '海鮮', '主食', '蔬菜'],
     tags: ['快速', '免顧爐', '無油煙'],
     safety_note: '含生肉食材務必確認全熟，必要時追加加熱。',
   },
@@ -111,7 +111,7 @@ export const COOKING_METHODS = [
       duration_s: 180,
       vessel: '炒鍋',
     },
-    suitable_for: ['蛋白質', '蔬菜', '主食'],
+    suitable_for: ['肉類', '海鮮', '蔬菜', '主食'],
     tags: ['快速', '鑊氣'],
   },
   {
@@ -124,7 +124,7 @@ export const COOKING_METHODS = [
       duration_s: 300,
       vessel: '炒鍋或平底鍋',
     },
-    suitable_for: ['蛋白質', '蔬菜', '發酵食品'],
+    suitable_for: ['肉類', '海鮮', '蔬菜', '發酵食品'],
     tags: [],
   },
 
@@ -140,7 +140,7 @@ export const COOKING_METHODS = [
       vessel: '平底鍋',
       cover: false,
     },
-    suitable_for: ['蛋白質', '乳製品'],
+    suitable_for: ['肉類', '海鮮', '乳製品'],
     tags: ['少油'],
   },
 
@@ -171,7 +171,7 @@ export const COOKING_METHODS = [
       vessel: '湯鍋或砂鍋',
       cover: true,
     },
-    suitable_for: ['蛋白質', '蔬菜', '湯底'],
+    suitable_for: ['肉類', '海鮮', '蔬菜', '湯底'],
     tags: ['慢煮', '入味'],
   },
 
@@ -202,7 +202,7 @@ export const COOKING_METHODS = [
       duration_s: 900,
       vessel: '氣炸鍋',
     },
-    suitable_for: ['蛋白質', '蔬菜'],
+    suitable_for: ['肉類', '海鮮', '蔬菜'],
     tags: ['少油', '酥脆'],
   },
 
