@@ -5,50 +5,56 @@
  *
  * 每道食譜（Recipe）由以下三個核心部分組成：
  *  1. 基本資訊（metadata）
- *  2. 食材清單（ingredients）— 每個項目引用 ingredients.js 的 variant_id
+ *  2. 食材清單（ingredients）— 每個項目引用 ingredients/_registry.js 的 variant_id
  *  3. 版本/作法（versions）— 同一道菜的不同烹飪方式，每個版本有自己的 steps
  *     並引用 cooking-methods.js 的 method_id
  *
+ * 重要規則：
+ *  - 所有 ingredient_id 必須對應 ingredients/_registry.js 中已定義的食材
+ *  - 不可使用 _inline 佔位符；未建檔的食材請先建立 tier-1 entry
+ *  - variant_id 格式固定為 {base_id}--{state}
+ *
  * @typedef {Object} RecipeIngredientRef
- * @property {string}  ingredient_id   - 對應 INGREDIENTS 的 base id
- * @property {string}  variant_id      - 對應 variant.id（含加工狀態）
- * @property {number}  qty             - 數量（null = 適量）
- * @property {string}  unit            - 單位
- * @property {boolean} scalable        - 是否隨份量等比例縮放
- * @property {boolean} optional        - 是否為選填食材
- * @property {boolean} is_seasoning    - 是否為調味料（對應原本的 star）
- * @property {string}  [note]          - 備註（例：「盡量鋪平不要重疊」）
+ * @property {string}  ingredient_id  - 對應 INGREDIENTS 的 base id
+ * @property {string}  variant_id     - 對應 variant.id（含加工狀態）
+ * @property {number}  qty            - 數量（null = 適量）
+ * @property {string}  unit           - 單位
+ * @property {string}  [unit_note]    - 單位補充說明（例：「管裝蒜泥」）
+ * @property {boolean} scalable       - 是否隨份量等比例縮放
+ * @property {boolean} optional       - 是否為選填食材
+ * @property {boolean} is_seasoning   - 是否為調味料（顯示 ☆）
+ * @property {string}  [note]         - 備註（例：「盡量鋪平不要重疊」）
  *
  * @typedef {Object} RecipeStep
- * @property {number}   order          - 步驟序號（從 1 開始）
- * @property {string}   instruction    - 步驟說明
- * @property {string}   [method_id]    - 引用 COOKING_METHODS 的 id（選填）
- * @property {number}   [duration_s]   - 此步驟預計時間（秒，選填）
- * @property {string[]} [ingredient_ids] - 此步驟涉及的 variant_id 清單（選填）
+ * @property {number}   order           - 步驟序號（從 1 開始）
+ * @property {string}   instruction     - 步驟說明
+ * @property {string}   [method_id]     - 引用 COOKING_METHODS 的 id（選填）
+ * @property {number}   [duration_s]    - 此步驟預計時間（秒，選填）
+ * @property {string[]} [ingredient_ids]- 此步驟涉及的 variant_id 清單（選填）
  *
  * @typedef {Object} RecipeVersion
- * @property {string}      id          - 版本 id（例：microwave / stovetop）
- * @property {string}      label       - 顯示名稱（例：微波版 / 爐灶版）
- * @property {string}      [note]      - 版本說明
- * @property {RecipeStep[]} steps      - 此版本的步驟清單
+ * @property {string}       id    - 版本 id（例：microwave / stovetop）
+ * @property {string}       label - 顯示名稱（例：微波版 / 爐灶版）
+ * @property {string}       [note]- 版本說明
+ * @property {RecipeStep[]} steps - 此版本的步驟清單
  *
  * @typedef {Object} Recipe
  * @property {number}   id
  * @property {string}   title
  * @property {string}   subtitle
  * @property {string}   description
- * @property {string}   category        - 見 CATEGORY_LIST
- * @property {string}   cuisine         - 見 CUISINE_LIST
- * @property {string}   meal_type       - 見 MEALTYPE_LIST（camelCase 改 snake_case）
+ * @property {string}   category          - 見 CATEGORY_LIST
+ * @property {string}   cuisine           - 見 CUISINE_LIST
+ * @property {string}   meal_type         - 見 MEALTYPE_LIST
  * @property {string[]} tags
- * @property {number}   base_servings   - 基礎份量（換算基準）
- * @property {string}   time_estimate   - 最快版本的時間估計（顯示用）
+ * @property {number}   base_servings     - 基礎份量（換算基準）
+ * @property {string}   time_estimate     - 最快版本的時間估計（顯示用）
  * @property {string}   difficulty
  * @property {string}   image
  * @property {RecipeIngredientRef[]} ingredients
- * @property {RecipeVersion[]}      versions     - 至少一個版本
+ * @property {RecipeVersion[]}       versions   - 至少一個版本
  * @property {string}   [tips]
- * @property {string}   [source_url]    - 食譜靈感來源（選填）
+ * @property {string}   [source_url]      - 食譜靈感來源（選填）
  */
 
 // ============================================================
@@ -119,31 +125,23 @@ export const RECIPES = [
         qty: 1, unit: '顆',
         scalable: true, optional: false, is_seasoning: false,
       },
-      // 以下為無對應 ingredient 的小量調味料，暫時以 inline 形式記錄
-      // TODO: 待新增 garlic_paste、black_pepper、chicken_powder 至 ingredients.js
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'garlic_paste',
+        variant_id:    'garlic_paste--tube',
         qty: 2, unit: 'cm', unit_note: '管裝蒜泥',
         scalable: true, optional: false, is_seasoning: true,
-        inline_name: '蒜泥',
-        inline_category: '香料',
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'chicken_powder',
+        variant_id:    'chicken_powder--granule',
         qty: 1, unit: '小匙弱',
         scalable: true, optional: false, is_seasoning: true,
-        inline_name: '康寶/雞粉（顆粒）',
-        inline_category: '調味料',
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'black_pepper',
+        variant_id:    'black_pepper--ground',
         qty: null, unit: '適量',
         scalable: false, optional: true, is_seasoning: true,
-        inline_name: '黑胡椒',
-        inline_category: '香料',
       },
     ],
 
@@ -189,7 +187,7 @@ export const RECIPES = [
             instruction: '同鍋加入蒜泥爆香，放入解凍後的烏龍麵，大火翻炒 1 分鐘。',
             method_id: 'stir_fry_high_heat',
             duration_s: 60,
-            ingredient_ids: ['udon--frozen'],
+            ingredient_ids: ['udon--frozen', 'garlic_paste--tube'],
           },
           {
             order: 3,
@@ -202,7 +200,7 @@ export const RECIPES = [
             order: 4,
             instruction: '起鍋後趁熱打入生蛋，快速攪拌，利用餘熱將蛋液熟成，撒上黑胡椒即完成。',
             method_id: 'mix_raw',
-            ingredient_ids: ['egg_chicken--raw'],
+            ingredient_ids: ['egg_chicken--raw', 'black_pepper--ground'],
           },
         ],
       },
@@ -264,30 +262,23 @@ export const RECIPES = [
         qty: 1, unit: '顆',
         scalable: true, optional: true, is_seasoning: false,
       },
-      // TODO: 待新增 mentsuyu、green_onion、sesame_seed 至 ingredients.js
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'mentsuyu',
+        variant_id:    'mentsuyu--2x',
         qty: 1, unit: '大匙弱',
         scalable: true, optional: false, is_seasoning: true,
-        inline_name: '2倍濃縮麵露',
-        inline_category: '醬汁',
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'green_onion',
+        variant_id:    'green_onion--chopped',
         qty: 10, unit: 'g',
         scalable: true, optional: true, is_seasoning: false,
-        inline_name: '青蔥',
-        inline_category: '蔬菜',
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'sesame_seed',
+        variant_id:    'sesame_seed--toasted',
         qty: null, unit: '適量',
         scalable: false, optional: true, is_seasoning: true,
-        inline_name: '白芝麻',
-        inline_category: '香料',
       },
     ],
 
@@ -336,8 +327,9 @@ export const RECIPES = [
           },
           {
             order: 3,
-            instruction: '盛碗，撒上青蔥、白芝麻，放上蛋黃。',
+            instruction: '盛碗，撒上蔥花、白芝麻，放上蛋黃。',
             method_id: 'mix_raw',
+            ingredient_ids: ['green_onion--chopped', 'sesame_seed--toasted', 'egg_chicken--raw_yolk'],
           },
         ],
       },
@@ -374,62 +366,48 @@ export const RECIPES = [
         qty: 6, unit: '顆',
         scalable: true, optional: false, is_seasoning: false,
       },
-      // TODO: 待新增 bok_choy_pickled、lemon、mentsuyu、chicken_powder、green_onion、black_pepper、water
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'bok_choy',
+        variant_id:    'bok_choy--pickled',
         qty: 30, unit: 'g',
         scalable: true, optional: false, is_seasoning: false,
-        inline_name: '小白菜漬（或小白菜）',
-        inline_category: '蔬菜',
+        note: '也可用生小白菜替代',
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'mentsuyu',
+        variant_id:    'mentsuyu--2x',
         qty: 2, unit: '小匙',
         scalable: true, optional: false, is_seasoning: true,
-        inline_name: '麵露',
-        inline_category: '醬汁',
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'chicken_soup_powder',
+        variant_id:    'chicken_soup_powder--powder',
         qty: 1.5, unit: '小匙',
         scalable: true, optional: false, is_seasoning: true,
-        inline_name: '雞湯粉',
-        inline_category: '調味料',
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'lemon',
+        variant_id:    'lemon--sliced',
         qty: 3, unit: '片',
         scalable: true, optional: false, is_seasoning: true,
-        inline_name: '檸檬片',
-        inline_category: '香料',
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'water',
+        variant_id:    'water--cold',
         qty: 150, unit: 'ml',
         scalable: true, optional: false, is_seasoning: false,
-        inline_name: '水',
-        inline_category: '水',
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'green_onion',
+        variant_id:    'green_onion--chopped',
         qty: null, unit: '適量',
-        scalable: false, optional: true, is_seasoning: true,
-        inline_name: '蔥花',
-        inline_category: '蔬菜',
+        scalable: false, optional: true, is_seasoning: false,
       },
       {
-        ingredient_id: '_inline',
-        variant_id:    '_inline',
+        ingredient_id: 'black_pepper',
+        variant_id:    'black_pepper--ground',
         qty: null, unit: '適量',
         scalable: false, optional: true, is_seasoning: true,
-        inline_name: '黑胡椒',
-        inline_category: '香料',
       },
     ],
 
@@ -440,18 +418,20 @@ export const RECIPES = [
         steps: [
           {
             order: 1,
-            instruction: '將所有材料堆疊在冷凍麵上。',
-            ingredient_ids: ['udon--frozen', 'chicken_meatball--frozen'],
+            instruction: '在保鮮盒中放入冷凍烏龍麵，依序堆疊雞肉丸、小白菜漬、檸檬片，加入麵露與雞湯粉。',
+            ingredient_ids: ['udon--frozen', 'chicken_meatball--frozen', 'bok_choy--pickled', 'lemon--sliced'],
           },
           {
             order: 2,
-            instruction: '加入 150ml 的冷開水，蓋子錯開，600W 微波 6 分鐘。',
+            instruction: '加入 150ml 冷開水，蓋子錯開留縫隙，600W 微波 6 分鐘。',
             method_id: 'microwave_600w_6min_vented',
             duration_s: 360,
+            ingredient_ids: ['water--cold'],
           },
           {
             order: 3,
             instruction: '如果不夠熱，請再短時間追加加熱。完成後撒上蔥花與黑胡椒。',
+            ingredient_ids: ['green_onion--chopped', 'black_pepper--ground'],
           },
         ],
       },
