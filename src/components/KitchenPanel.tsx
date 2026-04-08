@@ -74,7 +74,7 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
     <div id="kitchen-panel" className={`kitchen-panel ${open ? 'open' : ''}`}>
       <div className="kitchen-topbar">
         <div className="kitchen-title-area">
-          <span className="kitchen-title">智能廚房</span>
+          <span className="kitchen-title">廚房</span>
           <span className="kitchen-subtitle">選擇手邊有的食材，快速找出能做的料理。</span>
         </div>
         <button className="kitchen-close-btn" type="button" onClick={onClose}>

@@ -119,13 +119,15 @@ export default function RecipeDetailPage() {
   }
 
   const scaledTime = estimateScaledTime(recipe.time_estimate, ratio);
-  const difficultyLabels = ['簡單', '中等', '困難'];
+  const difficultyLabels = ['簡單', '中等', '困難', '極難', '地獄'];
   const difficultyIndex = Math.max(0, difficultyLabels.indexOf(recipe.difficulty));
-  
-  const baseDifficultyPct = difficultyIndex === 0 ? 33 : difficultyIndex === 1 ? 66 : 100;
-  const rawPct = baseDifficultyPct + (ratio - 1) * 15;
-  const difficultyPct = Math.min(100, Math.max(0, Math.round(rawPct)));
-  const currentDifficulty = difficultyPct <= 45 ? '簡單' : difficultyPct <= 75 ? '中等' : '困難';
+
+  // logarithmic scaling: grows fast at first but flattens significantly at large servings
+  // ratio=1 => shift=0, ratio=2 => shift~1, ratio=4 => shift~2, ratio=8 => shift~3
+  const logShift = Math.log2(ratio) * 0.8;
+  const scaledIndex = Math.min(difficultyLabels.length - 1, difficultyIndex + logShift);
+  const currentDifficulty = difficultyLabels[Math.round(scaledIndex)];
+  const difficultyPct = Math.min(100, Math.round((scaledIndex / (difficultyLabels.length - 1)) * 100));
 
   return (
     <div className="page-view active" id="view-detail">

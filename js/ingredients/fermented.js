@@ -13,9 +13,9 @@ export default [
     name_en: 'Kimchi',
     categories: ['發酵食品', '蔬菜'],
     variants: [
-      { id: 'kimchi--fermented',      label: '泡菜（一般）',     state: 'fermented', yield_ratio: 1.0 },
-      { id: 'kimchi--well_fermented', label: '熟成泡菜',         state: 'fermented', yield_ratio: 1.0 },
-      { id: 'kimchi--fresh',          label: '新鮮泡菜（白菜）', state: 'raw',       yield_ratio: 1.0 },
+      { id: 'kimchi--fermented', label: '泡菜（一般）', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'kimchi--well_fermented', label: '熟成泡菜', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'kimchi--fresh', label: '新鮮泡菜（白菜）', state: 'raw', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 15, protein: 1.1, fat: 0.5, carbs: 2.4, fiber: 1.6, sodium: 498,
@@ -38,8 +38,8 @@ export default [
     categories: ['發酵食品', '調味料'],
     variants: [
       { id: 'miso--white', label: '白味噌', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'miso--red',   label: '紅味噌', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'miso--mixed', label: '合わせ味噌', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'miso--red', label: '紅味噌', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'miso--mixed', label: '綜合味噌', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 198, protein: 11.7, fat: 6.0, carbs: 26.5, fiber: 4.3, sodium: 3728,
@@ -83,10 +83,10 @@ export default [
     name_en: 'Soy Sauce',
     categories: ['發酵食品', '調味料'],
     variants: [
-      { id: 'soy_sauce--regular',  label: '醬油（一般）', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'soy_sauce--light',    label: '薄口醬油',     state: 'fermented', yield_ratio: 1.0 },
-      { id: 'soy_sauce--tamari',   label: '濃口醬油',     state: 'fermented', yield_ratio: 1.0 },
-      { id: 'soy_sauce--low_salt', label: '減鹽醬油',     state: 'fermented', yield_ratio: 1.0 },
+      { id: 'soy_sauce--regular', label: '醬油（一般）', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'soy_sauce--light', label: '薄口醬油', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'soy_sauce--tamari', label: '濃口醬油', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'soy_sauce--low_salt', label: '減鹽醬油', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 53, protein: 8.1, fat: 0.0, carbs: 5.6, sodium: 5687,
@@ -108,7 +108,7 @@ export default [
     name_en: 'Fermented Tofu',
     categories: ['發酵食品'],
     variants: [
-      { id: 'fermented_tofu--red',   label: '紅豆腐乳', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'fermented_tofu--red', label: '紅豆腐乳', state: 'fermented', yield_ratio: 1.0 },
       { id: 'fermented_tofu--white', label: '白豆腐乳', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
@@ -154,8 +154,8 @@ export default [
     name_en: 'Doubanjiang',
     categories: ['發酵食品', '調味料'],
     variants: [
-      { id: 'doubanjiang--regular', label: '豆瓣醬',     state: 'fermented', yield_ratio: 1.0 },
-      { id: 'doubanjiang--spicy',   label: '辣豆瓣醬',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'doubanjiang--regular', label: '豆瓣醬', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'doubanjiang--spicy', label: '辣豆瓣醬', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 68, protein: 4.5, fat: 2.8, carbs: 7.2, sodium: 3700,
@@ -178,7 +178,7 @@ export default [
     categories: ['發酵食品', '調味料'],
     variants: [
       { id: 'gochujang--regular', label: '韓國辣椒醬', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'gochujang--mild',    label: '微辣辣椒醬', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'gochujang--mild', label: '微辣辣椒醬', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 182, protein: 4.3, fat: 1.3, carbs: 38.0, sodium: 1900,
@@ -288,8 +288,8 @@ export default [
     name_en: 'Zha Cai',
     categories: ['發酵食品', '蔬菜'],
     variants: [
-      { id: 'zha_cai--whole',   label: '榨菜（整顆）', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'zha_cai--shredded', label: '榨菜絲',     state: 'fermented', yield_ratio: 1.0 },
+      { id: 'zha_cai--whole', label: '榨菜（整顆）', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'zha_cai--shredded', label: '榨菜絲', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 29, protein: 2.1, fat: 0.5, carbs: 4.3, fiber: 2.2, sodium: 3000,
@@ -333,9 +333,9 @@ export default [
     name_en: 'Yogurt',
     categories: ['發酵食品', '乳製品'],
     variants: [
-      { id: 'yogurt--plain',    label: '原味優格',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'yogurt--greek',    label: '希臘優格',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'yogurt--flavored', label: '調味優格',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'yogurt--plain', label: '原味優格', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'yogurt--greek', label: '希臘優格', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'yogurt--flavored', label: '調味優格', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 61, protein: 3.5, fat: 3.3, carbs: 4.7, sodium: 46,
@@ -357,8 +357,8 @@ export default [
     name_en: 'Kefir',
     categories: ['發酵食品', '乳製品'],
     variants: [
-      { id: 'kefir--milk',  label: '牛奶克菲爾',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'kefir--water', label: '水克菲爾',     state: 'fermented', yield_ratio: 1.0 },
+      { id: 'kefir--milk', label: '牛奶克菲爾', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'kefir--water', label: '水克菲爾', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 52, protein: 3.6, fat: 1.0, carbs: 5.9, sodium: 40,
@@ -380,9 +380,9 @@ export default [
     name_en: 'Cheddar Cheese',
     categories: ['發酵食品', '乳製品'],
     variants: [
-      { id: 'cheese_cheddar--block',   label: '切達起司（塊）', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'cheese_cheddar--shredded', label: '切達起司絲',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'cheese_cheddar--sliced',  label: '切達起司片',    state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_cheddar--block', label: '切達起司（塊）', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_cheddar--shredded', label: '切達起司絲', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_cheddar--sliced', label: '切達起司片', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 404, protein: 24.9, fat: 33.1, carbs: 1.3, sodium: 654,
@@ -404,7 +404,7 @@ export default [
     name_en: 'Mozzarella Cheese',
     categories: ['發酵食品', '乳製品'],
     variants: [
-      { id: 'cheese_mozzarella--fresh',    label: '新鮮莫札瑞拉',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_mozzarella--fresh', label: '新鮮莫札瑞拉', state: 'fermented', yield_ratio: 1.0 },
       { id: 'cheese_mozzarella--shredded', label: '莫札瑞拉起司絲', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
@@ -427,8 +427,8 @@ export default [
     name_en: 'Parmesan Cheese',
     categories: ['發酵食品', '乳製品'],
     variants: [
-      { id: 'cheese_parmesan--block',  label: '帕瑪森起司（塊）', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'cheese_parmesan--grated', label: '帕瑪森起司粉',    state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_parmesan--block', label: '帕瑪森起司（塊）', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_parmesan--grated', label: '帕瑪森起司粉', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 431, protein: 38.5, fat: 29.0, carbs: 3.2, sodium: 1109,
@@ -472,8 +472,8 @@ export default [
     name_en: 'Feta Cheese',
     categories: ['發酵食品', '乳製品'],
     variants: [
-      { id: 'cheese_feta--block',     label: '費達起司（塊）', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'cheese_feta--crumbled',  label: '費達起司碎',    state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_feta--block', label: '費達起司（塊）', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_feta--crumbled', label: '費達起司碎', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 264, protein: 14.2, fat: 21.3, carbs: 4.1, sodium: 1116,
@@ -495,8 +495,8 @@ export default [
     name_en: 'Blue Cheese',
     categories: ['發酵食品', '乳製品'],
     variants: [
-      { id: 'cheese_blue--gorgonzola',  label: '戈根佐拉起司', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'cheese_blue--roquefort',   label: '洛克福起司',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_blue--gorgonzola', label: '戈根佐拉起司', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'cheese_blue--roquefort', label: '洛克福起司', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 353, protein: 21.4, fat: 28.7, carbs: 2.3, sodium: 1395,
@@ -518,8 +518,8 @@ export default [
     name_en: 'Sour Cream',
     categories: ['發酵食品', '乳製品'],
     variants: [
-      { id: 'sour_cream--regular',    label: '酸奶油',     state: 'fermented', yield_ratio: 1.0 },
-      { id: 'sour_cream--low_fat',    label: '低脂酸奶油', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'sour_cream--regular', label: '酸奶油', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'sour_cream--low_fat', label: '低脂酸奶油', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 193, protein: 2.1, fat: 19.4, carbs: 4.6, sodium: 53,
@@ -541,7 +541,7 @@ export default [
     name_en: 'Rice Vinegar',
     categories: ['發酵食品', '調味料'],
     variants: [
-      { id: 'rice_vinegar--regular', label: '米醋',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'rice_vinegar--regular', label: '米醋', state: 'fermented', yield_ratio: 1.0 },
       { id: 'rice_vinegar--seasoned', label: '壽司醋', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
@@ -564,8 +564,8 @@ export default [
     name_en: 'Apple Cider Vinegar',
     categories: ['發酵食品', '調味料'],
     variants: [
-      { id: 'apple_cider_vinegar--regular',    label: '蘋果醋（一般）', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'apple_cider_vinegar--unfiltered', label: '未過濾蘋果醋',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'apple_cider_vinegar--regular', label: '蘋果醋（一般）', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'apple_cider_vinegar--unfiltered', label: '未過濾蘋果醋', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 21, protein: 0.0, fat: 0.0, carbs: 0.9, sodium: 5,
@@ -609,8 +609,8 @@ export default [
     name_en: 'Balsamic Vinegar',
     categories: ['發酵食品', '調味料'],
     variants: [
-      { id: 'balsamic_vinegar--regular',  label: '巴薩米克醋',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'balsamic_vinegar--aged',     label: '陳年巴薩米克醋', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'balsamic_vinegar--regular', label: '巴薩米克醋', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'balsamic_vinegar--aged', label: '陳年巴薩米克醋', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 88, protein: 0.5, fat: 0.0, carbs: 17.0, sodium: 23,
@@ -632,7 +632,7 @@ export default [
     name_en: 'Mirin',
     categories: ['發酵食品', '調味料'],
     variants: [
-      { id: 'mirin--hon_mirin', label: '本味醂',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'mirin--hon_mirin', label: '本味醂', state: 'fermented', yield_ratio: 1.0 },
       { id: 'mirin--aji_mirin', label: '味醂風調味料', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
@@ -699,8 +699,8 @@ export default [
     name_en: 'Pickled Plum (Umeboshi)',
     categories: ['發酵食品', '水果'],
     variants: [
-      { id: 'pickled_plum--whole',  label: '梅子（整顆）', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'pickled_plum--paste',  label: '梅醬',         state: 'fermented', yield_ratio: 1.0 },
+      { id: 'pickled_plum--whole', label: '梅子（整顆）', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'pickled_plum--paste', label: '梅醬', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 33, protein: 0.9, fat: 0.2, carbs: 10.5, sodium: 8700,
@@ -723,7 +723,7 @@ export default [
     categories: ['發酵食品', '調味料'],
     variants: [
       { id: 'rice_wine--cooking', label: '料理米酒', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'rice_wine--shaoxing', label: '紹興酒',  state: 'fermented', yield_ratio: 1.0 },
+      { id: 'rice_wine--shaoxing', label: '紹興酒', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 134, protein: 0.5, fat: 0.0, carbs: 5.0, sodium: 5,
@@ -812,8 +812,8 @@ export default [
     name_en: 'Dried Shrimp',
     categories: ['發酵食品', '海鮮'],
     variants: [
-      { id: 'dried_shrimp--regular', label: '蝦米',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'dried_shrimp--tiny',    label: '蝦皮',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'dried_shrimp--regular', label: '蝦米', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'dried_shrimp--tiny', label: '蝦皮', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 263, protein: 52.2, fat: 4.2, carbs: 2.2, sodium: 2000,
@@ -901,8 +901,8 @@ export default [
     name_en: 'Shaoxing Wine',
     categories: ['發酵食品', '調味料'],
     variants: [
-      { id: 'shaoxing_wine--regular', label: '紹興酒',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'shaoxing_wine--aged',    label: '陳年紹興酒', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'shaoxing_wine--regular', label: '紹興酒', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'shaoxing_wine--aged', label: '陳年紹興酒', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 125, protein: 0.5, fat: 0.0, carbs: 4.5, sodium: 5,
@@ -946,8 +946,8 @@ export default [
     name_en: 'Nutritional Yeast',
     categories: ['發酵食品', '調味料'],
     variants: [
-      { id: 'nutritional_yeast--flakes',  label: '酵母粉片', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'nutritional_yeast--powder',  label: '酵母粉',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'nutritional_yeast--flakes', label: '酵母粉片', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'nutritional_yeast--powder', label: '酵母粉', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 325, protein: 50.0, fat: 5.5, carbs: 28.8, fiber: 24.6, sodium: 30,
@@ -1014,7 +1014,7 @@ export default [
     categories: ['發酵食品', '蛋白質'],
     variants: [
       { id: 'tempeh--regular', label: '天貝', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'tempeh--cooked',  label: '熟天貝', state: 'cooked',   yield_ratio: 0.9 },
+      { id: 'tempeh--cooked', label: '熟天貝', state: 'cooked', yield_ratio: 0.9 },
     ],
     nutrition_per_100g: {
       calories: 193, protein: 19.9, fat: 11.0, carbs: 9.4, fiber: 0.0, sodium: 9,
@@ -1080,9 +1080,9 @@ export default [
     name_en: 'Lassi',
     categories: ['發酵食品', '飲料'],
     variants: [
-      { id: 'lassi--plain',  label: '原味拉西',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'lassi--mango',  label: '芒果拉西',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'lassi--salty',  label: '鹹味拉西',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'lassi--plain', label: '原味拉西', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'lassi--mango', label: '芒果拉西', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'lassi--salty', label: '鹹味拉西', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 70, protein: 3.0, fat: 2.5, carbs: 9.0, sodium: 80,
@@ -1104,8 +1104,8 @@ export default [
     name_en: 'Pickled Olive',
     categories: ['發酵食品', '水果'],
     variants: [
-      { id: 'pickled_olive--green',  label: '綠橄欖', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'pickled_olive--black',  label: '黑橄欖', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'pickled_olive--green', label: '綠橄欖', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'pickled_olive--black', label: '黑橄欖', state: 'fermented', yield_ratio: 1.0 },
       { id: 'pickled_olive--kalamata', label: '卡拉馬塔橄欖', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
@@ -1128,8 +1128,8 @@ export default [
     name_en: 'Pickled Gherkin',
     categories: ['發酵食品', '蔬菜'],
     variants: [
-      { id: 'pickled_gherkin--dill',  label: '蒔蘿酸黃瓜', state: 'fermented', yield_ratio: 1.0 },
-      { id: 'pickled_gherkin--sweet', label: '甜酸黃瓜',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'pickled_gherkin--dill', label: '蒔蘿酸黃瓜', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'pickled_gherkin--sweet', label: '甜酸黃瓜', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 11, protein: 0.3, fat: 0.2, carbs: 2.3, sodium: 457,
@@ -1151,8 +1151,8 @@ export default [
     name_en: 'Pickled Ginger (Gari)',
     categories: ['發酵食品', '香料'],
     variants: [
-      { id: 'pickled_ginger--regular', label: '醃薑片',   state: 'fermented', yield_ratio: 1.0 },
-      { id: 'pickled_ginger--sweet',   label: '甜薑片',   state: 'fermented', yield_ratio: 1.0 },
+      { id: 'pickled_ginger--regular', label: '醃薑片', state: 'fermented', yield_ratio: 1.0 },
+      { id: 'pickled_ginger--sweet', label: '甜薑片', state: 'fermented', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 77, protein: 0.4, fat: 0.4, carbs: 18.2, sodium: 570,

@@ -11,6 +11,7 @@ import { CATEGORY_LIST, CUISINE_LIST, MEALTYPE_LIST } from '../domain/recipesCat
 import { getActiveFilterCount, getFilteredRecipes } from '../domain/helpers/filter';
 import { estimateIngredientCalories } from '../domain/helpers/servings';
 import { baseJoin } from '../domain/recipeApi';
+import IngredientBrowser from '../components/IngredientBrowser';
 import type { FilterState, RecipeIndexEntry } from '../domain/types';
 
 interface HomePageProps {
@@ -307,6 +308,8 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
             );
           })}
       </div>
+
+      <IngredientBrowser />
     </div>
   );
 }

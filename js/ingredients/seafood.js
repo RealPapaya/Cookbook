@@ -13,10 +13,10 @@ export default [
     name_en: 'White Shrimp',
     categories: ['海鮮'],
     variants: [
-      { id: 'shrimp_white--raw',      label: '生白蝦（帶殼）', state: 'raw',    yield_ratio: 0.7  },
-      { id: 'shrimp_white--peeled',   label: '去殼白蝦',       state: 'raw',    yield_ratio: 1.0  },
-      { id: 'shrimp_white--frozen',   label: '冷凍白蝦',       state: 'frozen', yield_ratio: 0.7  },
-      { id: 'shrimp_white--cooked',   label: '熟白蝦',         state: 'cooked', yield_ratio: 0.65 },
+      { id: 'shrimp_white--raw', label: '生白蝦（帶殼）', state: 'raw', yield_ratio: 0.7 },
+      { id: 'shrimp_white--peeled', label: '去殼白蝦', state: 'raw', yield_ratio: 1.0 },
+      { id: 'shrimp_white--frozen', label: '冷凍白蝦', state: 'frozen', yield_ratio: 0.7 },
+      { id: 'shrimp_white--cooked', label: '熟白蝦', state: 'cooked', yield_ratio: 0.65 },
     ],
     nutrition_per_100g: {
       calories: 85, protein: 18, fat: 0.9, carbs: 0.9, sodium: 119,
@@ -35,9 +35,9 @@ export default [
     name_en: 'Tiger Prawn',
     categories: ['海鮮'],
     variants: [
-      { id: 'shrimp_prawn--raw',    label: '生草蝦（帶殼）', state: 'raw',    yield_ratio: 0.65 },
-      { id: 'shrimp_prawn--peeled', label: '去殼草蝦',       state: 'raw',    yield_ratio: 1.0  },
-      { id: 'shrimp_prawn--cooked', label: '熟草蝦',         state: 'cooked', yield_ratio: 0.6  },
+      { id: 'shrimp_prawn--raw', label: '生草蝦（帶殼）', state: 'raw', yield_ratio: 0.65 },
+      { id: 'shrimp_prawn--peeled', label: '去殼草蝦', state: 'raw', yield_ratio: 1.0 },
+      { id: 'shrimp_prawn--cooked', label: '熟草蝦', state: 'cooked', yield_ratio: 0.6 },
     ],
     nutrition_per_100g: {
       calories: 90, protein: 19, fat: 1.0, carbs: 0.8, sodium: 148,
@@ -49,14 +49,14 @@ export default [
     verified_at: '2024-11-01',
   },
 
-  // ── 冷凍蝦仁 ─────────────────────────────────────────────
+  // ── 蝦仁 ─────────────────────────────────────────────
   {
     id: 'shrimp_frozen',
-    name: '冷凍蝦仁',
+    name: '蝦仁',
     name_en: 'Frozen Shrimp',
     categories: ['海鮮'],
     variants: [
-      { id: 'shrimp_frozen--standard', label: '冷凍蝦仁', state: 'frozen', yield_ratio: 1.0 },
+      { id: 'shrimp_frozen--standard', label: '蝦仁', state: 'frozen', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 84, protein: 18, fat: 0.9, carbs: 0.7, sodium: 250,
@@ -77,9 +77,9 @@ export default [
     name_en: 'Dried Shrimp',
     categories: ['海鮮'],
     variants: [
-      { id: 'dried_shrimp--small',  label: '小蝦米',   state: 'dried', yield_ratio: 1.0 },
-      { id: 'dried_shrimp--medium', label: '中蝦米',   state: 'dried', yield_ratio: 1.0 },
-      { id: 'dried_shrimp--large',  label: '大蝦米',   state: 'dried', yield_ratio: 1.0 },
+      { id: 'dried_shrimp--small', label: '小蝦米', state: 'dried', yield_ratio: 1.0 },
+      { id: 'dried_shrimp--medium', label: '中蝦米', state: 'dried', yield_ratio: 1.0 },
+      { id: 'dried_shrimp--large', label: '大蝦米', state: 'dried', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 297, protein: 57, fat: 3, carbs: 4, sodium: 3020,
@@ -98,10 +98,10 @@ export default [
     name_en: 'Cuttlefish',
     categories: ['海鮮'],
     variants: [
-      { id: 'cuttlefish--whole',   label: '整隻花枝',   state: 'raw',    yield_ratio: 0.6  },
-      { id: 'cuttlefish--cleaned', label: '清理花枝',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'cuttlefish--rings',   label: '花枝圈',     state: 'raw',    yield_ratio: 1.0  },
-      { id: 'cuttlefish--cooked',  label: '熟花枝',     state: 'cooked', yield_ratio: 0.75 },
+      { id: 'cuttlefish--whole', label: '整隻花枝', state: 'raw', yield_ratio: 0.6 },
+      { id: 'cuttlefish--cleaned', label: '清理花枝', state: 'raw', yield_ratio: 1.0 },
+      { id: 'cuttlefish--rings', label: '花枝圈', state: 'raw', yield_ratio: 1.0 },
+      { id: 'cuttlefish--cooked', label: '熟花枝', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 79, protein: 16, fat: 1, carbs: 0.8, sodium: 260,
@@ -120,9 +120,9 @@ export default [
     name_en: 'Squid',
     categories: ['海鮮'],
     variants: [
-      { id: 'squid--whole',   label: '整隻透抽', state: 'raw',    yield_ratio: 0.65 },
-      { id: 'squid--rings',   label: '透抽圈',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'squid--cooked',  label: '熟透抽',   state: 'cooked', yield_ratio: 0.75 },
+      { id: 'squid--whole', label: '整隻透抽', state: 'raw', yield_ratio: 0.65 },
+      { id: 'squid--rings', label: '透抽圈', state: 'raw', yield_ratio: 1.0 },
+      { id: 'squid--cooked', label: '熟透抽', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 92, protein: 16, fat: 1.4, carbs: 3, sodium: 230,
@@ -141,8 +141,8 @@ export default [
     name_en: 'Dried Squid',
     categories: ['海鮮'],
     variants: [
-      { id: 'dried_squid--whole',  label: '整條乾魷魚', state: 'dried', yield_ratio: 1.0 },
-      { id: 'dried_squid--shred',  label: '魷魚絲',     state: 'dried', yield_ratio: 1.0 },
+      { id: 'dried_squid--whole', label: '整條乾魷魚', state: 'dried', yield_ratio: 1.0 },
+      { id: 'dried_squid--shred', label: '魷魚絲', state: 'dried', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 295, protein: 52, fat: 4, carbs: 9, sodium: 1600,
@@ -161,9 +161,9 @@ export default [
     name_en: 'Octopus',
     categories: ['海鮮'],
     variants: [
-      { id: 'octopus--raw',        label: '生章魚',       state: 'raw',    yield_ratio: 0.7  },
-      { id: 'octopus--cooked',     label: '熟章魚',       state: 'cooked', yield_ratio: 0.6  },
-      { id: 'octopus--baby',       label: '小章魚',       state: 'raw',    yield_ratio: 0.8  },
+      { id: 'octopus--raw', label: '生章魚', state: 'raw', yield_ratio: 0.7 },
+      { id: 'octopus--cooked', label: '熟章魚', state: 'cooked', yield_ratio: 0.6 },
+      { id: 'octopus--baby', label: '小章魚', state: 'raw', yield_ratio: 0.8 },
     ],
     nutrition_per_100g: {
       calories: 82, protein: 15, fat: 1, carbs: 2.2, sodium: 230,
@@ -182,9 +182,9 @@ export default [
     name_en: 'Clam',
     categories: ['海鮮'],
     variants: [
-      { id: 'clam--live',     label: '活蛤蜊',     state: 'raw',    yield_ratio: 0.35 },
-      { id: 'clam--shucked',  label: '去殼蛤蜊',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'clam--cooked',   label: '熟蛤蜊',     state: 'cooked', yield_ratio: 0.3  },
+      { id: 'clam--live', label: '活蛤蜊', state: 'raw', yield_ratio: 0.35 },
+      { id: 'clam--shucked', label: '去殼蛤蜊', state: 'raw', yield_ratio: 1.0 },
+      { id: 'clam--cooked', label: '熟蛤蜊', state: 'cooked', yield_ratio: 0.3 },
     ],
     nutrition_per_100g: {
       calories: 74, protein: 13, fat: 1, carbs: 3, sodium: 56,
@@ -203,10 +203,10 @@ export default [
     name_en: 'Oyster',
     categories: ['海鮮'],
     variants: [
-      { id: 'oyster--shucked',  label: '去殼蚵仔（生）', state: 'raw',    yield_ratio: 1.0 },
-      { id: 'oyster--live',     label: '活牡蠣',         state: 'raw',    yield_ratio: 0.2 },
-      { id: 'oyster--cooked',   label: '熟蚵仔',         state: 'cooked', yield_ratio: 0.7 },
-      { id: 'oyster--dried',    label: '乾蚵',           state: 'dried',  yield_ratio: 1.0 },
+      { id: 'oyster--shucked', label: '去殼蚵仔（生）', state: 'raw', yield_ratio: 1.0 },
+      { id: 'oyster--live', label: '活牡蠣', state: 'raw', yield_ratio: 0.2 },
+      { id: 'oyster--cooked', label: '熟蚵仔', state: 'cooked', yield_ratio: 0.7 },
+      { id: 'oyster--dried', label: '乾蚵', state: 'dried', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 68, protein: 7, fat: 2, carbs: 4, sodium: 211,
@@ -225,10 +225,10 @@ export default [
     name_en: 'Mussel',
     categories: ['海鮮'],
     variants: [
-      { id: 'mussel--live',    label: '活淡菜',     state: 'raw',    yield_ratio: 0.3  },
-      { id: 'mussel--shucked', label: '去殼淡菜',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'mussel--cooked',  label: '熟淡菜',     state: 'cooked', yield_ratio: 0.28 },
-      { id: 'mussel--dried',   label: '乾淡菜',     state: 'dried',  yield_ratio: 1.0  },
+      { id: 'mussel--live', label: '活淡菜', state: 'raw', yield_ratio: 0.3 },
+      { id: 'mussel--shucked', label: '去殼淡菜', state: 'raw', yield_ratio: 1.0 },
+      { id: 'mussel--cooked', label: '熟淡菜', state: 'cooked', yield_ratio: 0.28 },
+      { id: 'mussel--dried', label: '乾淡菜', state: 'dried', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 86, protein: 12, fat: 2.2, carbs: 4, sodium: 286,
@@ -247,10 +247,10 @@ export default [
     name_en: 'Scallop',
     categories: ['海鮮'],
     variants: [
-      { id: 'scallop--fresh',  label: '新鮮干貝',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'scallop--frozen', label: '冷凍干貝',   state: 'frozen', yield_ratio: 1.0  },
-      { id: 'scallop--dried',  label: '乾干貝',     state: 'dried',  yield_ratio: 1.0  },
-      { id: 'scallop--cooked', label: '熟干貝',     state: 'cooked', yield_ratio: 0.7  },
+      { id: 'scallop--fresh', label: '新鮮干貝', state: 'raw', yield_ratio: 1.0 },
+      { id: 'scallop--frozen', label: '冷凍干貝', state: 'frozen', yield_ratio: 1.0 },
+      { id: 'scallop--dried', label: '乾干貝', state: 'dried', yield_ratio: 1.0 },
+      { id: 'scallop--cooked', label: '熟干貝', state: 'cooked', yield_ratio: 0.7 },
     ],
     nutrition_per_100g: {
       calories: 88, protein: 17, fat: 0.8, carbs: 3, sodium: 161,
@@ -269,9 +269,9 @@ export default [
     name_en: 'Crab',
     categories: ['海鮮'],
     variants: [
-      { id: 'crab--live',    label: '活螃蟹',   state: 'raw',    yield_ratio: 0.35 },
-      { id: 'crab--cooked',  label: '熟螃蟹',   state: 'cooked', yield_ratio: 0.3  },
-      { id: 'crab--meat',    label: '蟹肉',     state: 'cooked', yield_ratio: 1.0  },
+      { id: 'crab--live', label: '活螃蟹', state: 'raw', yield_ratio: 0.35 },
+      { id: 'crab--cooked', label: '熟螃蟹', state: 'cooked', yield_ratio: 0.3 },
+      { id: 'crab--meat', label: '蟹肉', state: 'cooked', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 97, protein: 19, fat: 1.5, carbs: 0, sodium: 293,
@@ -290,9 +290,9 @@ export default [
     name_en: 'Lobster',
     categories: ['海鮮'],
     variants: [
-      { id: 'lobster--live',   label: '活龍蝦',   state: 'raw',    yield_ratio: 0.3  },
-      { id: 'lobster--tail',   label: '龍蝦尾',   state: 'raw',    yield_ratio: 0.5  },
-      { id: 'lobster--cooked', label: '熟龍蝦',   state: 'cooked', yield_ratio: 0.28 },
+      { id: 'lobster--live', label: '活龍蝦', state: 'raw', yield_ratio: 0.3 },
+      { id: 'lobster--tail', label: '龍蝦尾', state: 'raw', yield_ratio: 0.5 },
+      { id: 'lobster--cooked', label: '熟龍蝦', state: 'cooked', yield_ratio: 0.28 },
     ],
     nutrition_per_100g: {
       calories: 98, protein: 19, fat: 1.1, carbs: 0.5, sodium: 296,
@@ -311,11 +311,11 @@ export default [
     name_en: 'Salmon',
     categories: ['海鮮'],
     variants: [
-      { id: 'salmon--fillet',  label: '鮭魚排',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'salmon--slice',   label: '鮭魚片',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'salmon--cooked',  label: '熟鮭魚',   state: 'cooked', yield_ratio: 0.8  },
-      { id: 'salmon--smoked',  label: '煙燻鮭魚', state: 'smoked', yield_ratio: 1.0  },
-      { id: 'salmon--sashimi', label: '鮭魚生魚片', state: 'raw',  yield_ratio: 1.0  },
+      { id: 'salmon--fillet', label: '鮭魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'salmon--slice', label: '鮭魚片', state: 'raw', yield_ratio: 1.0 },
+      { id: 'salmon--cooked', label: '熟鮭魚', state: 'cooked', yield_ratio: 0.8 },
+      { id: 'salmon--smoked', label: '煙燻鮭魚', state: 'smoked', yield_ratio: 1.0 },
+      { id: 'salmon--sashimi', label: '鮭魚生魚片', state: 'raw', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 208, protein: 20, fat: 13, carbs: 0, sodium: 59,
@@ -334,7 +334,7 @@ export default [
     name_en: 'Smoked Salmon',
     categories: ['海鮮'],
     variants: [
-      { id: 'smoked_salmon--sliced',   label: '煙燻鮭魚片', state: 'smoked', yield_ratio: 1.0 },
+      { id: 'smoked_salmon--sliced', label: '煙燻鮭魚片', state: 'smoked', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 177, protein: 18, fat: 10, carbs: 0, sodium: 784,
@@ -353,9 +353,9 @@ export default [
     name_en: 'Tuna',
     categories: ['海鮮'],
     variants: [
-      { id: 'tuna--steak',    label: '鮪魚排',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'tuna--sashimi',  label: '鮪魚生魚片', state: 'raw',  yield_ratio: 1.0  },
-      { id: 'tuna--cooked',   label: '熟鮪魚',   state: 'cooked', yield_ratio: 0.78 },
+      { id: 'tuna--steak', label: '鮪魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'tuna--sashimi', label: '鮪魚生魚片', state: 'raw', yield_ratio: 1.0 },
+      { id: 'tuna--cooked', label: '熟鮪魚', state: 'cooked', yield_ratio: 0.78 },
     ],
     nutrition_per_100g: {
       calories: 184, protein: 30, fat: 6, carbs: 0, sodium: 39,
@@ -375,7 +375,7 @@ export default [
     categories: ['海鮮'],
     variants: [
       { id: 'canned_tuna--in_water', label: '水漬鮪魚罐', state: 'cooked', yield_ratio: 1.0 },
-      { id: 'canned_tuna--in_oil',   label: '油漬鮪魚罐', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'canned_tuna--in_oil', label: '油漬鮪魚罐', state: 'cooked', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 116, protein: 26, fat: 1, carbs: 0, sodium: 330,
@@ -394,9 +394,9 @@ export default [
     name_en: 'Cod',
     categories: ['海鮮'],
     variants: [
-      { id: 'cod--fillet',  label: '鱈魚排',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'cod--frozen',  label: '冷凍鱈魚', state: 'frozen', yield_ratio: 1.0  },
-      { id: 'cod--cooked',  label: '熟鱈魚',   state: 'cooked', yield_ratio: 0.75 },
+      { id: 'cod--fillet', label: '鱈魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'cod--frozen', label: '冷凍鱈魚', state: 'frozen', yield_ratio: 1.0 },
+      { id: 'cod--cooked', label: '熟鱈魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 82, protein: 18, fat: 0.7, carbs: 0, sodium: 54,
@@ -415,9 +415,9 @@ export default [
     name_en: 'Sea Bass',
     categories: ['海鮮'],
     variants: [
-      { id: 'sea_bass--whole',  label: '整尾鱸魚',   state: 'raw',    yield_ratio: 0.45 },
-      { id: 'sea_bass--fillet', label: '鱸魚排',     state: 'raw',    yield_ratio: 1.0  },
-      { id: 'sea_bass--cooked', label: '熟鱸魚',     state: 'cooked', yield_ratio: 0.75 },
+      { id: 'sea_bass--whole', label: '整尾鱸魚', state: 'raw', yield_ratio: 0.45 },
+      { id: 'sea_bass--fillet', label: '鱸魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'sea_bass--cooked', label: '熟鱸魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 97, protein: 19, fat: 2, carbs: 0, sodium: 68,
@@ -436,9 +436,9 @@ export default [
     name_en: 'Tilapia',
     categories: ['海鮮'],
     variants: [
-      { id: 'tilapia--whole',  label: '整尾吳郭魚', state: 'raw',    yield_ratio: 0.45 },
-      { id: 'tilapia--fillet', label: '吳郭魚片',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'tilapia--cooked', label: '熟吳郭魚',   state: 'cooked', yield_ratio: 0.75 },
+      { id: 'tilapia--whole', label: '整尾吳郭魚', state: 'raw', yield_ratio: 0.45 },
+      { id: 'tilapia--fillet', label: '吳郭魚片', state: 'raw', yield_ratio: 1.0 },
+      { id: 'tilapia--cooked', label: '熟吳郭魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 96, protein: 20, fat: 1.7, carbs: 0, sodium: 52,
@@ -457,10 +457,10 @@ export default [
     name_en: 'Mackerel',
     categories: ['海鮮'],
     variants: [
-      { id: 'mackerel--whole',    label: '整尾鯖魚',   state: 'raw',    yield_ratio: 0.5  },
-      { id: 'mackerel--fillet',   label: '鯖魚排',     state: 'raw',    yield_ratio: 1.0  },
-      { id: 'mackerel--salted',   label: '鹽漬鯖魚',   state: 'cured',  yield_ratio: 1.0  },
-      { id: 'mackerel--cooked',   label: '熟鯖魚',     state: 'cooked', yield_ratio: 0.75 },
+      { id: 'mackerel--whole', label: '整尾鯖魚', state: 'raw', yield_ratio: 0.5 },
+      { id: 'mackerel--fillet', label: '鯖魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'mackerel--salted', label: '鹽漬鯖魚', state: 'cured', yield_ratio: 1.0 },
+      { id: 'mackerel--cooked', label: '熟鯖魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 205, protein: 19, fat: 14, carbs: 0, sodium: 90,
@@ -479,8 +479,8 @@ export default [
     name_en: 'Sardine',
     categories: ['海鮮'],
     variants: [
-      { id: 'sardine--fresh',  label: '新鮮沙丁魚', state: 'raw',    yield_ratio: 0.6  },
-      { id: 'sardine--canned', label: '沙丁魚罐頭', state: 'cooked', yield_ratio: 1.0  },
+      { id: 'sardine--fresh', label: '新鮮沙丁魚', state: 'raw', yield_ratio: 0.6 },
+      { id: 'sardine--canned', label: '沙丁魚罐頭', state: 'cooked', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 208, protein: 25, fat: 11, carbs: 0, sodium: 505,
@@ -499,8 +499,8 @@ export default [
     name_en: 'Canned Sardine',
     categories: ['海鮮'],
     variants: [
-      { id: 'canned_sardine--in_oil',   label: '油漬沙丁魚罐', state: 'cooked', yield_ratio: 1.0 },
-      { id: 'canned_sardine--in_tomato',label: '番茄沙丁魚罐', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'canned_sardine--in_oil', label: '油漬沙丁魚罐', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'canned_sardine--in_tomato', label: '番茄沙丁魚罐', state: 'cooked', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 191, protein: 23, fat: 10, carbs: 1, sodium: 505,
@@ -519,9 +519,9 @@ export default [
     name_en: 'Anchovy',
     categories: ['海鮮'],
     variants: [
-      { id: 'anchovy--canned',  label: '鯷魚罐頭', state: 'cured',  yield_ratio: 1.0 },
-      { id: 'anchovy--dried',   label: '小魚乾',   state: 'dried',  yield_ratio: 1.0 },
-      { id: 'anchovy--paste',   label: '鯷魚醬',   state: 'paste',  yield_ratio: 1.0 },
+      { id: 'anchovy--canned', label: '鯷魚罐頭', state: 'cured', yield_ratio: 1.0 },
+      { id: 'anchovy--dried', label: '小魚乾', state: 'dried', yield_ratio: 1.0 },
+      { id: 'anchovy--paste', label: '鯷魚醬', state: 'paste', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 210, protein: 29, fat: 10, carbs: 0, sodium: 3668,
@@ -540,9 +540,9 @@ export default [
     name_en: 'Flounder',
     categories: ['海鮮'],
     variants: [
-      { id: 'flounder--fillet', label: '比目魚排',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'flounder--whole',  label: '整尾比目魚', state: 'raw',    yield_ratio: 0.45 },
-      { id: 'flounder--cooked', label: '熟比目魚',   state: 'cooked', yield_ratio: 0.75 },
+      { id: 'flounder--fillet', label: '比目魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'flounder--whole', label: '整尾比目魚', state: 'raw', yield_ratio: 0.45 },
+      { id: 'flounder--cooked', label: '熟比目魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 91, protein: 19, fat: 1.2, carbs: 0, sodium: 81,
@@ -561,9 +561,9 @@ export default [
     name_en: 'Yellowtail',
     categories: ['海鮮'],
     variants: [
-      { id: 'yellowtail--fillet',  label: '午仔魚排',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'yellowtail--whole',   label: '整尾午仔魚', state: 'raw',    yield_ratio: 0.5  },
-      { id: 'yellowtail--sashimi', label: '午仔魚生魚片', state: 'raw',  yield_ratio: 1.0  },
+      { id: 'yellowtail--fillet', label: '午仔魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'yellowtail--whole', label: '整尾午仔魚', state: 'raw', yield_ratio: 0.5 },
+      { id: 'yellowtail--sashimi', label: '午仔魚生魚片', state: 'raw', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 146, protein: 23, fat: 5.4, carbs: 0, sodium: 40,
@@ -582,9 +582,9 @@ export default [
     name_en: 'Sea Bream',
     categories: ['海鮮'],
     variants: [
-      { id: 'sea_bream--whole',   label: '整尾鯛魚', state: 'raw',    yield_ratio: 0.45 },
-      { id: 'sea_bream--fillet',  label: '鯛魚排',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'sea_bream--cooked',  label: '熟鯛魚',   state: 'cooked', yield_ratio: 0.75 },
+      { id: 'sea_bream--whole', label: '整尾鯛魚', state: 'raw', yield_ratio: 0.45 },
+      { id: 'sea_bream--fillet', label: '鯛魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'sea_bream--cooked', label: '熟鯛魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 115, protein: 21, fat: 3, carbs: 0, sodium: 69,
@@ -603,9 +603,9 @@ export default [
     name_en: 'Grouper',
     categories: ['海鮮'],
     variants: [
-      { id: 'grouper--whole',  label: '整尾石斑魚', state: 'raw',    yield_ratio: 0.45 },
-      { id: 'grouper--fillet', label: '石斑魚排',   state: 'raw',    yield_ratio: 1.0  },
-      { id: 'grouper--cooked', label: '熟石斑魚',   state: 'cooked', yield_ratio: 0.75 },
+      { id: 'grouper--whole', label: '整尾石斑魚', state: 'raw', yield_ratio: 0.45 },
+      { id: 'grouper--fillet', label: '石斑魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'grouper--cooked', label: '熟石斑魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 92, protein: 19, fat: 1.3, carbs: 0, sodium: 60,
@@ -624,9 +624,9 @@ export default [
     name_en: 'Red Snapper',
     categories: ['海鮮'],
     variants: [
-      { id: 'snapper--whole',  label: '整尾紅鯛', state: 'raw',    yield_ratio: 0.45 },
-      { id: 'snapper--fillet', label: '紅鯛魚排', state: 'raw',    yield_ratio: 1.0  },
-      { id: 'snapper--cooked', label: '熟紅鯛',   state: 'cooked', yield_ratio: 0.75 },
+      { id: 'snapper--whole', label: '整尾紅鯛', state: 'raw', yield_ratio: 0.45 },
+      { id: 'snapper--fillet', label: '紅鯛魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'snapper--cooked', label: '熟紅鯛', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 100, protein: 20, fat: 1.3, carbs: 0, sodium: 64,
@@ -645,9 +645,9 @@ export default [
     name_en: 'Eel',
     categories: ['海鮮'],
     variants: [
-      { id: 'eel--fresh',     label: '新鮮鰻魚',     state: 'raw',    yield_ratio: 0.6  },
-      { id: 'eel--kabayaki',  label: '蒲燒鰻',       state: 'cooked', yield_ratio: 1.0  },
-      { id: 'eel--frozen',    label: '冷凍蒲燒鰻',   state: 'frozen', yield_ratio: 1.0  },
+      { id: 'eel--fresh', label: '新鮮鰻魚', state: 'raw', yield_ratio: 0.6 },
+      { id: 'eel--kabayaki', label: '蒲燒鰻', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'eel--frozen', label: '冷凍蒲燒鰻', state: 'frozen', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 236, protein: 18, fat: 17, carbs: 0.3, sodium: 72,
@@ -666,7 +666,7 @@ export default [
     name_en: 'Swordfish',
     categories: ['海鮮'],
     variants: [
-      { id: 'swordfish--steak',  label: '旗魚排', state: 'raw',    yield_ratio: 1.0  },
+      { id: 'swordfish--steak', label: '旗魚排', state: 'raw', yield_ratio: 1.0 },
       { id: 'swordfish--cooked', label: '熟旗魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
@@ -686,10 +686,10 @@ export default [
     name_en: 'Milkfish',
     categories: ['海鮮'],
     variants: [
-      { id: 'milkfish--whole',    label: '整尾虱目魚',   state: 'raw',    yield_ratio: 0.45 },
-      { id: 'milkfish--fillet',   label: '虱目魚肚',     state: 'raw',    yield_ratio: 1.0  },
-      { id: 'milkfish--boneless', label: '無刺虱目魚',   state: 'raw',    yield_ratio: 0.8  },
-      { id: 'milkfish--cooked',   label: '熟虱目魚',     state: 'cooked', yield_ratio: 0.75 },
+      { id: 'milkfish--whole', label: '整尾虱目魚', state: 'raw', yield_ratio: 0.45 },
+      { id: 'milkfish--fillet', label: '虱目魚肚', state: 'raw', yield_ratio: 1.0 },
+      { id: 'milkfish--boneless', label: '無刺虱目魚', state: 'raw', yield_ratio: 0.8 },
+      { id: 'milkfish--cooked', label: '熟虱目魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 148, protein: 21, fat: 6.6, carbs: 0, sodium: 53,
@@ -708,9 +708,9 @@ export default [
     name_en: 'Fish Cake',
     categories: ['海鮮'],
     variants: [
-      { id: 'fish_cake--white',   label: '白魚板',   state: 'cooked', yield_ratio: 1.0 },
-      { id: 'fish_cake--red',     label: '紅邊魚板', state: 'cooked', yield_ratio: 1.0 },
-      { id: 'fish_cake--frozen',  label: '冷凍魚板', state: 'frozen', yield_ratio: 1.0 },
+      { id: 'fish_cake--white', label: '白魚板', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'fish_cake--red', label: '紅邊魚板', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'fish_cake--frozen', label: '冷凍魚板', state: 'frozen', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 96, protein: 9, fat: 0.9, carbs: 13, sodium: 1100,
@@ -729,9 +729,9 @@ export default [
     name_en: 'Fish Ball',
     categories: ['海鮮'],
     variants: [
-      { id: 'fish_ball--plain',    label: '普通魚丸',   state: 'cooked', yield_ratio: 1.0 },
-      { id: 'fish_ball--stuffed',  label: '包餡魚丸',   state: 'cooked', yield_ratio: 1.0 },
-      { id: 'fish_ball--frozen',   label: '冷凍魚丸',   state: 'frozen', yield_ratio: 1.0 },
+      { id: 'fish_ball--plain', label: '普通魚丸', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'fish_ball--stuffed', label: '包餡魚丸', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'fish_ball--frozen', label: '冷凍魚丸', state: 'frozen', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 110, protein: 11, fat: 2, carbs: 13, sodium: 620,
@@ -769,9 +769,9 @@ export default [
     name_en: 'Sea Cucumber',
     categories: ['海鮮'],
     variants: [
-      { id: 'sea_cucumber--fresh',   label: '新鮮海參',   state: 'raw',    yield_ratio: 0.5  },
-      { id: 'sea_cucumber--dried',   label: '乾海參',     state: 'dried',  yield_ratio: 1.0  },
-      { id: 'sea_cucumber--cooked',  label: '熟海參',     state: 'cooked', yield_ratio: 0.45 },
+      { id: 'sea_cucumber--fresh', label: '新鮮海參', state: 'raw', yield_ratio: 0.5 },
+      { id: 'sea_cucumber--dried', label: '乾海參', state: 'dried', yield_ratio: 1.0 },
+      { id: 'sea_cucumber--cooked', label: '熟海參', state: 'cooked', yield_ratio: 0.45 },
     ],
     nutrition_per_100g: {
       calories: 54, protein: 11, fat: 0.5, carbs: 1.3, sodium: 143,
@@ -790,9 +790,9 @@ export default [
     name_en: 'Abalone',
     categories: ['海鮮'],
     variants: [
-      { id: 'abalone--fresh',  label: '新鮮鮑魚',   state: 'raw',    yield_ratio: 0.6  },
-      { id: 'abalone--canned', label: '鮑魚罐頭',   state: 'cooked', yield_ratio: 1.0  },
-      { id: 'abalone--dried',  label: '乾鮑魚',     state: 'dried',  yield_ratio: 1.0  },
+      { id: 'abalone--fresh', label: '新鮮鮑魚', state: 'raw', yield_ratio: 0.6 },
+      { id: 'abalone--canned', label: '鮑魚罐頭', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'abalone--dried', label: '乾鮑魚', state: 'dried', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 105, protein: 17, fat: 0.8, carbs: 6, sodium: 301,
@@ -811,8 +811,8 @@ export default [
     name_en: 'Sea Urchin',
     categories: ['海鮮'],
     variants: [
-      { id: 'sea_urchin--fresh',   label: '新鮮海膽',   state: 'raw',    yield_ratio: 1.0 },
-      { id: 'sea_urchin--jarred',  label: '罐裝海膽',   state: 'raw',    yield_ratio: 1.0 },
+      { id: 'sea_urchin--fresh', label: '新鮮海膽', state: 'raw', yield_ratio: 1.0 },
+      { id: 'sea_urchin--jarred', label: '罐裝海膽', state: 'raw', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 172, protein: 13, fat: 6, carbs: 11, sodium: 233,
@@ -832,7 +832,7 @@ export default [
     categories: ['海鮮'],
     variants: [
       { id: 'shrimp_cake--frozen', label: '冷凍蝦餅', state: 'frozen', yield_ratio: 1.0 },
-      { id: 'shrimp_cake--raw',    label: '自製蝦餅', state: 'raw',    yield_ratio: 1.0 },
+      { id: 'shrimp_cake--raw', label: '自製蝦餅', state: 'raw', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 140, protein: 12, fat: 5, carbs: 12, sodium: 580,
@@ -852,7 +852,7 @@ export default [
     categories: ['海鮮'],
     variants: [
       { id: 'cuttlefish_ball--frozen', label: '冷凍花枝丸', state: 'frozen', yield_ratio: 1.0 },
-      { id: 'cuttlefish_ball--cooked', label: '熟花枝丸',   state: 'cooked', yield_ratio: 0.95 },
+      { id: 'cuttlefish_ball--cooked', label: '熟花枝丸', state: 'cooked', yield_ratio: 0.95 },
     ],
     nutrition_per_100g: {
       calories: 115, protein: 10, fat: 2.5, carbs: 14, sodium: 650,
@@ -871,9 +871,9 @@ export default [
     name_en: 'Trout',
     categories: ['海鮮'],
     variants: [
-      { id: 'trout--rainbow',  label: '彩虹鱒魚排', state: 'raw',    yield_ratio: 1.0  },
-      { id: 'trout--whole',    label: '整尾鱒魚',   state: 'raw',    yield_ratio: 0.5  },
-      { id: 'trout--smoked',   label: '煙燻鱒魚',   state: 'smoked', yield_ratio: 1.0  },
+      { id: 'trout--rainbow', label: '彩虹鱒魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'trout--whole', label: '整尾鱒魚', state: 'raw', yield_ratio: 0.5 },
+      { id: 'trout--smoked', label: '煙燻鱒魚', state: 'smoked', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 141, protein: 20, fat: 6, carbs: 0, sodium: 52,
@@ -892,9 +892,9 @@ export default [
     name_en: 'Bonito',
     categories: ['海鮮'],
     variants: [
-      { id: 'bonito--fresh',     label: '新鮮鰹魚',   state: 'raw',    yield_ratio: 0.6 },
-      { id: 'bonito--tataki',    label: '鰹魚半敲燒', state: 'cooked', yield_ratio: 1.0 },
-      { id: 'bonito--dried',     label: '柴魚片',     state: 'dried',  yield_ratio: 1.0 },
+      { id: 'bonito--fresh', label: '新鮮鰹魚', state: 'raw', yield_ratio: 0.6 },
+      { id: 'bonito--tataki', label: '鰹魚半敲燒', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'bonito--dried', label: '柴魚片', state: 'dried', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 165, protein: 26, fat: 6, carbs: 0, sodium: 41,
@@ -913,9 +913,9 @@ export default [
     name_en: 'Catfish',
     categories: ['海鮮'],
     variants: [
-      { id: 'catfish--fillet',  label: '鯰魚排', state: 'raw',    yield_ratio: 1.0  },
-      { id: 'catfish--whole',   label: '整尾鯰魚', state: 'raw',  yield_ratio: 0.5  },
-      { id: 'catfish--cooked',  label: '熟鯰魚', state: 'cooked', yield_ratio: 0.75 },
+      { id: 'catfish--fillet', label: '鯰魚排', state: 'raw', yield_ratio: 1.0 },
+      { id: 'catfish--whole', label: '整尾鯰魚', state: 'raw', yield_ratio: 0.5 },
+      { id: 'catfish--cooked', label: '熟鯰魚', state: 'cooked', yield_ratio: 0.75 },
     ],
     nutrition_per_100g: {
       calories: 105, protein: 18, fat: 2.8, carbs: 0, sodium: 53,
@@ -935,7 +935,7 @@ export default [
     categories: ['海鮮'],
     variants: [
       { id: 'canned_sea_bream--in_water', label: '水煮鯖魚罐', state: 'cooked', yield_ratio: 1.0 },
-      { id: 'canned_sea_bream--miso',     label: '味噌鯖魚罐', state: 'cooked', yield_ratio: 1.0 },
+      { id: 'canned_sea_bream--miso', label: '味噌鯖魚罐', state: 'cooked', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 167, protein: 19, fat: 10, carbs: 0, sodium: 480,
@@ -954,8 +954,8 @@ export default [
     name_en: 'Salmon Roe',
     categories: ['海鮮'],
     variants: [
-      { id: 'salmon_roe--ikura',  label: '醬油漬鮭魚卵', state: 'cured', yield_ratio: 1.0 },
-      { id: 'salmon_roe--fresh',  label: '新鮮鮭魚卵',   state: 'raw',   yield_ratio: 1.0 },
+      { id: 'salmon_roe--ikura', label: '醬油漬鮭魚卵', state: 'cured', yield_ratio: 1.0 },
+      { id: 'salmon_roe--fresh', label: '新鮮鮭魚卵', state: 'raw', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 250, protein: 29, fat: 14, carbs: 1.5, sodium: 780,
@@ -974,9 +974,9 @@ export default [
     name_en: 'Flying Fish Roe',
     categories: ['海鮮'],
     variants: [
-      { id: 'flying_fish_roe--tobiko',  label: '飛魚卵（橙色）', state: 'raw', yield_ratio: 1.0 },
-      { id: 'flying_fish_roe--wasabi',  label: '芥末飛魚卵',     state: 'raw', yield_ratio: 1.0 },
-      { id: 'flying_fish_roe--squid',   label: '墨魚飛魚卵',     state: 'raw', yield_ratio: 1.0 },
+      { id: 'flying_fish_roe--tobiko', label: '飛魚卵（橙色）', state: 'raw', yield_ratio: 1.0 },
+      { id: 'flying_fish_roe--wasabi', label: '芥末飛魚卵', state: 'raw', yield_ratio: 1.0 },
+      { id: 'flying_fish_roe--squid', label: '墨魚飛魚卵', state: 'raw', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
       calories: 280, protein: 40, fat: 9, carbs: 5, sodium: 875,
@@ -995,7 +995,7 @@ export default [
     name_en: 'Shrimp Paste',
     categories: ['海鮮'],
     variants: [
-      { id: 'shrimp_paste--raw',    label: '生蝦漿',   state: 'raw',    yield_ratio: 1.0 },
+      { id: 'shrimp_paste--raw', label: '生蝦漿', state: 'raw', yield_ratio: 1.0 },
       { id: 'shrimp_paste--frozen', label: '冷凍蝦漿', state: 'frozen', yield_ratio: 1.0 },
     ],
     nutrition_per_100g: {
@@ -1016,8 +1016,8 @@ export default [
     categories: ['海鮮'],
     variants: [
       { id: 'shrimp_ball--frozen', label: '冷凍蝦丸', state: 'frozen', yield_ratio: 1.0 },
-      { id: 'shrimp_ball--raw',    label: '自製蝦丸', state: 'raw',    yield_ratio: 1.0 },
-      { id: 'shrimp_ball--cooked', label: '熟蝦丸',   state: 'cooked', yield_ratio: 0.9 },
+      { id: 'shrimp_ball--raw', label: '自製蝦丸', state: 'raw', yield_ratio: 1.0 },
+      { id: 'shrimp_ball--cooked', label: '熟蝦丸', state: 'cooked', yield_ratio: 0.9 },
     ],
     nutrition_per_100g: {
       calories: 105, protein: 14, fat: 2, carbs: 9, sodium: 550,
