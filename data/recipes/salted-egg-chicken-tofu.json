@@ -1,0 +1,208 @@
+{
+  "id": 7,
+  "title": "鹹蛋雞肉豆腐煲",
+  "subtitle": "Salted Egg Chicken Tofu",
+  "description": "超級下飯的家常料理！鹹蛋的濃郁鹹香配上滑嫩的豆腐與鮮嫩的雞肉，金黃色澤讓人食指大動。",
+  "category": "晚餐",
+  "cuisine": "台式",
+  "meal_type": "料理",
+  "tags": [
+    "燉煮",
+    "下飯",
+    "香濃"
+  ],
+  "base_servings": 1,
+  "time_estimate": "25 分鐘",
+  "difficulty": "中等",
+  "image": "images/salted_egg_chicken_tofu.png",
+  "ingredients": [
+    {
+      "ingredient_id": "chicken_thigh",
+      "variant_id": "chicken_thigh--boneless",
+      "qty": 150,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切丁"
+    },
+    {
+      "ingredient_id": "tofu",
+      "variant_id": "tofu--egg",
+      "qty": 150,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切塊"
+    },
+    {
+      "ingredient_id": "egg_duck",
+      "variant_id": "egg_duck--salted",
+      "qty": 1,
+      "unit": "顆",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "蛋黃與蛋白分開並切碎"
+    },
+    {
+      "ingredient_id": "garlic_raw",
+      "variant_id": "garlic_raw--minced",
+      "qty": 1,
+      "unit": "瓣",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "green_onion",
+      "variant_id": "green_onion--chopped",
+      "qty": 5,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "sake_cooking",
+      "variant_id": "sake_cooking--rice",
+      "qty": 10,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true,
+      "note": "醃肉用"
+    },
+    {
+      "ingredient_id": "soy_sauce",
+      "variant_id": "soy_sauce--regular",
+      "qty": 5,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true,
+      "note": "醃肉用"
+    },
+    {
+      "ingredient_id": "cornstarch",
+      "variant_id": "cornstarch--potato",
+      "qty": 10,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true,
+      "note": "一半醃肉，一半勾芡"
+    },
+    {
+      "ingredient_id": "water",
+      "variant_id": "water--cold",
+      "qty": 100,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "vegetable_oil",
+      "variant_id": "vegetable_oil--regular",
+      "qty": null,
+      "unit": "適量",
+      "scalable": false,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "salt",
+      "variant_id": "salt--sea",
+      "qty": null,
+      "unit": "適量",
+      "scalable": false,
+      "optional": true,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "white_pepper_powder",
+      "variant_id": "white_pepper_powder--ground",
+      "qty": null,
+      "unit": "少許",
+      "scalable": false,
+      "optional": true,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "砂鍋保溫效果好，更能保持煲湯的溫度與風味。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "雞腿肉切丁，加入米酒、醬油與少許太白粉抓勻，醃漬約 10 分鐘。",
+          "method_id": "marinate",
+          "duration_s": 600,
+          "ingredient_ids": [
+            "chicken_thigh--boneless",
+            "sake_cooking--rice",
+            "soy_sauce--regular",
+            "cornstarch--potato"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "雞蛋豆腐切塊，鍋中熱少許油，將豆腐煎至表面微黃，盛起備用。",
+          "method_id": "pan_fry_medium_heat",
+          "duration_s": 300,
+          "ingredient_ids": [
+            "tofu--egg",
+            "vegetable_oil--regular"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "原鍋用中小火先將鹹蛋黃碎炒至起泡、散發出香氣，再加入蛋白碎繼續拌炒。",
+          "method_id": "stir_fry_medium_heat",
+          "duration_s": 120,
+          "ingredient_ids": [
+            "egg_duck--salted"
+          ]
+        },
+        {
+          "order": 4,
+          "instruction": "加入蒜末炒香，接著放入醃好的雞肉丁炒至變色。",
+          "method_id": "stir_fry_high_heat",
+          "duration_s": 180,
+          "ingredient_ids": [
+            "garlic_raw--minced",
+            "chicken_thigh--boneless"
+          ]
+        },
+        {
+          "order": 5,
+          "instruction": "倒入清水煮滾，並放回煎好的豆腐。轉小火蓋上鍋蓋燜煮 5 分鐘。",
+          "method_id": "simmer_low_heat",
+          "duration_s": 300,
+          "ingredient_ids": [
+            "water--cold",
+            "tofu--egg"
+          ]
+        },
+        {
+          "order": 6,
+          "instruction": "若需要可加鹽、白胡椒調味。起鍋前以少許太白粉水勾薄芡，撒上蔥花即完成。",
+          "method_id": "thicken_sauce",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "salt--sea",
+            "white_pepper_powder--ground",
+            "cornstarch--potato",
+            "green_onion--chopped"
+          ]
+        }
+      ]
+    }
+  ],
+  "tips": "豆腐先煎過可以避免在燉煮時碎裂，並賦予外焦裡嫩的口感。鹹鴨蛋本身的鹹度差異很大，請試味道後再決定要加多少鹽巴喔！",
+  "slug": "salted-egg-chicken-tofu"
+}

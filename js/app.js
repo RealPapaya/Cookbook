@@ -1,4 +1,4 @@
-import { RECIPES, CUISINE_LIST, MEALTYPE_LIST, CATEGORY_LIST, DIFFICULTY_LIST } from './recipes.js';
+import { CUISINE_LIST, MEALTYPE_LIST, CATEGORY_LIST, DIFFICULTY_LIST } from './recipes.js';
 import { INGREDIENTS, INGREDIENT_CATEGORIES, getIngredient, INGREDIENT_TAG_COLORS, INGREDIENT_TASTES, INGREDIENT_TEXTURES } from './ingredients/_registry.js';
 import { getCookingMethod, METHOD_TYPES } from './cooking-methods.js';
 import { loadMyRecipes, addMyRecipe, deleteMyRecipe } from './my-recipes.js';
@@ -28,21 +28,45 @@ const state = {
   // Kitchen
   kitchenIngredients: new Set(), // Set of ingredient base-ids
   kitchenOpen: false,
+  recipeDataCache: {},
 };
+
+let RECIPES_INDEX = [];
 
 // ============================================================
 // Boot
 // ============================================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   state.myRecipes = loadMyRecipes();
   buildFilterPanel();
   buildKitchenPanel();
   buildAddRecipeModal();
+  
+  try {
+    const res = await fetch('data/recipes/index.json');
+    RECIPES_INDEX = await res.json();
+  } catch(e) { console.error('Failed to load recipes index:', e); }
+
   renderGrid();
   setupSearch();
   setupNav();
   registerSW();
 });
+
+async function loadRecipeDetail(id) {
+  if (state.recipeDataCache[id]) return state.recipeDataCache[id];
+  const idxInfo = RECIPES_INDEX.find(r => r.id === id);
+  if (!idxInfo) return null;
+  try {
+    const res = await fetch(`data/recipes/${idxInfo.slug}.json`);
+    const data = await res.json();
+    state.recipeDataCache[id] = data;
+    return data;
+  } catch(e) {
+    console.error('Failed to load details', e);
+    return null;
+  }
+}
 
 // ============================================================
 // Navigation
@@ -53,7 +77,7 @@ function setupNav() {
   });
 }
 
-function navigateTo(viewId, id = null) {
+async function navigateTo(viewId, id = null) {
   document.querySelectorAll('[data-nav]').forEach(btn =>
     btn.classList.toggle('active', btn.dataset.nav === viewId)
   );
@@ -67,10 +91,10 @@ function navigateTo(viewId, id = null) {
     state.currentRecipeId = id;
     state.checkedIng = new Set();
     state.doneSteps = new Set();
-    const recipe = RECIPES.find(r => r.id === id);
+    const recipe = await loadRecipeDetail(id);
     state.currentServings = recipe ? recipe.base_servings : 1;
     state.currentVersionId = recipe?.versions?.[0]?.id ?? null;
-    renderDetail(id);
+    renderDetail(id, recipe);
   }
 
   if (viewId === 'my-recipes') {
@@ -124,7 +148,7 @@ function setupSearch() {
 function getFilteredRecipes() {
   const q = state.search.toLowerCase();
 
-  return RECIPES.filter(r => {
+  return RECIPES_INDEX.filter(r => {
     if (q) {
       const ingNames = r.ingredients.map(i => getIngName(i));
       const ingCategories = r.ingredients.flatMap(i => getIngCategories(i));
@@ -162,33 +186,12 @@ function getFilteredRecipes() {
     }
 
     if (state.tastes.size) {
-      let tasteCounts = { '鹹': 0, '甜': 0, '酸': 0, '辣': 0, '苦': 0 };
-      r.ingredients.forEach(i => {
-        const found = getIngredient(i.ingredient_id);
-        if (found && found.tastes) {
-          found.tastes.forEach(t => {
-            if (tasteCounts[t] !== undefined) tasteCounts[t]++;
-          });
-        }
-      });
-      
-      let scores = [...new Set(Object.values(tasteCounts))].filter(s => s > 0).sort((a,b) => b - a);
-      let allowedScores = [scores[0], scores[1]].filter(s => s !== undefined);
-      
-      let recipeTastes = new Set();
-      for (const [t, count] of Object.entries(tasteCounts)) {
-        if (allowedScores.includes(count)) recipeTastes.add(t);
-      }
-      
+      const recipeTastes = new Set(r.tastes);
       for (const t of state.tastes) { if (!recipeTastes.has(t)) return false; }
     }
 
     if (state.textures.size) {
-      let recipeTextures = new Set();
-      r.ingredients.forEach(i => {
-        const found = getIngredient(i.ingredient_id);
-        if (found && found.textures) found.textures.forEach(t => recipeTextures.add(t));
-      });
+      const recipeTextures = new Set(r.textures);
       for (const t of state.textures) { if (!recipeTextures.has(t)) return false; }
     }
 
@@ -352,8 +355,7 @@ function renderGrid() {
 // ============================================================
 // Recipe Detail
 // ============================================================
-function renderDetail(id) {
-  const r = RECIPES.find(x => x.id === id);
+function renderDetail(id, r) {
   if (!r) return;
 
   const currentVersion = r.versions.find(v => v.id === state.currentVersionId) ?? r.versions[0];
@@ -656,8 +658,8 @@ function renderDetail(id) {
     </div>
   `;
 
-  renderIngredients(id);
-  renderSteps(id);
+  renderIngredients(r);
+  renderSteps(r);
 }
 
 // ── 食材清單 ────────────────────────────────────────────────
@@ -702,8 +704,7 @@ function formatQty(qty, unit, unitNote) {
   return `${qty} ${label}`;
 }
 
-function renderIngredients(id) {
-  const r = RECIPES.find(x => x.id === id);
+function renderIngredients(r) {
   const grid = document.getElementById('ing-grid');
   if (!r || !grid) return;
 
@@ -727,7 +728,7 @@ function renderIngredients(id) {
     const calsStr = itemCals > 0 ? `<span class="ing-cal-meta">${Math.round(itemCals)} kcal</span>` : '';
 
     return `
-      <div class="ingredient-item ${checked ? 'checked' : ''}" id="ing-${i}" onclick="toggleIng(${i}, ${id})">
+      <div class="ingredient-item ${checked ? 'checked' : ''}" id="ing-${i}" onclick="toggleIng(${i}, ${r.id})">
         <div class="ingredient-left">
           <div class="ing-check">${checked ? '✓' : ''}</div>
           <div class="ing-info">
@@ -753,8 +754,7 @@ function renderIngredients(id) {
 
 // ── 步驟 ─────────────────────────────────────────────────────
 
-function renderSteps(id) {
-  const r = RECIPES.find(x => x.id === id);
+function renderSteps(r) {
   const list = document.getElementById('steps-list');
   if (!r || !list) return;
 
@@ -799,7 +799,7 @@ function renderSteps(id) {
 window.toggleIng = function(idx, recipeId) {
   if (state.checkedIng.has(idx)) state.checkedIng.delete(idx);
   else                           state.checkedIng.add(idx);
-  renderIngredients(recipeId);
+  loadRecipeDetail(recipeId).then(r => renderIngredients(r));
 };
 
 window.toggleStep = function(idx, total) {
@@ -811,7 +811,7 @@ window.toggleStep = function(idx, total) {
   if (fillEl) fillEl.style.width = pct + '%';
   const textEl = document.getElementById('step-progress-text');
   if (textEl) textEl.textContent = `${state.doneSteps.size} / ${total}`;
-  renderSteps(state.currentRecipeId);
+  loadRecipeDetail(state.currentRecipeId).then(r => renderSteps(r));
 };
 
 window.toggleNutrition = function(row) {
@@ -830,23 +830,24 @@ window.toggleNutrition = function(row) {
 window.switchVersion = function(recipeId, versionId) {
   state.currentVersionId = versionId;
   state.doneSteps = new Set();
-  renderDetail(recipeId);
+  loadRecipeDetail(recipeId).then(r => renderDetail(recipeId, r));
 };
 
 // ============================================================
 // Servings Control
 // ============================================================
-window.changeServings = function(delta, recipeId) {
+window.changeServings = async function(delta, recipeId) {
   const newVal = Math.max(1, Math.min(50, state.currentServings + delta));
   if (newVal === state.currentServings) return;
   state.currentServings = newVal;
   document.getElementById('srv-display').textContent = newVal;
-  renderIngredients(recipeId);
-  updateServingBars(recipeId, newVal);
+  
+  const r = await loadRecipeDetail(recipeId);
+  renderIngredients(r);
+  updateServingBars(r, newVal);
 };
 
-function updateServingBars(recipeId, servings) {
-  const r = RECIPES.find(x => x.id === recipeId);
+function updateServingBars(r, servings) {
   if (!r) return;
 
   const ratio = servings / r.base_servings;
@@ -1177,7 +1178,7 @@ function buildOnlineRecipePicker() {
     (loadMyRecipes()).filter(r => r.source === 'online').map(r => r.source_id)
   );
 
-  picker.innerHTML = RECIPES.map(r => {
+  picker.innerHTML = RECIPES_INDEX.map(r => {
     const added = myOnlineIds.has(r.id);
     return `
       <div class="online-pick-card ${added ? 'already-added' : ''}" onclick="${added ? '' : `addOnlineRecipe(${r.id})`}">
@@ -1196,8 +1197,10 @@ function buildOnlineRecipePicker() {
   }).join('');
 }
 
-window.addOnlineRecipe = function(recipeId) {
-  const r = RECIPES.find(x => x.id === recipeId);
+window.addOnlineRecipe = async function(recipeId) {
+  const rInfo = RECIPES_INDEX.find(x => x.id === recipeId);
+  if (!rInfo) return;
+  const r = await loadRecipeDetail(recipeId);
   if (!r) return;
 
   const result = addMyRecipe({
@@ -1446,9 +1449,9 @@ window.clearKitchenIngredients = function() {
 
 function getKitchenResults() {
   if (state.kitchenIngredients.size === 0) return [];
-  return RECIPES
+  return RECIPES_INDEX
     .map(r => {
-      const ids = new Set(r.ingredients.map(i => i.ingredient_id));
+      const ids = new Set(r.ingredient_ids);
       const recipeTotal = ids.size;
       let matchCount = 0;
       for (const sel of state.kitchenIngredients) { if (ids.has(sel)) matchCount++; }

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cookbook-v11';
+const CACHE_NAME = 'cookbook-v13';
 const ASSETS = [
   '/',
   '/index.html',
@@ -7,6 +7,7 @@ const ASSETS = [
   '/js/my-recipes.js',
   '/js/recipes.js',
   '/js/cooking-methods.js',
+  '/data/recipes/index.json',
   '/js/ingredients/_constants.js',
   '/js/ingredients/_registry.js',
   '/js/ingredients/staple.js',
@@ -26,6 +27,9 @@ const ASSETS = [
   '/images/kimchi_tofu_stew.png',
   '/images/french_chicken_stew.png',
   '/images/salted_egg_chicken_tofu.png',
+  '/images/curry-rice.png',
+  '/images/gyudon.png',
+  '/images/shanghai-veg-rice.png',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
 ];
@@ -51,8 +55,8 @@ self.addEventListener('fetch', e => {
     caches.match(e.request).then(cached => {
       if (cached) return cached;
       return fetch(e.request).then(resp => {
-        // cache new images or fonts on the fly
-        if (e.request.url.includes('/images/') || e.request.url.includes('fonts.g')) {
+        // cache new images, fonts, or recipe jsons on the fly
+        if (e.request.url.includes('/images/') || e.request.url.includes('fonts.g') || e.request.url.includes('/data/recipes/')) {
           const clone = resp.clone();
           caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
         }

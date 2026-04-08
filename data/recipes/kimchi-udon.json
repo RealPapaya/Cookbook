@@ -1,0 +1,173 @@
+{
+  "id": 2,
+  "title": "韓式豬肉片泡菜烏龍便當",
+  "subtitle": "Kimchi Style",
+  "description": "香辣開胃，是清冰箱的好夥伴。泡菜的酸辣搭配麻油香氣，讓人一口接著一口。",
+  "category": "中餐",
+  "cuisine": "韓式",
+  "meal_type": "麵",
+  "tags": [
+    "微波料理",
+    "辣",
+    "發酵"
+  ],
+  "base_servings": 1,
+  "time_estimate": "12 分鐘",
+  "difficulty": "簡單",
+  "image": "images/kimchi_udon.png",
+  "ingredients": [
+    {
+      "ingredient_id": "udon",
+      "variant_id": "udon--frozen",
+      "qty": 1,
+      "unit": "塊",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "kimchi",
+      "variant_id": "kimchi--fermented",
+      "qty": 0.5,
+      "unit": "保鮮盒",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "pork_slice",
+      "variant_id": "pork_slice--raw",
+      "qty": 50,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "盡量鋪平不要重疊，確保受熱均勻"
+    },
+    {
+      "ingredient_id": "sesame_oil",
+      "variant_id": "sesame_oil--roasted",
+      "qty": 5,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "gochujang",
+      "variant_id": "gochujang--paste",
+      "qty": 10,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "egg_chicken",
+      "variant_id": "egg_chicken--raw_yolk",
+      "qty": 1,
+      "unit": "顆",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "mentsuyu",
+      "variant_id": "mentsuyu--2x",
+      "qty": 10,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "green_onion",
+      "variant_id": "green_onion--chopped",
+      "qty": 10,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "sesame_seed",
+      "variant_id": "sesame_seed--toasted",
+      "qty": 1,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "microwave",
+      "label": "微波版",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "在保鮮盒中放入烏龍麵，鋪上豬肉片（盡量不重疊）、泡菜，加入麵露、麻油、韓式辣醬。",
+          "ingredient_ids": [
+            "udon--frozen",
+            "pork_slice--raw",
+            "kimchi--fermented"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "蓋子錯開留縫隙，600W 微波 6 分鐘。",
+          "method_id": "microwave_600w_6min_vented",
+          "duration_s": 360
+        },
+        {
+          "order": 3,
+          "instruction": "務必確認豬肉片是否全熟（無粉紅色），不夠熟請追加加熱。最後可加入蛋黃攪拌。",
+          "method_id": "mix_raw",
+          "ingredient_ids": [
+            "egg_chicken--raw_yolk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "炒鍋版鑊氣十足，泡菜炒過更香。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "熱鍋後不加油，中火炒豬肉片至變色，加入泡菜繼續翻炒 1 分鐘。",
+          "method_id": "stir_fry_medium_heat",
+          "duration_s": 120,
+          "ingredient_ids": [
+            "pork_slice--raw",
+            "kimchi--fermented"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "加入解凍烏龍麵、麵露、韓式辣醬，大火翻炒至收汁，起鍋前淋上麻油。",
+          "method_id": "stir_fry_high_heat",
+          "duration_s": 120,
+          "ingredient_ids": [
+            "udon--frozen",
+            "gochujang--paste",
+            "sesame_oil--roasted"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "盛碗，撒上蔥花、白芝麻，放上蛋黃。",
+          "method_id": "mix_raw",
+          "ingredient_ids": [
+            "green_onion--chopped",
+            "sesame_seed--toasted",
+            "egg_chicken--raw_yolk"
+          ]
+        }
+      ]
+    }
+  ],
+  "tips": "不嗜辣的人可省略韓式辣醬。加入蛋黃攪拌後更加濃郁！",
+  "slug": "kimchi-udon"
+}

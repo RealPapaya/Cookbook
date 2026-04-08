@@ -1,0 +1,165 @@
+{
+  "id": 10,
+  "slug": "shanghai-veg-rice",
+  "title": "經典上海菜飯",
+  "subtitle": "Shanghai Vegetable Rice",
+  "description": "青江菜的翠綠加上鹹肉與豬油的脂香，簡單一鍋到底就能完成，米粒吸飽了精華，是非常高雅又極致的一道家庭料理。",
+  "category": "晚餐",
+  "cuisine": "中式",
+  "meal_type": "飯",
+  "tags": [
+    "一鍋到底",
+    "家常",
+    "經典"
+  ],
+  "base_servings": 2,
+  "time_estimate": "35 分鐘",
+  "difficulty": "中等",
+  "image": "images/shanghai-veg-rice.png",
+  "ingredients": [
+    {
+      "ingredient_id": "white_rice",
+      "variant_id": "white_rice--raw",
+      "qty": 1.5,
+      "unit": "杯",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "bok_choy",
+      "variant_id": "bok_choy--raw",
+      "qty": 250,
+      "unit": "克",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切細碎"
+    },
+    {
+      "ingredient_id": "bacon",
+      "variant_id": "bacon--raw",
+      "qty": 80,
+      "unit": "克",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切小丁 (模擬鹹肉或金華火腿)"
+    },
+    {
+      "ingredient_id": "garlic_raw",
+      "variant_id": "garlic_raw--minced",
+      "qty": 2,
+      "unit": "瓣",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "water",
+      "variant_id": "water--cold",
+      "qty": 1.5,
+      "unit": "杯",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "同米量"
+    },
+    {
+      "ingredient_id": "lard",
+      "variant_id": "lard--rendered",
+      "qty": 1,
+      "unit": "大匙",
+      "scalable": false,
+      "optional": true,
+      "is_seasoning": true,
+      "note": "增香用，無可用一般油"
+    },
+    {
+      "ingredient_id": "white_pepper_powder",
+      "variant_id": "white_pepper_powder--ground",
+      "qty": 1,
+      "unit": "小撮",
+      "scalable": false,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "salt",
+      "variant_id": "salt--sea",
+      "qty": 0.5,
+      "unit": "小匙",
+      "scalable": false,
+      "optional": true,
+      "is_seasoning": true,
+      "note": "視肉片鹹度調整"
+    }
+  ],
+  "versions": [
+    {
+      "method_id": "stovetop",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "白米洗淨瀝乾備用；青江菜洗淨後切成細碎狀；培根/鹹肉切成小丁；蒜頭切末。",
+          "ingredient_ids": [
+            "white_rice--raw",
+            "bok_choy--raw",
+            "bacon--raw",
+            "garlic_raw--minced"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "平底鍋內放入一匙豬油，加入蒜末與肉丁，以中小火煸炒至出油，且香氣完全釋放。",
+          "method_id": "stir_fry_low_heat",
+          "duration_s": 240,
+          "ingredient_ids": [
+            "lard--rendered"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "將洗淨瀝乾的生白米倒入鍋中，與肉丁稍微翻炒，讓每顆米粒都沾上油亮的油脂。",
+          "method_id": "stir_fry_medium_heat",
+          "duration_s": 120,
+          "ingredient_ids": []
+        },
+        {
+          "order": 4,
+          "instruction": "加入水與少許鹽（務必先留意肉的鹹度再決定加多少鹽）。",
+          "method_id": "mix",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "water--cold",
+            "salt--sea"
+          ]
+        },
+        {
+          "order": 5,
+          "instruction": "大火煮滾後，立刻加蓋並轉至「最小火」，悶煮 15 分鐘。期間可用極少油稍微將青江菜碎炒軟備用，保持翠綠。",
+          "method_id": "simmer_low_heat",
+          "duration_s": 900,
+          "ingredient_ids": []
+        },
+        {
+          "order": 6,
+          "instruction": "15 分鐘後，開蓋將炒過的青江菜碎均勻鋪在飯上，撒上少許白胡椒粉。",
+          "method_id": "mix",
+          "duration_s": 30,
+          "ingredient_ids": [
+            "white_pepper_powder--ground"
+          ]
+        },
+        {
+          "order": 7,
+          "instruction": "再次蓋上鍋蓋，關火利用餘溫悶 5-10 分鐘。開蓋後將飯菜充分拌勻即可上桌。",
+          "method_id": "mix",
+          "duration_s": 300,
+          "ingredient_ids": []
+        }
+      ]
+    }
+  ],
+  "tips": "做上海菜飯最重要的就是「青菜不要跟著飯一起悶煮15分鐘」，那樣菜一定會發黃變苦。務必在飯收水後再加入，利用最後悶的階段將蔬菜稍微燜熟，顏色才會翠綠漂亮！"
+}

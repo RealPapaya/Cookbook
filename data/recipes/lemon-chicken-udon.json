@@ -1,0 +1,139 @@
+{
+  "id": 3,
+  "title": "鹽味檸檬雞肉丸烏龍便當",
+  "subtitle": "Chanko-nabe Style",
+  "description": "清爽系首選，酸甜的檸檬香氣非常解膩。湯頭清澈鮮甜，適合重口味後的解膩之選。",
+  "category": "中餐",
+  "cuisine": "日式",
+  "meal_type": "麵",
+  "tags": [
+    "微波料理",
+    "清淡",
+    "湯"
+  ],
+  "base_servings": 1,
+  "time_estimate": "12 分鐘",
+  "difficulty": "簡單",
+  "image": "images/lemon_chicken_udon.png",
+  "ingredients": [
+    {
+      "ingredient_id": "udon",
+      "variant_id": "udon--frozen",
+      "qty": 1,
+      "unit": "塊",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "chicken_meatball",
+      "variant_id": "chicken_meatball--frozen",
+      "qty": 6,
+      "unit": "顆",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "bok_choy",
+      "variant_id": "bok_choy--pickled",
+      "qty": 30,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "也可用生小白菜替代"
+    },
+    {
+      "ingredient_id": "mentsuyu",
+      "variant_id": "mentsuyu--2x",
+      "qty": 10,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "chicken_soup_powder",
+      "variant_id": "chicken_soup_powder--powder",
+      "qty": 7.5,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "lemon",
+      "variant_id": "lemon--sliced",
+      "qty": 3,
+      "unit": "片",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "water",
+      "variant_id": "water--cold",
+      "qty": 150,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "green_onion",
+      "variant_id": "green_onion--chopped",
+      "qty": 1,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "black_pepper",
+      "variant_id": "black_pepper--ground",
+      "qty": 1,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "microwave",
+      "label": "微波版",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "在保鮮盒中放入烏龍麵，依序堆疊雞肉丸、小白菜、檸檬，加入麵露與雞湯粉。",
+          "ingredient_ids": [
+            "udon--frozen",
+            "chicken_meatball--frozen",
+            "bok_choy--pickled",
+            "lemon--sliced"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "加入 150ml 冷開水，蓋子錯開留縫隙，600W 微波 6 分鐘。",
+          "method_id": "microwave_600w_6min_vented",
+          "duration_s": 360,
+          "ingredient_ids": [
+            "water--cold"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "如果不夠熱，請再短時間追加加熱。完成後撒上蔥花與黑胡椒。",
+          "ingredient_ids": [
+            "green_onion--chopped",
+            "black_pepper--ground"
+          ]
+        }
+      ]
+    }
+  ],
+  "tips": "剩下的湯頭加入白飯和起司片，做成「起司片燉飯」超讚！",
+  "slug": "lemon-chicken-udon"
+}

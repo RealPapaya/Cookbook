@@ -56,17 +56,19 @@ Style consistent with Japanese food anime illustration — clean lines, vivid co
 - 以盤中料理為主，不要過多廚房背景元素
 - 圖片存放路徑：`images/{recipe_slug}.png`
 
-### Step 4：新增到 recipes.js
-- `id` 使用現有最大 id + 1
+### Step 4：新增食譜 JSON 與更新 index.json
+- 每道菜寫成獨立 JSON 檔，存放在 `data/recipes/{recipe_slug}.json`
+- `id` 使用現存 index 裡最大 id + 1
+- `slug` 取一個適當的英文名稱（例：`garlic-butter-shrimp`）
 - `image` 路徑為 `images/{recipe_slug}.png`
 - ingredients 格式：
-  ```js
+  ```json
   {
-    ingredient_id: 'xxx',
-    variant_id:    'xxx--yyy',
-    qty: N, unit: '單位',
-    scalable: true/false, optional: false/true, is_seasoning: false/true,
-    note: '補充說明' // 特殊處理如：切末、切塊
+    "ingredient_id": "xxx",
+    "variant_id":    "xxx--yyy",
+    "qty": N, "unit": "單位",
+    "scalable": true, "optional": false, "is_seasoning": false,
+    "note": "補充說明"
   }
   ```
 - **重要命名規則**：食譜中的指令與食材名稱，**必須去掉不需要的形容詞**。
@@ -83,6 +85,7 @@ Style consistent with Japanese food anime illustration — clean lines, vivid co
     UI 顯示為：  主標題：烏龍麵  /  副標題：冷凍烏龍麵
   - 如果現有食材沒有符合的 variant，**先新增該 variant**，再使用它。
 - versions: 至少一個 stovetop 版本，步驟根據食譜流程撰寫
+- **建立好 JSON 後，不要忘記使用 node 腳本來更新 index.json**（或手動更新 `data/recipes/index.json`）。可以執行 `node scripts/migrate.mjs` 自動重構 index，或者手動添加入 index 陣列，確保 `index.json` 包含該食譜的 metadata。
 
 ### Step 5：更新 service-worker.js
 - 在 ASSETS 陣列加入新圖片路徑
