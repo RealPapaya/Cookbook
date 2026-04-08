@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cookbook-v8';
+const CACHE_NAME = 'cookbook-v9';
 const ASSETS = [
   '/',
   '/index.html',
@@ -24,6 +24,8 @@ const ASSETS = [
   '/images/lemon_chicken_udon.png',
   '/images/garlic_butter_tomato_shrimp.png',
   '/images/kimchi_tofu_stew.png',
+  '/images/french_chicken_stew.png',
+  '/images/salted_egg_chicken_tofu.png',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
 ];

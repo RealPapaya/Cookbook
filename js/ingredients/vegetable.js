@@ -645,6 +645,7 @@ export default [
     categories: ['蔬菜', '蛋白質'],
     variants: [
       { id: 'tofu--firm',    label: '板豆腐（老豆腐）', state: 'raw' },
+      { id: 'tofu--egg',     label: '雞蛋豆腐',         state: 'raw' },
       { id: 'tofu--soft',    label: '嫩豆腐',           state: 'raw' },
       { id: 'tofu--silken',  label: '絹豆腐',           state: 'raw' },
       { id: 'tofu--fried',   label: '炸豆腐皮（百頁）', state: 'cooked' },

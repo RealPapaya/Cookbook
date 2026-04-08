@@ -751,4 +751,17 @@ export default [
     verified_at: '2024-11-01',
   },
 
+  // ── 白酒 ─────────────────────────────────────────────────
+  {
+    id: 'wine_white',
+    name: '白酒',
+    name_en: 'White Wine',
+    categories: ['調味料'],
+    variants: [
+      { id: 'wine_white--cooking', label: '料理白酒', state: 'raw' },
+      { id: 'wine_white--dry',     label: '不甜白酒', state: 'raw' },
+    ],
+    allergens: [],
+  },
+
 ];
