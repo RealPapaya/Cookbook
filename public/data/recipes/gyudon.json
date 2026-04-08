@@ -1,0 +1,166 @@
+{
+  "id": 9,
+  "slug": "gyudon",
+  "title": "經典日式牛丼",
+  "subtitle": "Classic Gyudon Beef Bowl",
+  "description": "鹹甜交織的鮮嫩牛肉與入味的洋蔥，鋪在熱騰騰的白飯上，完美還原連鎖店的極致風味，非常適合下班後快速上桌。",
+  "category": "晚餐",
+  "cuisine": "日式",
+  "meal_type": "飯",
+  "tags": [
+    "快速",
+    "家常"
+  ],
+  "base_servings": 2,
+  "time_estimate": "15 分鐘",
+  "difficulty": "簡單",
+  "image": "images/gyudon.png",
+  "ingredients": [
+    {
+      "ingredient_id": "beef_slice",
+      "variant_id": "beef_slice--raw",
+      "qty": 250,
+      "unit": "克",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "火鍋肉片佳"
+    },
+    {
+      "ingredient_id": "onion",
+      "variant_id": "onion--yellow",
+      "qty": 0.5,
+      "unit": "顆",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切絲"
+    },
+    {
+      "ingredient_id": "water",
+      "variant_id": "water--cold",
+      "qty": 150,
+      "unit": "c.c.",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "dashi_powder",
+      "variant_id": "dashi_powder--bonito",
+      "qty": 1,
+      "unit": "小匙",
+      "scalable": false,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "soy_sauce",
+      "variant_id": "soy_sauce--regular",
+      "qty": 3,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "mirin",
+      "variant_id": "mirin--regular",
+      "qty": 2,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "sake_cooking",
+      "variant_id": "sake_cooking--rice",
+      "qty": 2,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "sugar",
+      "variant_id": "sugar--white",
+      "qty": 1,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "white_rice",
+      "variant_id": "white_rice--cooked",
+      "qty": 2,
+      "unit": "碗",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "egg_chicken",
+      "variant_id": "egg_chicken--onsen",
+      "qty": 2,
+      "unit": "顆",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": false
+    }
+  ],
+  "versions": [
+    {
+      "method_id": "stovetop",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "洋蔥切絲；將水、柴魚粉、醬油、味醂、清酒、砂糖在小碗中調勻成醬汁備用。",
+          "ingredient_ids": [
+            "onion--yellow",
+            "water--cold",
+            "dashi_powder--bonito",
+            "soy_sauce--regular",
+            "mirin--regular",
+            "sake_cooking--rice",
+            "sugar--white"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "將調好的醬汁與洋蔥絲放入鍋中，以中小火煮滾。加蓋繼續煮 3-5 分鐘，直到洋蔥變軟並呈現半透明狀。",
+          "method_id": "simmer_medium_heat",
+          "duration_s": 300,
+          "ingredient_ids": []
+        },
+        {
+          "order": 3,
+          "instruction": "打開鍋蓋，將牛肉片均勻散開放入鍋中，攪拌避免結塊。",
+          "method_id": "simmer_medium_heat",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "beef_slice--raw"
+          ]
+        },
+        {
+          "order": 4,
+          "instruction": "繼續煮約 2-3 分鐘至牛肉剛好熟透即可。過程中若有浮沫可以稍微撈除。",
+          "method_id": "simmer_medium_heat",
+          "duration_s": 180,
+          "ingredient_ids": []
+        },
+        {
+          "order": 5,
+          "instruction": "準備好熱騰騰的白飯，將煮好的牛肉與洋蔥連同充滿精華的醬汁淋在飯上。依個人喜好放上一顆溫泉蛋即完成。",
+          "method_id": "plate",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "white_rice--cooked",
+            "egg_chicken--onsen"
+          ]
+        }
+      ]
+    }
+  ],
+  "tips": "一定要選用牛五花等富含油脂的火鍋肉片，口感才會軟嫩多汁。洋蔥也務必要先蓋鍋煮軟，甜味才能完整釋放到湯汁中。"
+}

@@ -1,216 +1,31 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0f0e17">
-  <meta name="description" content="私藏食譜本 — 收錄各式家常料理，材料、步驟一目了然。支援手機安裝。">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="食譜本">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="icon" type="image/png" href="icons/icon-192.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <title>私藏食譜本 🍜</title>
-</head>
-<body>
-
-<div class="bg-orb bg-orb-1"></div>
-<div class="bg-orb bg-orb-2"></div>
-<div class="bg-orb bg-orb-3"></div>
-
-<div id="app">
-
-  <!-- ===== SIDEBAR (Desktop) ===== -->
-  <aside class="sidebar">
-    <div class="sidebar-logo">
-      <div class="logo-icon">🍜</div>
-      <h1>私藏食譜本</h1>
-      <p>My Secret Cookbook</p>
-    </div>
-    <nav class="sidebar-nav">
-      <div class="nav-section-label">瀏覽</div>
-      <button class="nav-btn active" data-nav="home">
-        <span class="nav-icon">🏠</span> 所有食譜
-      </button>
-      <div class="nav-section-label">私人</div>
-      <button class="nav-btn" data-nav="my-recipes">
-        <span class="nav-icon">📒</span> 我的食譜
-      </button>
-      <div class="nav-section-label">其他</div>
-      <button class="nav-btn" data-nav="about">
-        <span class="nav-icon">📖</span> 關於食譜本
-      </button>
-    </nav>
-    <div class="sidebar-footer">
-      <p>✨ 用愛烹飪，用心記錄</p>
-    </div>
-  </aside>
-
-  <!-- ===== MAIN CONTENT ===== -->
-  <div class="main-content">
-
-    <!-- Top Bar -->
-    <div class="topbar">
-      <div class="search-wrap">
-        <span class="search-icon">🔍</span>
-        <input type="search" id="search-input" placeholder="搜尋食譜、食材、國籍料理…" autocomplete="off">
-      </div>
-      <button class="filter-toggle-btn" id="filter-toggle-btn" onclick="toggleFilterPanel()">
-        <span>篩選</span>
-        <span class="filter-toggle-icon">⚙️</span>
-        <span class="filter-badge" id="filter-toggle-badge" style="display:none"></span>
-      </button>
-      <button class="kitchen-toggle-btn" id="kitchen-toggle-btn" onclick="openKitchenPanel()">
-        <span class="kitchen-toggle-icon">🥘</span>
-        <span>廚房</span>
-      </button>
-      <span class="count-badge" id="count-badge">— 道食譜</span>
-    </div>
-
-    <!-- ===== HOME VIEW ===== -->
-    <div class="page-view active" id="view-home">
-
-      <!-- Filter Panel (collapsible) -->
-      <div class="filter-panel" id="filter-panel">
-        <!-- Built by JS -->
-      </div>
-
-      <!-- Active filter chips summary -->
-      <div id="active-filter-summary"></div>
-
-      <div class="recipe-grid" id="recipe-grid"></div>
-    </div>
-
-    <!-- ===== DETAIL VIEW ===== -->
-    <div class="page-view" id="view-detail"></div>
-
-    <!-- ===== MY RECIPES VIEW ===== -->
-    <div class="page-view" id="view-my-recipes"></div>
-
-    <!-- ===== MY RECIPE DETAIL (custom recipes) ===== -->
-    <div class="page-view" id="view-my-detail"></div>
-
-    <!-- ===== ABOUT VIEW ===== -->
-    <div class="page-view" id="view-about">
-      <div class="about-page">
-        <div class="about-hero">
-          <div class="hero-emoji">🍳</div>
-          <h2>私藏食譜本</h2>
-          <p>一個用來收藏自己喜歡的食譜的地方。<br>
-            每道菜都有詳細的材料與步驟，可以直接在廚房邊看邊做。<br>
-            支援手機安裝，離線也能瀏覽。
-          </p>
-        </div>
-
-        <div class="about-card">
-          <h3>📋 新增食譜格式（貼給 AI 即可）</h3>
-          <div class="format-block">【菜名】xxx（subtitle）
-【描述】一兩句介紹
-【國籍料理】日式 / 韓式 / 中式 / 義式 / 法式 / 泰式 / 美式 / 台式 / 其他
-【分類】早餐 / 中餐 / 下午茶 / 晚餐 / 宵夜 / 點心 / 甜點
-【主食類型】麵 / 飯 / 湯 / 沙拉 / 料理
-【標籤】快速, 微波料理, 辣, 清淡
-【時間】10 分鐘
-【難度】簡單 / 中等 / 困難
-【份量】1 人份
-
-【材料】  ← 格式: 名稱：數量 單位 [標籤1,標籤2] (☆=調味料)
-- 冷凍烏龍麵：1 塊 [主食]
-- 牛奶：2 大匙 [乳製品] ☆
-- 黑胡椒：適量 [香料] ☆
-
-【作法】
-1. 步驟一
-2. 步驟二
-
-【小撇步】選填備註</div>
-        </div>
-
-        <div class="about-card" style="margin-top:16px">
-          <h3>🏷 食材分類標籤</h3>
-          <div class="ing-tag-legend" id="ing-tag-legend"></div>
-        </div>
-
-        <div class="about-card" style="margin-top:16px">
-          <h3>🌍 支援國籍料理分類</h3>
-          <div class="cuisine-legend">
-            日式 🇯🇵｜韓式 🇰🇷｜中式 🇨🇳｜義式 🇮🇹｜法式 🇫🇷｜泰式 🇹🇭｜美式 🇺🇸｜台式 🇹🇼｜其他
-          </div>
-        </div>
-
-        <div class="about-card" style="margin-top:16px">
-          <h3>📱 安裝到手機</h3>
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7">
-            iOS Safari → 分享 → 加入主畫面<br>
-            Android Chrome → 選單 → 安裝應用程式<br>
-            安裝後可離線瀏覽所有食譜。
-          </p>
-        </div>
-
-        <div class="about-card" style="margin-top:16px;margin-bottom:40px">
-          <h3>⚡ 互動功能</h3>
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7">
-            • 點擊食材 → 打勾已準備材料<br>
-            • 點擊步驟 → 追蹤烹飪進度<br>
-            • ＋ / − 按鈕 → 調整份量，自動換算所有食材數量<br>
-            • ⚙️ 篩選按鈕 → 多維度搜尋（國籍、主食、標籤、食材類別）<br>
-            • 🥘 廚房按鈕 → 選擇手邊食材，找出能做的料理
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ===== BOTTOM NAV (Mobile) ===== -->
-<nav class="bottom-nav">
-  <button class="bottom-nav-btn active" data-nav="home">
-    <span class="bnav-icon">🏠</span>
-    <span class="bnav-label">食譜</span>
-  </button>
-  <button class="bottom-nav-btn" data-nav="my-recipes">
-    <span class="bnav-icon">📒</span>
-    <span class="bnav-label">我的</span>
-  </button>
-  <button class="bottom-nav-btn" data-nav="about">
-    <span class="bnav-icon">📖</span>
-    <span class="bnav-label">關於</span>
-  </button>
-</nav>
-
-<!-- ===== KITCHEN PANEL (full-page overlay) ===== -->
-<div id="kitchen-panel" class="kitchen-panel">
-  <!-- Built by JS (buildKitchenPanel) -->
-</div>
-
-<!-- ===== ADD RECIPE MODAL ===== -->
-<div id="add-recipe-modal" class="modal-overlay" onclick="handleModalBackdrop(event)">
-  <!-- Built by JS (buildAddRecipeModal) -->
-</div>
-
-<!-- ===== TOAST ===== -->
-<div id="app-toast" class="app-toast"></div>
-
-<script type="module">
-  import { INGREDIENT_TAG_COLORS } from './js/ingredients/_registry.js';
-
-  // Build the ingredient tag legend on About page
-  document.addEventListener('DOMContentLoaded', () => {
-    const legend = document.getElementById('ing-tag-legend');
-    if (legend) {
-      legend.innerHTML = Object.entries(INGREDIENT_TAG_COLORS).map(([name, c]) =>
-        `<span class="ing-tag" style="background:${c.bg};border-color:${c.border};color:${c.text}">${name}</span>`
-      ).join('');
-    }
-  });
-</script>
-<script type="module" src="js/app.js"></script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f0e17" />
+    <meta name="description" content="My private cookbook and kitchen helper" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+    <title>Cookbook</title>
+    <script>
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
