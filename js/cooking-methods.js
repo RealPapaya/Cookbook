@@ -34,19 +34,14 @@
 /** 烹飪方法類型 */
 export const METHOD_TYPES = {
   microwave:  '微波',
-  boil:       '水煮',
+  stir:       '攪拌',
+  mix:        '混合',
+  steam:      '蒸',
   stir_fry:   '炒',
   deep_fry:   '炸',
-  pan_fry:    '煎',
-  steam:      '蒸',
-  bake:       '烤箱烘烤',
-  air_fry:    '氣炸',
-  braise:     '燉煮',
-  grill:      '炭烤/烤架',
-  blanch:     '汆燙',
+  stew:       '燉',
+  roast:      '烤',
   marinate:   '醃漬',
-  raw:        '生食/免烹',
-  mix:        '攪拌/混合',
 };
 
 // ============================================================
@@ -137,7 +132,7 @@ export const COOKING_METHODS = [
   {
     id: 'pan_fry_medium',
     name: '中火乾煎',
-    type: 'pan_fry',
+    type: 'stir_fry',
     description: '平底鍋少油煎至金黃，適合培根、肉片、豆腐等。',
     params: {
       heat_level: '中火',
@@ -153,7 +148,7 @@ export const COOKING_METHODS = [
   {
     id: 'boil_noodles',
     name: '滾水煮麵',
-    type: 'boil',
+    type: 'stew',
     description: '大量滾水煮麵，待水再次滾起後計時。',
     params: {
       temp_c: 100,
@@ -167,7 +162,7 @@ export const COOKING_METHODS = [
   {
     id: 'boil_simmer',
     name: '小火燉煮',
-    type: 'braise',
+    type: 'stew',
     description: '食材加湯底以小火慢煮，讓風味融合。',
     params: {
       heat_level: '小火',
@@ -184,7 +179,7 @@ export const COOKING_METHODS = [
   {
     id: 'blanch_vegetables',
     name: '滾水汆燙蔬菜',
-    type: 'blanch',
+    type: 'stew',
     description: '沸水快速汆燙後冰鎮，保持色澤與脆度。',
     params: {
       temp_c: 100,
@@ -200,7 +195,7 @@ export const COOKING_METHODS = [
   {
     id: 'air_fry_200c_15min',
     name: '氣炸 200°C × 15 分鐘',
-    type: 'air_fry',
+    type: 'roast',
     description: '少油高溫，外酥內嫩。',
     params: {
       temp_c: 200,

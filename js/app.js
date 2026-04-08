@@ -165,29 +165,6 @@ function getFilteredRecipes() {
 // ============================================================
 
 function buildFilterPanel() {
-  // 食譜標籤
-  const allRecipeTags = [...new Set(RECIPES.flatMap(r => r.tags))];
-
-  // 食材分類（從 registry 解析，非 inline_category）
-  const allIngCategories = [...new Set(
-    RECIPES.flatMap(r => r.ingredients.flatMap(i => getIngCategories(i)))
-  )].filter(Boolean);
-
-  // 烹飪方式類型（從各食譜的 steps.method_id 動態收集）
-  const allMethodTypes = [...new Set(
-    RECIPES.flatMap(r =>
-      r.versions.flatMap(v =>
-        v.steps
-          .filter(s => s.method_id)
-          .map(s => {
-            const m = getCookingMethod(s.method_id);
-            return m ? m.type : null;
-          })
-          .filter(Boolean)
-      )
-    )
-  )];
-
   const panel = document.getElementById('filter-panel');
   panel.innerHTML = `
     <div class="filter-section">
@@ -209,21 +186,9 @@ function buildFilterPanel() {
       </div>
     </div>
     <div class="filter-section">
-      <div class="filter-section-title">🏷 食譜標籤</div>
-      <div class="filter-chips" id="filter-rtag">
-        ${allRecipeTags.map(c => chipBtn(c, 'rtag')).join('')}
-      </div>
-    </div>
-    <div class="filter-section">
-      <div class="filter-section-title">🧂 食材類別</div>
-      <div class="filter-chips" id="filter-ingtag">
-        ${allIngCategories.map(c => chipBtn(c, 'ingtag')).join('')}
-      </div>
-    </div>
-    <div class="filter-section">
       <div class="filter-section-title">🔥 烹飪方式</div>
       <div class="filter-chips" id="filter-method">
-        ${allMethodTypes.map(t => chipBtn(METHOD_TYPES[t] || t, 'method', t)).join('')}
+        ${Object.entries(METHOD_TYPES).map(([k, name]) => chipBtn(name, 'method', k)).join('')}
       </div>
     </div>
     <div class="filter-actions">

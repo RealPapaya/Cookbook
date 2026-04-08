@@ -61,9 +61,9 @@
 // 分類常數
 // ============================================================
 
-export const CUISINE_LIST    = ['日式', '韓式', '中式', '義式', '法式', '泰式', '美式', '台式', '日義融合', '其他'];
-export const MEALTYPE_LIST   = ['麵條', '飯', '湯品', '點心', '沙拉', '烤物', '炒菜', '便當'];
-export const CATEGORY_LIST   = ['便當', '湯品', '炒菜', '點心', '早餐', '下午茶'];
+export const CUISINE_LIST    = ['日式', '韓式', '中式', '義式', '法式', '泰式', '美式', '台式', '其他'];
+export const MEALTYPE_LIST   = ['麵', '飯', '湯', '沙拉', '料理'];
+export const CATEGORY_LIST   = ['早餐', '中餐', '下午茶', '晚餐', '宵夜', '點心', '甜點'];
 export const DIFFICULTY_LIST = ['簡單', '中等', '困難'];
 
 // ============================================================
@@ -79,9 +79,9 @@ export const RECIPES = [
     title: '奶油培根蛋烏龍便當',
     subtitle: 'Carbonara Style',
     description: '被作者戲稱為連羅馬士兵都會驚訝的美味！奶香濃郁，起司拉絲，一顆生蛋攪下去瞬間升華。',
-    category: '便當',
-    cuisine: '日義融合',
-    meal_type: '麵條',
+    category: '中餐',
+    cuisine: '其他',
+    meal_type: '麵',
     tags: ['微波料理', '快速', '奶香'],
     base_servings: 1,
     time_estimate: '10 分鐘',
@@ -215,9 +215,9 @@ export const RECIPES = [
     title: '韓式豬肉泡菜烏龍便當',
     subtitle: 'Kimchi Style',
     description: '香辣開胃，是清冰箱的好夥伴。泡菜的酸辣搭配麻油香氣，讓人一口接著一口。',
-    category: '便當',
+    category: '晚餐',
     cuisine: '韓式',
-    meal_type: '麵條',
+    meal_type: '麵',
     tags: ['微波料理', '辣', '發酵'],
     base_servings: 1,
     time_estimate: '12 分鐘',
@@ -344,9 +344,9 @@ export const RECIPES = [
     title: '鹽味檸檬雞肉丸烏龍便當',
     subtitle: 'Chanko-nabe Style',
     description: '清爽系首選，酸甜的檸檬香氣非常解膩。湯頭清澈鮮甜，適合重口味後的解膩之選。',
-    category: '便當',
+    category: '宵夜',
     cuisine: '日式',
-    meal_type: '麵條',
+    meal_type: '麵',
     tags: ['微波料理', '清淡', '湯'],
     base_servings: 1,
     time_estimate: '12 分鐘',
