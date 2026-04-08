@@ -39,7 +39,7 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
     const q = search.trim().toLowerCase();
     const result: Record<string, Ingredient[]> = {};
 
-    Object.entries(groupedIngredients).forEach(([category, list]) => {
+    Object.entries(groupedIngredients).forEach(([category, list]: [string, Ingredient[]]) => {
       const filtered = q ? list.filter((ingredient) => ingredient.name.toLowerCase().includes(q)) : list;
       if (filtered.length > 0) result[category] = filtered;
     });
@@ -117,7 +117,7 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
           </div>
 
           <div id="kitchen-categories">
-            {Object.entries(filteredGrouped).map(([category, list]) => {
+            {Object.entries(filteredGrouped).map(([category, list]: [string, Ingredient[]]) => {
               const opened = expanded.has(category);
               const colors = (INGREDIENT_TAG_COLORS[category] || {}) as { border?: string };
 
@@ -203,7 +203,7 @@ export default function KitchenPanel({ open, recipes, onClose, onSelectRecipe }:
           <div id="kitchen-results-area" style={{ flex: 1, overflowY: 'auto', padding: '20px 24px' }}>
             {results.length === 0 ? (
               <div className="kitchen-placeholder">
-                <div className="kitchen-placeholder-icon">NA</div>
+                <div className="kitchen-placeholder-icon"></div>
                 <p>選擇食材後，這裡會顯示能做的料理</p>
               </div>
             ) : (

@@ -21,7 +21,7 @@ export default function MyRecipeDetailPage({ recipes }: MyRecipeDetailPageProps)
     return (
       <div className="page-view active" id="view-my-detail">
         <div className="empty-state" style={{ marginTop: 80 }}>
-          <div className="empty-icon">ERR</div>
+          <div className="empty-icon"></div>
           <p>找不到自訂食譜。</p>
           <button className="filter-clear-btn" type="button" style={{ marginTop: 12 }} onClick={() => navigate('/my-recipes')}>
             回到我的食譜
@@ -41,7 +41,7 @@ export default function MyRecipeDetailPage({ recipes }: MyRecipeDetailPageProps)
       </button>
 
       <div className={`detail-hero ${!recipe.image ? 'detail-hero-placeholder' : ''}`}>
-        {recipe.image ? <img src={baseJoin(recipe.image)} alt={recipe.title} /> : <div className="detail-placeholder-bg">TXT</div>}
+        {recipe.image ? <img src={baseJoin(recipe.image)} alt={recipe.title} /> : <div className="detail-placeholder-bg"></div>}
         <div className="detail-hero-overlay">
           <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
             {recipe.category ? <span className="category-badge">{recipe.category}</span> : null}

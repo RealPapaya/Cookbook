@@ -86,7 +86,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
     <div className="page-view active" id="view-home">
       <div className="topbar" style={{ display: 'flex' }}>
         <div className="search-wrap">
-          <span className="search-icon">SR</span>
+          <span className="search-icon"></span>
           <input
             type="search"
             id="search-input"
@@ -104,7 +104,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           onClick={() => setFilterOpen((current) => !current)}
         >
           <span>篩選</span>
-          <span className="filter-toggle-icon">FL</span>
+          <span className="filter-toggle-icon"></span>
           <span
             className="filter-badge"
             id="filter-toggle-badge"
@@ -115,7 +115,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         </button>
 
         <button className="kitchen-toggle-btn" id="kitchen-toggle-btn" type="button" onClick={onOpenKitchenPanel}>
-          <span className="kitchen-toggle-icon">KT</span>
+          <span className="kitchen-toggle-icon"></span>
           <span>廚房</span>
         </button>
 
@@ -189,25 +189,6 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           </div>
         </div>
 
-        <div className="filter-section">
-          <div className="filter-section-title">食材標籤</div>
-          <div className="filter-chips">
-            {(ingTagOptions.length ? ingTagOptions : INGREDIENT_CATEGORIES).map((tag) => {
-              const colors = INGREDIENT_TAG_COLORS[tag] || { bg: '', border: '', text: '' };
-              return (
-                <button
-                  key={tag}
-                  type="button"
-                  className={`filter-chip ${ingTags.has(tag) ? 'active' : ''}`}
-                  style={colors.bg ? { background: colors.bg, borderColor: colors.border, color: colors.text } : {}}
-                  onClick={() => setIngTags((current) => toggleInSet(tag, current))}
-                >
-                  {tag}
-                </button>
-              );
-            })}
-          </div>
-        </div>
 
         <div className="filter-section">
           <div className="filter-section-title">口味</div>
@@ -241,21 +222,6 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           </div>
         </div>
 
-        <div className="filter-section">
-          <div className="filter-section-title">食譜標籤</div>
-          <div className="filter-chips">
-            {recipeTagOptions.map((tag) => (
-              <button
-                key={tag}
-                type="button"
-                className={`filter-chip ${recipeTags.has(tag) ? 'active' : ''}`}
-                onClick={() => setRecipeTags((current) => toggleInSet(tag, current))}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        </div>
 
         <div className="filter-actions">
           <button className="filter-clear-btn" type="button" onClick={clearAllFilters}>
@@ -275,7 +241,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
       <div className="recipe-grid" id="recipe-grid">
         {!loading && filteredRecipes.length === 0 && (
           <div className="empty-state" style={{ gridColumn: '1 / -1' }}>
-            <div className="empty-icon">NA</div>
+            <div className="empty-icon"></div>
             <p>找不到符合的食譜</p>
             <button className="filter-clear-btn" type="button" style={{ marginTop: 12 }} onClick={clearAllFilters}>
               重置
@@ -315,16 +281,16 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
                   <div className="card-desc">{recipe.description}</div>
                   <div className="card-meta">
                     <div className="card-meta-item">
-                      <span>TM</span>
+                      <span></span>
                       <span>{recipe.time_estimate}</span>
                     </div>
                     <div className="card-meta-item">
-                      <span>SV</span>
+                      <span></span>
                       <span>{recipe.base_servings} 人份</span>
                     </div>
                     {calories > 0 && (
                       <div className="card-meta-item card-meta-cals">
-                        <span>CL</span>
+                        <span></span>
                         <span>{calories} kcal</span>
                       </div>
                     )}

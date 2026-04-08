@@ -97,7 +97,7 @@ export default function RecipeDetailPage() {
     return (
       <div className="page-view active" id="view-detail">
         <div className="empty-state" style={{ marginTop: 80 }}>
-          <div className="empty-icon">...</div>
+          <div className="empty-icon"></div>
           <p>載入食譜中...</p>
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function RecipeDetailPage() {
     return (
       <div className="page-view active" id="view-detail">
         <div className="empty-state" style={{ marginTop: 80 }}>
-          <div className="empty-icon">ERR</div>
+          <div className="empty-icon"></div>
           <p>找不到該食譜。</p>
           <button className="filter-clear-btn" type="button" style={{ marginTop: 10 }} onClick={() => navigate('/')}>
             回到首頁
@@ -121,9 +121,11 @@ export default function RecipeDetailPage() {
   const scaledTime = estimateScaledTime(recipe.time_estimate, ratio);
   const difficultyLabels = ['簡單', '中等', '困難'];
   const difficultyIndex = Math.max(0, difficultyLabels.indexOf(recipe.difficulty));
-  const difficultyShift = ratio > 1.5 ? 1 : 0;
-  const currentDifficulty = difficultyLabels[Math.min(difficultyLabels.length - 1, difficultyIndex + difficultyShift)];
-  const difficultyPct = currentDifficulty === '簡單' ? 33 : currentDifficulty === '中等' ? 66 : 100;
+  
+  const baseDifficultyPct = difficultyIndex === 0 ? 33 : difficultyIndex === 1 ? 66 : 100;
+  const rawPct = baseDifficultyPct + (ratio - 1) * 15;
+  const difficultyPct = Math.min(100, Math.max(0, Math.round(rawPct)));
+  const currentDifficulty = difficultyPct <= 45 ? '簡單' : difficultyPct <= 75 ? '中等' : '困難';
 
   return (
     <div className="page-view active" id="view-detail">

@@ -31,7 +31,7 @@ export default function MyRecipesPage({ recipes, onOpenAddModal, onDelete }: MyR
 
       {sorted.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-icon">NA</div>
+          <div className="empty-icon"></div>
           <p>目前還沒有儲存的食譜。</p>
           <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: 6 }}>
             你可以從線上食譜清單加入，或是建立你自己的食譜。
@@ -66,7 +66,7 @@ export default function MyRecipesPage({ recipes, onOpenAddModal, onDelete }: MyR
                   }}
                 >
                   <div className="card-image-wrap">
-                    {recipe.image ? <img src={baseJoin(recipe.image)} alt={recipe.title} loading="lazy" /> : <div className="my-card-no-img">TXT</div>}
+                    {recipe.image ? <img src={baseJoin(recipe.image)} alt={recipe.title} loading="lazy" /> : <div className="my-card-no-img"></div>}
                     <div className="card-image-overlay" />
                     <span className="card-category">{recipe.category || '食譜'}</span>
                     <span className={`my-source-badge ${isOnline ? 'source-online' : 'source-custom'}`}>
@@ -88,13 +88,13 @@ export default function MyRecipesPage({ recipes, onOpenAddModal, onDelete }: MyR
                     <div className="card-meta">
                       {recipe.time_estimate ? (
                         <div className="card-meta-item">
-                          <span>TM</span>
+                          <span></span>
                           <span>{recipe.time_estimate}</span>
                         </div>
                       ) : null}
                       {recipe.difficulty ? (
                         <div className="card-meta-item">
-                          <span>LV</span>
+                          <span></span>
                           <span>{recipe.difficulty}</span>
                         </div>
                       ) : null}
