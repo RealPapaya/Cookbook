@@ -31,8 +31,9 @@ function toggleInSet(value: string, set: Set<string>): Set<string> {
 export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomePageProps) {
   const navigate = useNavigate();
 
-  const [search, setSearch] = useState('');
+      const [search, setSearch] = useState('');
   const [filterOpen, setFilterOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('cuisines');
   const [cuisines, setCuisines] = useState(createSet);
   const [mealTypes, setMealTypes] = useState(createSet);
   const [categories, setCategories] = useState(createSet);
@@ -69,6 +70,8 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
 
   const filteredRecipes = useMemo(() => getFilteredRecipes(recipes, filters), [recipes, filters]);
   const activeFilterCount = useMemo(() => getActiveFilterCount(filters), [filters]);
+
+    
 
   const clearAllFilters = (): void => {
     setSearch('');
@@ -124,9 +127,53 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
         </span>
       </div>
 
-      <div className={`filter-panel ${filterOpen ? 'open' : ''}`} id="filter-panel">
-        <div className="filter-section">
-          <div className="filter-section-title">菜系</div>
+                  <div className={`filter-panel ${filterOpen ? 'open' : ''}`} id="filter-panel">
+        <div className="filter-tabs">
+          <button 
+            type="button"
+            className={`filter-tab ${activeTab === 'cuisines' ? 'active' : ''}`}
+            onClick={() => setActiveTab('cuisines')}
+          >
+            菜系
+          </button>
+          <button 
+            type="button"
+            className={`filter-tab ${activeTab === 'mealTypes' ? 'active' : ''}`}
+            onClick={() => setActiveTab('mealTypes')}
+          >
+            餐點類型
+          </button>
+          <button 
+            type="button"
+            className={`filter-tab ${activeTab === 'categories' ? 'active' : ''}`}
+            onClick={() => setActiveTab('categories')}
+          >
+            分類
+          </button>
+          <button 
+            type="button"
+            className={`filter-tab ${activeTab === 'methods' ? 'active' : ''}`}
+            onClick={() => setActiveTab('methods')}
+          >
+            烹飪方式
+          </button>
+          <button 
+            type="button"
+            className={`filter-tab ${activeTab === 'tastes' ? 'active' : ''}`}
+            onClick={() => setActiveTab('tastes')}
+          >
+            口味
+          </button>
+          <button 
+            type="button"
+            className={`filter-tab ${activeTab === 'textures' ? 'active' : ''}`}
+            onClick={() => setActiveTab('textures')}
+          >
+            口感
+          </button>
+        </div>
+
+        <div className={`filter-section ${activeTab === 'cuisines' ? 'active' : ''}`}>
           <div className="filter-chips">
             {CUISINE_LIST.map((value) => (
               <button
@@ -141,8 +188,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           </div>
         </div>
 
-        <div className="filter-section">
-          <div className="filter-section-title">餐點類型</div>
+        <div className={`filter-section ${activeTab === 'mealTypes' ? 'active' : ''}`}>
           <div className="filter-chips">
             {MEALTYPE_LIST.map((value) => (
               <button
@@ -157,8 +203,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           </div>
         </div>
 
-        <div className="filter-section">
-          <div className="filter-section-title">分類</div>
+        <div className={`filter-section ${activeTab === 'categories' ? 'active' : ''}`}>
           <div className="filter-chips">
             {CATEGORY_LIST.map((value) => (
               <button
@@ -173,8 +218,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           </div>
         </div>
 
-        <div className="filter-section">
-          <div className="filter-section-title">烹飪方式</div>
+        <div className={`filter-section ${activeTab === 'methods' ? 'active' : ''}`}>
           <div className="filter-chips">
             {Object.entries(METHOD_TYPES).map(([methodId, label]) => (
               <button
@@ -189,9 +233,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           </div>
         </div>
 
-
-        <div className="filter-section">
-          <div className="filter-section-title">口味</div>
+        <div className={`filter-section ${activeTab === 'tastes' ? 'active' : ''}`}>
           <div className="filter-chips">
             {INGREDIENT_TASTES.map((value) => (
               <button
@@ -206,8 +248,7 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
           </div>
         </div>
 
-        <div className="filter-section">
-          <div className="filter-section-title">口感</div>
+        <div className={`filter-section ${activeTab === 'textures' ? 'active' : ''}`}>
           <div className="filter-chips">
             {INGREDIENT_TEXTURES.map((value) => (
               <button

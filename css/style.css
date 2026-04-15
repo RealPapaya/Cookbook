@@ -367,40 +367,105 @@ body {
    Filter Panel
    =========================== */
 .filter-panel {
+  position: sticky;
+  top: 0;
+  z-index: 40;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
   opacity: 0;
   pointer-events: none;
-  background: var(--bg-card);
+  background: rgba(30, 29, 46, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   margin-bottom: 0;
 }
 
 .filter-panel.open {
-  max-height: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
   opacity: 1;
   pointer-events: auto;
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 0;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 12px 12px 0;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.filter-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filter-tabs::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.filter-tab {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 14px;
+  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+  transition: all var(--transition);
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  white-space: nowrap;
+  position: relative;
+}
+
+.filter-tab:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.filter-tab.active {
+  color: var(--accent);
+  background: var(--bg-card);
+  border-color: var(--border);
+  border-bottom: 1px solid var(--bg-card);
+  margin-bottom: -1px;
 }
 
 .filter-section {
-  margin-bottom: 16px;
+  display: none;
 }
 
-.filter-section:last-of-type {
-  margin-bottom: 0;
+.filter-section.active {
+  display: block;
+  padding: 16px 20px;
 }
 
 .filter-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.filter-section-old-title {
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--text-muted);
-  text-transform: uppercase;
+    text-transform: uppercase;
   letter-spacing: .1em;
   margin-bottom: 8px;
+}
+
+.filter-content {
+  display: block;
 }
 
 .filter-chips {
@@ -1560,9 +1625,7 @@ body {
     padding: 16px 14px;
   }
 
-  .filter-toggle-btn span:first-child {
-    display: none;
-  }
+  
 
   .recipe-grid {
     grid-template-columns: 1fr;
@@ -2506,9 +2569,7 @@ body {
    Responsive (additional)
    =========================== */
 @media (max-width: 768px) {
-  .kitchen-toggle-btn span:last-child {
-    display: none;
-  }
+  
 
   .kitchen-left {
     width: 100%;
