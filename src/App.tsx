@@ -25,6 +25,34 @@ function bottomNavClassName(isActive: boolean): string {
   return isActive ? 'bottom-nav-btn active' : 'bottom-nav-btn';
 }
 
+const HomeIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    <polyline points="9 22 9 12 15 12 15 22"/>
+  </svg>
+);
+
+const BookIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+  </svg>
+);
+
+const LeafIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+  </svg>
+);
+
+const InfoIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M12 16v-4"/>
+    <path d="M12 8h.01"/>
+  </svg>
+);
+
 export default function App() {
   const navigate = useNavigate();
 
@@ -93,18 +121,18 @@ export default function App() {
           <nav className="sidebar-nav">
             <div className="nav-section-label">主選單</div>
             <NavLink to="/" end className={({ isActive }) => navClassName(isActive)}>
-              <span className="nav-icon"></span> 首頁
+              <HomeIcon className="nav-icon" /> 首頁
             </NavLink>
             <div className="nav-section-label">我的收藏</div>
             <NavLink to="/my-recipes" className={({ isActive }) => navClassName(isActive)}>
-              <span className="nav-icon"></span> 我的食譜
+              <BookIcon className="nav-icon" /> 我的食譜
             </NavLink>
             <div className="nav-section-label">資訊</div>
             <NavLink to="/ingredients" className={({ isActive }) => navClassName(isActive)}>
-              <span className="nav-icon"></span> 食材百科
+              <LeafIcon className="nav-icon" /> 食材百科
             </NavLink>
             <NavLink to="/about" className={({ isActive }) => navClassName(isActive)}>
-              <span className="nav-icon"></span> 關於本站
+              <InfoIcon className="nav-icon" /> 關於本站
             </NavLink>
           </nav>
 
@@ -149,19 +177,19 @@ export default function App() {
 
       <nav className="bottom-nav">
         <NavLink to="/" end className={({ isActive }) => bottomNavClassName(isActive)}>
-          <span className="bnav-icon"></span>
+          <HomeIcon className="bnav-icon" />
           <span className="bnav-label">首頁</span>
         </NavLink>
         <NavLink to="/my-recipes" className={({ isActive }) => bottomNavClassName(isActive)}>
-          <span className="bnav-icon"></span>
+          <BookIcon className="bnav-icon" />
           <span className="bnav-label">我的食譜</span>
         </NavLink>
         <NavLink to="/ingredients" className={({ isActive }) => bottomNavClassName(isActive)}>
-          <span className="bnav-icon"></span>
+          <LeafIcon className="bnav-icon" />
           <span className="bnav-label">食材</span>
         </NavLink>
         <NavLink to="/about" className={({ isActive }) => bottomNavClassName(isActive)}>
-          <span className="bnav-icon"></span>
+          <InfoIcon className="bnav-icon" />
           <span className="bnav-label">關於本站</span>
         </NavLink>
       </nav>

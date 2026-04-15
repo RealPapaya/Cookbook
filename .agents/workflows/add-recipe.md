@@ -54,13 +54,42 @@ Style consistent with Japanese food anime illustration — clean lines, vivid co
 限制：
 - **不能出現食譜中沒有的食材**（例：食譜用橄欖油，圖中不能有辣椒）
 - 以盤中料理為主，不要過多廚房背景元素
-- 圖片存放路徑：`images/{recipe_slug}.png`
+
+**⚠️ 圖片格式要求（CRITICAL - 禁止重複違反）：**
+
+1. **所有食譜圖片必須是 WebP 格式**
+   - 圖片存放路徑：`images/{recipe_slug}.webp`（注意副檔名）
+   - ❌ 禁止使用 .png、.jpg、.jpeg 格式
+   - ✅ 必須使用 .webp 格式
+
+2. **圖片轉換流程（必須執行）：**
+   ```bash
+   # 步驟 1: 將原始圖片（jpg/png）放入 images/ 目錄
+   # 步驟 2: 執行轉換腳本
+   npm run convert:webp
+   # 或
+   npx tsx scripts/convert-to-webp.ts
+   
+   # 步驟 3: 確認生成 .webp 檔案
+   # 步驟 4: 原始圖片會自動備份至 images_backup/ 目錄
+   # 步驟 5: 可以手動刪除備份檔，但建議保留以防萬一
+   ```
+
+3. **為什麼必須使用 WebP：**
+   - WebP 比 JPEG/PNG 節省 25-35% 檔案大小
+   - 提升頁面載入速度
+   - 減少行動裝置流量消耗
+
+4. **違反規則的處理：**
+   - ❌ 發現任何 .jpg/.png 圖片在 images/ 目錄 → 立即轉換
+   - ❌ 發現 recipe JSON 中 image 欄位不是 .webp → 拒絕新增
+   - ✅ 所有圖片引用必須使用 .webp 副檔名
 
 ### Step 4：新增食譜 JSON 與更新 index.json
 - 每道菜寫成獨立 JSON 檔，存放在 `data/recipes/{recipe_slug}.json`
 - `id` 使用現存 index 裡最大 id + 1
 - `slug` 取一個適當的英文名稱（例：`garlic-butter-shrimp`）
-- `image` 路徑為 `images/{recipe_slug}.png`
+- **`image` 路徑必須為 `images/{recipe_slug}.webp`**（必須是 .webp 格式）
 - ingredients 格式：
   ```json
   {
@@ -88,8 +117,16 @@ Style consistent with Japanese food anime illustration — clean lines, vivid co
 - **建立好 JSON 後，不要忘記使用 node 腳本來更新 index.json**（或手動更新 `data/recipes/index.json`）。可以執行 `node scripts/migrate.mjs` 自動重構 index，或者手動添加入 index 陣列，確保 `index.json` 包含該食譜的 metadata。
 
 ### Step 5：更新 service-worker.js
-- 在 ASSETS 陣列加入新圖片路徑
+- 在 ASSETS 陣列加入新圖片路徑（必須是 .webp 格式）
 - 版本號 CACHE_NAME 升一版（例：cookbook-v5 → cookbook-v6）
+
+### Step 6：最終檢查清單
+- [ ] 圖片已轉換為 .webp 格式
+- [ ] images/ 目錄中無 .jpg/.png 檔案殘留
+- [ ] recipe JSON 的 image 欄位使用 .webp 副檔名
+- [ ] service-worker.js 中的路徑使用 .webp
+- [ ] index.json 已更新
+- [ ] 所有食材 ID 都已驗證存在
 
 ---
 
