@@ -1,0 +1,162 @@
+{
+  "id": 15,
+  "slug": "scallion-pork",
+  "title": "蔥爆豬肉",
+  "subtitle": "Stir-fried Pork with Scallions",
+  "description": "經典的快炒家常菜！大把青蔥和豬肉薄片在大火中交織出誘人香氣，鹹香下飯，是一道絕對考驗白飯存量的美味。",
+  "category": "晚餐",
+  "cuisine": "中式",
+  "meal_type": "料理",
+  "tags": [
+    "快炒",
+    "家常",
+    "鹹香"
+  ],
+  "difficulty": "簡單",
+  "time_estimate": "15 分鐘",
+  "base_servings": 2,
+  "image": "images/scallion-pork.webp",
+  "ingredient_ids": [
+    "pork_slice",
+    "green_onion",
+    "garlic_raw",
+    "chili_fresh",
+    "soy_sauce",
+    "sake_cooking",
+    "sesame_oil"
+  ],
+  "tastes": [
+    "鹹",
+    "辣",
+    "甜",
+    "鮮"
+  ],
+  "textures": [
+    "嚼勁",
+    "清脆",
+    "油膩",
+    "軟嫩"
+  ],
+  "method_types": [
+    "stir_fry"
+  ],
+  "ingredients": [
+    {
+      "ingredient_id": "pork_slice",
+      "variant_id": "pork_slice--raw",
+      "qty": 250,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "green_onion",
+      "variant_id": "green_onion--sliced",
+      "qty": 4,
+      "unit": "根",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切長段，蔥白與蔥綠分開"
+    },
+    {
+      "ingredient_id": "garlic_raw",
+      "variant_id": "garlic_raw--sliced",
+      "qty": 3,
+      "unit": "瓣",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "chili_fresh",
+      "variant_id": "chili_fresh--red",
+      "qty": 1,
+      "unit": "根",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": true,
+      "note": "斜切片"
+    },
+    {
+      "ingredient_id": "soy_sauce",
+      "variant_id": "soy_sauce--regular",
+      "qty": 2,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "sake_cooking",
+      "variant_id": "sake_cooking--rice",
+      "qty": 1,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "sesame_oil",
+      "variant_id": "sesame_oil--white",
+      "qty": 1,
+      "unit": "小匙",
+      "scalable": false,
+      "optional": false,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "大火快炒是蔥爆美味的關鍵，準備好所有材料再開火。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "豬肉片先用一半的醬油及一小匙米酒抓醃靜置 10 分鐘。",
+          "method_id": "marinate",
+          "duration_s": 600,
+          "ingredient_ids": [
+            "pork_slice--raw",
+            "soy_sauce--regular",
+            "sake_cooking--rice"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "熱鍋熱油，下蒜片、辣椒與蔥白段，大火爆香約 15 秒。",
+          "method_id": "stir_fry_high_heat",
+          "duration_s": 15,
+          "ingredient_ids": [
+            "garlic_raw--sliced",
+            "chili_fresh--red",
+            "green_onion--sliced"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "下豬肉片快速翻炒至表面變色，淋入剩下的醬油與米酒，翻炒出醬香。",
+          "method_id": "stir_fry_high_heat",
+          "duration_s": 90,
+          "ingredient_ids": [
+            "pork_slice--raw",
+            "soy_sauce--regular",
+            "sake_cooking--rice"
+          ]
+        },
+        {
+          "order": 4,
+          "instruction": "最後加入蔥綠段，翻炒均勻約 20 秒，起鍋前淋上香油提香即可盛盤。",
+          "method_id": "stir_fry_high_heat",
+          "duration_s": 20,
+          "ingredient_ids": [
+            "green_onion--sliced",
+            "sesame_oil--white"
+          ]
+        }
+      ]
+    }
+  ]
+}

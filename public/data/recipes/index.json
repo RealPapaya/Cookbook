@@ -1814,6 +1814,169 @@
     ]
   },
   {
+    "id": 14,
+    "slug": "miso-douban-hot-pot",
+    "title": "味噌豆瓣火鍋",
+    "subtitle": "Miso Douban Hot Pot",
+    "description": "將日式白味增的甘甜與中式辣豆瓣的辛香結合，帶出層次豐厚的濃厚湯底，天冷時來一鍋暖胃又下飯。",
+    "category": "晚餐",
+    "cuisine": "日式",
+    "meal_type": "湯",
+    "tags": [
+      "鍋物",
+      "濃郁",
+      "暖胃"
+    ],
+    "difficulty": "簡單",
+    "time_estimate": "20 分鐘",
+    "base_servings": 2,
+    "image": "images/miso-douban-hot-pot.webp",
+    "ingredient_ids": [
+      "miso",
+      "doubanjiang",
+      "tofu",
+      "pork_slice",
+      "enoki",
+      "cabbage",
+      "green_onion"
+    ],
+    "tastes": [
+      "鹹",
+      "鮮",
+      "辣",
+      "甜"
+    ],
+    "textures": [
+      "滑順",
+      "嚼勁",
+      "軟嫩",
+      "清脆"
+    ],
+    "method_types": [],
+    "ingredients": [
+      {
+        "ingredient_id": "miso",
+        "variant_id": "miso--mixed",
+        "qty": 3,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "doubanjiang",
+        "variant_id": "doubanjiang--spicy",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "tofu",
+        "variant_id": "tofu--firm",
+        "qty": 1,
+        "unit": "盒",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "切塊"
+      },
+      {
+        "ingredient_id": "pork_slice",
+        "variant_id": "pork_slice--raw",
+        "qty": 200,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "enoki",
+        "variant_id": "enoki--raw",
+        "qty": 1,
+        "unit": "把",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "cabbage",
+        "variant_id": "cabbage--raw",
+        "qty": 150,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "green_onion",
+        "variant_id": "green_onion--sliced",
+        "qty": 2,
+        "unit": "根",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      }
+    ],
+    "versions": [
+      {
+        "id": "stovetop",
+        "label": "爐灶版",
+        "note": "豆瓣醬先稍微炒香，湯底風味更佳。",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "鍋中下少許油，加入辣豆瓣醬以小火煸炒 1 分鐘，直到紅油釋出。",
+            "method_id": "stir_fry_low_heat",
+            "duration_s": 60,
+            "ingredient_ids": [
+              "doubanjiang--spicy"
+            ]
+          },
+          {
+            "order": 2,
+            "instruction": "倒入約 800ml 開水煮滾。先放入高麗菜、金針菇、豆腐，轉中火將蔬菜煮軟（約 5 分鐘）。",
+            "method_id": "simmer_medium_heat",
+            "duration_s": 300,
+            "ingredient_ids": [
+              "cabbage--raw",
+              "enoki--raw",
+              "tofu--firm"
+            ]
+          },
+          {
+            "order": 3,
+            "instruction": "用湯勺舀起少許熱湯，在碗中將味噌化開。接著倒入鍋中（注意味噌加入後不要大火久煮以免流失風味）。",
+            "method_id": "simmer_low_heat",
+            "duration_s": 60,
+            "ingredient_ids": [
+              "miso--mixed"
+            ]
+          },
+          {
+            "order": 4,
+            "instruction": "放入豬肉片，燙熟後關火。",
+            "method_id": "blanch",
+            "duration_s": 60,
+            "ingredient_ids": [
+              "pork_slice--raw"
+            ]
+          },
+          {
+            "order": 5,
+            "instruction": "上方撒上切好的蔥段，直接連鍋上桌端享用！",
+            "method_id": "mix",
+            "duration_s": 0,
+            "ingredient_ids": [
+              "green_onion--sliced"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": 11,
     "slug": "pepper-sesame-soy-milk-noodle",
     "title": "椒麻豆漿麵",
@@ -2188,6 +2351,493 @@
               "white_pepper_powder--ground",
               "cornstarch--potato",
               "green_onion--chopped"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "slug": "scallion-pork",
+    "title": "蔥爆豬肉",
+    "subtitle": "Stir-fried Pork with Scallions",
+    "description": "經典的快炒家常菜！大把青蔥和豬肉薄片在大火中交織出誘人香氣，鹹香下飯，是一道絕對考驗白飯存量的美味。",
+    "category": "晚餐",
+    "cuisine": "中式",
+    "meal_type": "料理",
+    "tags": [
+      "快炒",
+      "家常",
+      "鹹香"
+    ],
+    "difficulty": "簡單",
+    "time_estimate": "15 分鐘",
+    "base_servings": 2,
+    "image": "images/scallion-pork.webp",
+    "ingredient_ids": [
+      "pork_slice",
+      "green_onion",
+      "garlic_raw",
+      "chili_fresh",
+      "soy_sauce",
+      "sake_cooking",
+      "sesame_oil"
+    ],
+    "tastes": [
+      "鹹",
+      "辣",
+      "甜",
+      "苦",
+      "鮮"
+    ],
+    "textures": [
+      "嚼勁",
+      "軟嫩",
+      "清脆",
+      "液體",
+      "油膩",
+      "濃郁"
+    ],
+    "method_types": [
+      "stir_fry"
+    ],
+    "ingredients": [
+      {
+        "ingredient_id": "pork_slice",
+        "variant_id": "pork_slice--raw",
+        "qty": 250,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "green_onion",
+        "variant_id": "green_onion--sliced",
+        "qty": 4,
+        "unit": "根",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "切長段，蔥白與蔥綠分開"
+      },
+      {
+        "ingredient_id": "garlic_raw",
+        "variant_id": "garlic_raw--sliced",
+        "qty": 3,
+        "unit": "瓣",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "chili_fresh",
+        "variant_id": "chili_fresh--red",
+        "qty": 1,
+        "unit": "根",
+        "scalable": true,
+        "optional": true,
+        "is_seasoning": true,
+        "note": "斜切片"
+      },
+      {
+        "ingredient_id": "soy_sauce",
+        "variant_id": "soy_sauce--regular",
+        "qty": 2,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "sake_cooking",
+        "variant_id": "sake_cooking--rice",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "sesame_oil",
+        "variant_id": "sesame_oil--white",
+        "qty": 1,
+        "unit": "小匙",
+        "scalable": false,
+        "optional": false,
+        "is_seasoning": true
+      }
+    ],
+    "versions": [
+      {
+        "id": "stovetop",
+        "label": "爐灶版",
+        "note": "大火快炒是蔥爆美味的關鍵，準備好所有材料再開火。",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "豬肉片先用一半的醬油及一小匙米酒抓醃靜置 10 分鐘。",
+            "method_id": "marinate",
+            "duration_s": 600,
+            "ingredient_ids": [
+              "pork_slice--raw",
+              "soy_sauce--regular",
+              "sake_cooking--rice"
+            ]
+          },
+          {
+            "order": 2,
+            "instruction": "熱鍋熱油，下蒜片、辣椒與蔥白段，大火爆香約 15 秒。",
+            "method_id": "stir_fry_high_heat",
+            "duration_s": 15,
+            "ingredient_ids": [
+              "garlic_raw--sliced",
+              "chili_fresh--red",
+              "green_onion--sliced"
+            ]
+          },
+          {
+            "order": 3,
+            "instruction": "下豬肉片快速翻炒至表面變色，淋入剩下的醬油與米酒，翻炒出醬香。",
+            "method_id": "stir_fry_high_heat",
+            "duration_s": 90,
+            "ingredient_ids": [
+              "pork_slice--raw",
+              "soy_sauce--regular",
+              "sake_cooking--rice"
+            ]
+          },
+          {
+            "order": 4,
+            "instruction": "最後加入蔥綠段，翻炒均勻約 20 秒，起鍋前淋上香油提香即可盛盤。",
+            "method_id": "stir_fry_high_heat",
+            "duration_s": 20,
+            "ingredient_ids": [
+              "green_onion--sliced",
+              "sesame_oil--white"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "slug": "shacha-milk-glass-noodles",
+    "title": "沙茶牛奶冬粉",
+    "subtitle": "Shacha Milk Glass Noodles",
+    "description": "沙茶與牛奶交織出的濃厚湯頭，搭配吸滿湯汁的冬粉與軟嫩豬肉，是快速又溫暖的台式創意新口味。",
+    "category": "中餐",
+    "cuisine": "台式",
+    "meal_type": "麵",
+    "tags": [
+      "麵食",
+      "快速",
+      "濃郁",
+      "台式"
+    ],
+    "difficulty": "簡單",
+    "time_estimate": "15 分鐘",
+    "base_servings": 1,
+    "image": "images/shacha-milk-glass-noodles.webp",
+    "ingredient_ids": [
+      "glass_noodles",
+      "milk",
+      "shacha_sauce",
+      "pork_slice",
+      "cabbage",
+      "green_onion",
+      "garlic_raw"
+    ],
+    "tastes": [
+      "甜",
+      "鹹",
+      "鮮",
+      "辣",
+      "苦"
+    ],
+    "textures": [
+      "滑順",
+      "濃郁",
+      "顆粒",
+      "油膩",
+      "嚼勁",
+      "軟嫩",
+      "清脆"
+    ],
+    "method_types": [
+      "stir_fry"
+    ],
+    "ingredients": [
+      {
+        "ingredient_id": "glass_noodles",
+        "variant_id": "glass_noodles--soaked",
+        "qty": 1,
+        "unit": "把",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "milk",
+        "variant_id": "milk--raw",
+        "qty": 200,
+        "unit": "ml",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "shacha_sauce",
+        "variant_id": "shacha_sauce--regular",
+        "qty": 1.5,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "pork_slice",
+        "variant_id": "pork_slice--raw",
+        "qty": 100,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "cabbage",
+        "variant_id": "cabbage--raw",
+        "qty": 50,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "切塊"
+      },
+      {
+        "ingredient_id": "green_onion",
+        "variant_id": "green_onion--chopped",
+        "qty": 1,
+        "unit": "根",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "garlic_raw",
+        "variant_id": "garlic_raw--minced",
+        "qty": 1,
+        "unit": "瓣",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      }
+    ],
+    "versions": [
+      {
+        "id": "stovetop",
+        "label": "爐灶版",
+        "note": "先爆香沙茶與蒜末再加牛奶，風味更足。",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "熱鍋少許油，放入蒜末與沙茶醬，小火煸香約 30 秒至釋放出香氣。",
+            "method_id": "stir_fry_low_heat",
+            "duration_s": 30,
+            "ingredient_ids": [
+              "garlic_raw--minced",
+              "shacha_sauce--regular"
+            ]
+          },
+          {
+            "order": 2,
+            "instruction": "下豬肉片中火拌炒至半熟，接著放入高麗菜略炒。",
+            "method_id": "stir_fry_medium_heat",
+            "duration_s": 60,
+            "ingredient_ids": [
+              "pork_slice--raw",
+              "cabbage--raw"
+            ]
+          },
+          {
+            "order": 3,
+            "instruction": "倒入牛奶與適量熱水（稍微淹過食材），大火煮滾後馬上轉小火。",
+            "method_id": "simmer_medium_heat",
+            "duration_s": 120,
+            "ingredient_ids": [
+              "milk--raw"
+            ]
+          },
+          {
+            "order": 4,
+            "instruction": "放入泡發的冬粉，繼續小火煨煮 3 分鐘讓冬粉吸滿濃郁湯汁。",
+            "method_id": "simmer_low_heat",
+            "duration_s": 180,
+            "ingredient_ids": [
+              "glass_noodles--soaked"
+            ]
+          },
+          {
+            "order": 5,
+            "instruction": "起鍋前撒上蔥花即完成。",
+            "method_id": "mix",
+            "duration_s": 10,
+            "ingredient_ids": [
+              "green_onion--chopped"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "slug": "shacha-pork",
+    "title": "沙茶豬肉",
+    "subtitle": "Shacha Stir-fried Pork",
+    "description": "熱炒店必點經典！帶點粗獷口感的沙茶醬，大火翻炒後更是香氣四溢。配上脆嫩的空心菜，鹹香夠味，非常下飯。",
+    "category": "晚餐",
+    "cuisine": "台式",
+    "meal_type": "料理",
+    "tags": [
+      "快炒",
+      "台味",
+      "沙茶",
+      "濃郁"
+    ],
+    "difficulty": "簡單",
+    "time_estimate": "15 分鐘",
+    "base_servings": 2,
+    "image": "images/shacha-pork.webp",
+    "ingredient_ids": [
+      "pork_slice",
+      "water_spinach",
+      "shacha_sauce",
+      "garlic_raw",
+      "soy_sauce",
+      "vegetable_oil"
+    ],
+    "tastes": [
+      "鹹",
+      "鮮",
+      "甜",
+      "辣",
+      "苦"
+    ],
+    "textures": [
+      "嚼勁",
+      "軟嫩",
+      "濃郁",
+      "顆粒",
+      "油膩",
+      "清脆",
+      "液體"
+    ],
+    "method_types": [
+      "stir_fry"
+    ],
+    "ingredients": [
+      {
+        "ingredient_id": "pork_slice",
+        "variant_id": "pork_slice--raw",
+        "qty": 200,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "water_spinach",
+        "variant_id": "water_spinach--raw",
+        "qty": 1,
+        "unit": "大把",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "洗淨切段"
+      },
+      {
+        "ingredient_id": "shacha_sauce",
+        "variant_id": "shacha_sauce--regular",
+        "qty": 2,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "garlic_raw",
+        "variant_id": "garlic_raw--minced",
+        "qty": 3,
+        "unit": "瓣",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "soy_sauce",
+        "variant_id": "soy_sauce--regular",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "vegetable_oil",
+        "variant_id": "vegetable_oil--regular",
+        "qty": 2,
+        "unit": "大匙",
+        "scalable": false,
+        "optional": false,
+        "is_seasoning": true
+      }
+    ],
+    "versions": [
+      {
+        "id": "stovetop",
+        "label": "爐灶版",
+        "note": "最後再放入空心菜快速翻炒，保持青脆口感與鮮綠。",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "豬肉片先用少許醬油抓勻備用。",
+            "method_id": "marinate",
+            "duration_s": 300,
+            "ingredient_ids": [
+              "pork_slice--raw",
+              "soy_sauce--regular"
+            ]
+          },
+          {
+            "order": 2,
+            "instruction": "熱鍋熱油，下蒜末與沙茶醬，小火煸炒約 20 秒直到香氣飄出。",
+            "method_id": "stir_fry_low_heat",
+            "duration_s": 20,
+            "ingredient_ids": [
+              "garlic_raw--minced",
+              "shacha_sauce--regular",
+              "vegetable_oil--regular"
+            ]
+          },
+          {
+            "order": 3,
+            "instruction": "將火力轉為中大火，放入豬肉片迅速翻炒至八分熟。",
+            "method_id": "stir_fry_high_heat",
+            "duration_s": 60,
+            "ingredient_ids": [
+              "pork_slice--raw"
+            ]
+          },
+          {
+            "order": 4,
+            "instruction": "將底下的空心菜梗先下鍋翻炒 15 秒，接著再下菜葉部份，大火翻炒均勻，讓醬汁包覆即可盛盤。",
+            "method_id": "stir_fry_high_heat",
+            "duration_s": 45,
+            "ingredient_ids": [
+              "water_spinach--raw"
             ]
           }
         ]

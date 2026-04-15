@@ -1,0 +1,165 @@
+{
+  "id": 13,
+  "slug": "shacha-milk-glass-noodles",
+  "title": "沙茶牛奶冬粉",
+  "subtitle": "Shacha Milk Glass Noodles",
+  "description": "沙茶與牛奶交織出的濃厚湯頭，搭配吸滿湯汁的冬粉與軟嫩豬肉，是快速又溫暖的台式創意新口味。",
+  "category": "中餐",
+  "cuisine": "台式",
+  "meal_type": "麵",
+  "tags": [
+    "麵食",
+    "快速",
+    "濃郁",
+    "台式"
+  ],
+  "difficulty": "簡單",
+  "time_estimate": "15 分鐘",
+  "base_servings": 1,
+  "image": "images/shacha-milk-glass-noodles.webp",
+  "ingredient_ids": [
+    "glass_noodles",
+    "milk",
+    "shacha_sauce",
+    "pork_slice",
+    "cabbage",
+    "green_onion",
+    "garlic_raw"
+  ],
+  "tastes": [
+    "鹹",
+    "甜",
+    "鮮"
+  ],
+  "textures": [
+    "嚼勁",
+    "濃郁",
+    "清脆",
+    "軟嫩"
+  ],
+  "method_types": [
+    "simmer"
+  ],
+  "ingredients": [
+    {
+      "ingredient_id": "glass_noodles",
+      "variant_id": "glass_noodles--soaked",
+      "qty": 1,
+      "unit": "把",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "milk",
+      "variant_id": "milk--raw",
+      "qty": 200,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "shacha_sauce",
+      "variant_id": "shacha_sauce--regular",
+      "qty": 1.5,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "pork_slice",
+      "variant_id": "pork_slice--raw",
+      "qty": 100,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "cabbage",
+      "variant_id": "cabbage--raw",
+      "qty": 50,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切塊"
+    },
+    {
+      "ingredient_id": "green_onion",
+      "variant_id": "green_onion--chopped",
+      "qty": 1,
+      "unit": "根",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "garlic_raw",
+      "variant_id": "garlic_raw--minced",
+      "qty": 1,
+      "unit": "瓣",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "先爆香沙茶與蒜末再加牛奶，風味更足。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "熱鍋少許油，放入蒜末與沙茶醬，小火煸香約 30 秒至釋放出香氣。",
+          "method_id": "stir_fry_low_heat",
+          "duration_s": 30,
+          "ingredient_ids": [
+            "garlic_raw--minced",
+            "shacha_sauce--regular"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "下豬肉片中火拌炒至半熟，接著放入高麗菜略炒。",
+          "method_id": "stir_fry_medium_heat",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "pork_slice--raw",
+            "cabbage--raw"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "倒入牛奶與適量熱水（稍微淹過食材），大火煮滾後馬上轉小火。",
+          "method_id": "simmer_medium_heat",
+          "duration_s": 120,
+          "ingredient_ids": [
+            "milk--raw"
+          ]
+        },
+        {
+          "order": 4,
+          "instruction": "放入泡發的冬粉，繼續小火煨煮 3 分鐘讓冬粉吸滿濃郁湯汁。",
+          "method_id": "simmer_low_heat",
+          "duration_s": 180,
+          "ingredient_ids": [
+            "glass_noodles--soaked"
+          ]
+        },
+        {
+          "order": 5,
+          "instruction": "起鍋前撒上蔥花即完成。",
+          "method_id": "mix",
+          "duration_s": 10,
+          "ingredient_ids": [
+            "green_onion--chopped"
+          ]
+        }
+      ]
+    }
+  ]
+}

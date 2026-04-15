@@ -1766,13 +1766,15 @@ body {
 /* Selected bar */
 .kitchen-selected-bar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 8px;
   padding: 10px 28px;
   background: rgba(232, 169, 92, 0.06);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
+  max-height: 25vh;
+  overflow-y: auto;
 }
 
 .kitchen-sel-label {

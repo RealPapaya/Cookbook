@@ -24,7 +24,7 @@ interface RecipeFile {
 }
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const sourceDir = path.join(__dirname, '../data/recipes');
+const sourceDir = path.join(__dirname, '../public/data/recipes');
 const destinationDir = path.join(__dirname, '../public/data/recipes');
 
 if (!fs.existsSync(destinationDir)) {

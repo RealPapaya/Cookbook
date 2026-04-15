@@ -93,6 +93,20 @@ export default [
     verified_at: '2024-11-01',
   },
 
+  // ── 空心菜 ───────────────────────────────────────────────
+  {
+    id: 'water_spinach',
+    name: '空心菜',
+    name_en: 'Water Spinach',
+    categories: ['蔬菜'],
+    variants: [
+      { id: 'water_spinach--raw',    label: '生空心菜',   state: 'raw' },
+      { id: 'water_spinach--cooked', label: '炒空心菜',   state: 'cooked', yield_ratio: 0.35 },
+    ],
+    nutrition_per_100g: { calories: 19, protein: 2.6, fat: 0.2, carbs: 3.1, fiber: 2.1, sodium: 113 },
+    allergens: [],
+  },
+
   // ── 菠菜 ─────────────────────────────────────────────────
   {
     id: 'spinach',

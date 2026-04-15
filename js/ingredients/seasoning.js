@@ -614,6 +614,21 @@ export default [
     allergens: [],
   },
 
+  // ── 沙茶醬 ───────────────────────────────────────────────
+  {
+    id: 'shacha_sauce',
+    name: '沙茶醬',
+    name_en: 'Shacha Sauce',
+    categories: ['醬汁', '調味料'],
+    variants: [
+      { id: 'shacha_sauce--regular', label: '沙茶醬', state: 'paste' },
+    ],
+    nutrition_per_100g: { calories: 730, protein: 8, fat: 72, carbs: 12, sodium: 890 },
+    allergens: ['fish', 'soy', 'peanut', 'sesame'],
+    tastes: ['鹹', '鮮', '甜'],
+    textures: ['濃郁', '顆粒', '油膩'],
+  },
+
   // ── 甜麵醬 ───────────────────────────────────────────────
   {
     id: 'sweet_bean_sauce',

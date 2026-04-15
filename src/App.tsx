@@ -145,11 +145,10 @@ export default function App() {
           <Routes>
             <Route
               path="/"
-              element={
+                            element={
                 <HomePage
                   recipes={recipes}
                   loading={recipesLoading}
-                  onOpenKitchenPanel={() => setKitchenOpen(true)}
                 />
               }
             />

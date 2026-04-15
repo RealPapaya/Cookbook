@@ -1,0 +1,165 @@
+{
+  "id": 14,
+  "slug": "miso-douban-hot-pot",
+  "title": "味噌豆瓣火鍋",
+  "subtitle": "Miso Douban Hot Pot",
+  "description": "將日式白味增的甘甜與中式辣豆瓣的辛香結合，帶出層次豐厚的濃厚湯底，天冷時來一鍋暖胃又下飯。",
+  "category": "晚餐",
+  "cuisine": "日式",
+  "meal_type": "湯",
+  "tags": [
+    "鍋物",
+    "濃郁",
+    "暖胃"
+  ],
+  "difficulty": "簡單",
+  "time_estimate": "20 分鐘",
+  "base_servings": 2,
+  "image": "images/miso-douban-hot-pot.webp",
+  "ingredient_ids": [
+    "miso",
+    "doubanjiang",
+    "tofu",
+    "pork_slice",
+    "enoki",
+    "cabbage",
+    "green_onion"
+  ],
+  "tastes": [
+    "鹹",
+    "鮮",
+    "辣",
+    "甜"
+  ],
+  "textures": [
+    "多汁",
+    "軟嫩",
+    "清脆",
+    "濃郁"
+  ],
+  "method_types": [
+    "simmer"
+  ],
+  "ingredients": [
+    {
+      "ingredient_id": "miso",
+      "variant_id": "miso--mixed",
+      "qty": 3,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "doubanjiang",
+      "variant_id": "doubanjiang--spicy",
+      "qty": 1,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "tofu",
+      "variant_id": "tofu--firm",
+      "qty": 1,
+      "unit": "盒",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切塊"
+    },
+    {
+      "ingredient_id": "pork_slice",
+      "variant_id": "pork_slice--raw",
+      "qty": 200,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "enoki",
+      "variant_id": "enoki--raw",
+      "qty": 1,
+      "unit": "把",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "cabbage",
+      "variant_id": "cabbage--raw",
+      "qty": 150,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "green_onion",
+      "variant_id": "green_onion--sliced",
+      "qty": 2,
+      "unit": "根",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    }
+  ],
+  "versions": [
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "豆瓣醬先稍微炒香，湯底風味更佳。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "鍋中下少許油，加入辣豆瓣醬以小火煸炒 1 分鐘，直到紅油釋出。",
+          "method_id": "stir_fry_low_heat",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "doubanjiang--spicy"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "倒入約 800ml 開水煮滾。先放入高麗菜、金針菇、豆腐，轉中火將蔬菜煮軟（約 5 分鐘）。",
+          "method_id": "simmer_medium_heat",
+          "duration_s": 300,
+          "ingredient_ids": [
+            "cabbage--raw",
+            "enoki--raw",
+            "tofu--firm"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "用湯勺舀起少許熱湯，在碗中將味噌化開。接著倒入鍋中（注意味噌加入後不要大火久煮以免流失風味）。",
+          "method_id": "simmer_low_heat",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "miso--mixed"
+          ]
+        },
+        {
+          "order": 4,
+          "instruction": "放入豬肉片，燙熟後關火。",
+          "method_id": "blanch",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "pork_slice--raw"
+          ]
+        },
+        {
+          "order": 5,
+          "instruction": "上方撒上切好的蔥段，直接連鍋上桌端享用！",
+          "method_id": "mix",
+          "duration_s": 0,
+          "ingredient_ids": [
+            "green_onion--sliced"
+          ]
+        }
+      ]
+    }
+  ]
+}

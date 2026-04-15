@@ -1,0 +1,148 @@
+{
+  "id": 16,
+  "slug": "shacha-pork",
+  "title": "沙茶豬肉",
+  "subtitle": "Shacha Stir-fried Pork",
+  "description": "熱炒店必點經典！帶點粗獷口感的沙茶醬，大火翻炒後更是香氣四溢。配上脆嫩的空心菜，鹹香夠味，非常下飯。",
+  "category": "晚餐",
+  "cuisine": "台式",
+  "meal_type": "料理",
+  "tags": [
+    "快炒",
+    "台味",
+    "沙茶",
+    "濃郁"
+  ],
+  "difficulty": "簡單",
+  "time_estimate": "15 分鐘",
+  "base_servings": 2,
+  "image": "images/shacha-pork.webp",
+  "ingredient_ids": [
+    "pork_slice",
+    "water_spinach",
+    "shacha_sauce",
+    "garlic_raw",
+    "soy_sauce",
+    "vegetable_oil"
+  ],
+  "tastes": [
+    "鹹",
+    "鮮",
+    "甜"
+  ],
+  "textures": [
+    "嚼勁",
+    "清脆",
+    "濃郁",
+    "油膩",
+    "顆粒"
+  ],
+  "method_types": [
+    "stir_fry"
+  ],
+  "ingredients": [
+    {
+      "ingredient_id": "pork_slice",
+      "variant_id": "pork_slice--raw",
+      "qty": 200,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "water_spinach",
+      "variant_id": "water_spinach--raw",
+      "qty": 1,
+      "unit": "大把",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "洗淨切段"
+    },
+    {
+      "ingredient_id": "shacha_sauce",
+      "variant_id": "shacha_sauce--regular",
+      "qty": 2,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "garlic_raw",
+      "variant_id": "garlic_raw--minced",
+      "qty": 3,
+      "unit": "瓣",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "soy_sauce",
+      "variant_id": "soy_sauce--regular",
+      "qty": 1,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "vegetable_oil",
+      "variant_id": "vegetable_oil--regular",
+      "qty": 2,
+      "unit": "大匙",
+      "scalable": false,
+      "optional": false,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "最後再放入空心菜快速翻炒，保持青脆口感與鮮綠。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "豬肉片先用少許醬油抓勻備用。",
+          "method_id": "marinate",
+          "duration_s": 300,
+          "ingredient_ids": [
+            "pork_slice--raw",
+            "soy_sauce--regular"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "熱鍋熱油，下蒜末與沙茶醬，小火煸炒約 20 秒直到香氣飄出。",
+          "method_id": "stir_fry_low_heat",
+          "duration_s": 20,
+          "ingredient_ids": [
+            "garlic_raw--minced",
+            "shacha_sauce--regular",
+            "vegetable_oil--regular"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "將火力轉為中大火，放入豬肉片迅速翻炒至八分熟。",
+          "method_id": "stir_fry_high_heat",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "pork_slice--raw"
+          ]
+        },
+        {
+          "order": 4,
+          "instruction": "將底下的空心菜梗先下鍋翻炒 15 秒，接著再下菜葉部份，大火翻炒均勻，讓醬汁包覆即可盛盤。",
+          "method_id": "stir_fry_high_heat",
+          "duration_s": 45,
+          "ingredient_ids": [
+            "water_spinach--raw"
+          ]
+        }
+      ]
+    }
+  ]
+}
