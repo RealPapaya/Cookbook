@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cookbook-v15-webp';
+const CACHE_NAME = 'cookbook-v17';
 const ASSETS = [
   '/',
   '/index.html',
@@ -33,6 +33,10 @@ const ASSETS = [
   '/images/mapo_tofu_1776072339256.webp',
   '/images/pepper_sesame_soy_milk_noodle_1776072358665.webp',
   '/images/silky_egg_shimeji_rice_1776072373600.webp',
+  '/images/shacha-milk-glass-noodles.webp',
+  '/images/miso-douban-hot-pot.webp',
+  '/images/scallion-pork.webp',
+  '/images/shacha-pork.webp',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
 ];
