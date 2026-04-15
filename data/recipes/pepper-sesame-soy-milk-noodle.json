@@ -11,7 +11,7 @@
   "difficulty": "簡單",
   "time_estimate": "15 分鐘",
   "base_servings": 1,
-  "image": "images/pepper_sesame_soy_milk_noodle_1776072358665.png",
+  "image": "images/pepper_sesame_soy_milk_noodle_1776072358665.webp",
   "ingredients": [
     { "ingredient_id": "ramen_noodles", "variant_id": "ramen_noodles--fresh", "qty": 1, "unit": "份", "scalable": true, "optional": false, "is_seasoning": false },
     { "ingredient_id": "soy_milk", "variant_id": "soy_milk--unsweetened", "qty": 300, "unit": "ml", "scalable": true, "optional": false, "is_seasoning": false },

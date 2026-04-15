@@ -16,7 +16,7 @@
     "difficulty": "簡單",
     "time_estimate": "10 分鐘",
     "base_servings": 1,
-    "image": "images/carbonara_udon.png",
+    "image": "images/carbonara_udon.webp",
     "ingredient_ids": [
       "udon",
       "milk",
@@ -148,7 +148,7 @@
     "difficulty": "簡單",
     "time_estimate": "12 分鐘",
     "base_servings": 1,
-    "image": "images/kimchi_udon.png",
+    "image": "images/kimchi_udon.webp",
     "ingredient_ids": [
       "udon",
       "kimchi",
@@ -280,7 +280,7 @@
     "difficulty": "簡單",
     "time_estimate": "12 分鐘",
     "base_servings": 1,
-    "image": "images/lemon_chicken_udon.png",
+    "image": "images/lemon_chicken_udon.webp",
     "ingredient_ids": [
       "udon",
       "chicken_meatball",
@@ -411,7 +411,7 @@
     "difficulty": "簡單",
     "time_estimate": "20 分鐘",
     "base_servings": 2,
-    "image": "images/garlic_butter_tomato_shrimp.png",
+    "image": "images/garlic_butter_tomato_shrimp.webp",
     "ingredient_ids": [
       "shrimp_frozen",
       "tomato",
@@ -557,7 +557,7 @@
     "difficulty": "簡單",
     "time_estimate": "15 分鐘",
     "base_servings": 1,
-    "image": "images/kimchi_tofu_stew.png",
+    "image": "images/kimchi_tofu_stew.webp",
     "ingredient_ids": [
       "kimchi",
       "onion",
@@ -728,7 +728,7 @@
     "difficulty": "中等",
     "time_estimate": "30 分鐘",
     "base_servings": 1,
-    "image": "images/french_chicken_stew.png",
+    "image": "images/french_chicken_stew.webp",
     "ingredient_ids": [
       "chicken_thigh",
       "onion",
@@ -869,7 +869,7 @@
     "difficulty": "中等",
     "time_estimate": "25 分鐘",
     "base_servings": 1,
-    "image": "images/salted_egg_chicken_tofu.png",
+    "image": "images/salted_egg_chicken_tofu.webp",
     "ingredient_ids": [
       "chicken_thigh",
       "tofu",
@@ -1030,7 +1030,7 @@
     "difficulty": "簡單",
     "time_estimate": "45 分鐘",
     "base_servings": 4,
-    "image": "images/curry-rice.png",
+    "image": "images/curry-rice.webp",
     "ingredient_ids": [
       "pork_belly",
       "potato",
@@ -1141,7 +1141,7 @@
     "difficulty": "簡單",
     "time_estimate": "15 分鐘",
     "base_servings": 2,
-    "image": "images/gyudon.png",
+    "image": "images/gyudon.webp",
     "ingredient_ids": [
       "beef_slice",
       "onion",
@@ -1275,7 +1275,7 @@
     "difficulty": "中等",
     "time_estimate": "35 分鐘",
     "base_servings": 2,
-    "image": "images/shanghai-veg-rice.png",
+    "image": "images/shanghai-veg-rice.webp",
     "ingredient_ids": [
       "white_rice",
       "bok_choy",

@@ -11,7 +11,7 @@
   "difficulty": "中等",
   "time_estimate": "20 分鐘",
   "base_servings": 2,
-  "image": "images/mapo_tofu_1776072339256.png",
+  "image": "images/mapo_tofu_1776072339256.webp",
   "ingredients": [
     { "ingredient_id": "tofu_silken", "variant_id": "tofu_silken--soft", "qty": 300, "unit": "g", "scalable": true, "optional": false, "is_seasoning": false },
     { "ingredient_id": "ground_pork", "variant_id": "ground_pork--lean", "qty": 100, "unit": "g", "scalable": true, "optional": false, "is_seasoning": false },

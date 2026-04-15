@@ -10,7 +10,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "migrate:data": "tsx scripts/migrate.ts"
+    "migrate:data": "tsx scripts/migrate.ts",
+    "convert:webp": "tsx scripts/convert-to-webp.ts",
+    "update:refs": "tsx scripts/update-image-refs.ts"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -26,6 +28,7 @@
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^4.7.0",
     "jsdom": "^25.0.1",
+    "sharp": "^0.34.5",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "vite": "^5.4.20",

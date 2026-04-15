@@ -14,7 +14,7 @@
   "base_servings": 1,
   "time_estimate": "30 分鐘",
   "difficulty": "中等",
-  "image": "images/french_chicken_stew.png",
+  "image": "images/french_chicken_stew.webp",
   "ingredients": [
     {
       "ingredient_id": "chicken_thigh",

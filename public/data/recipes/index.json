@@ -16,7 +16,7 @@
     "difficulty": "簡單",
     "time_estimate": "10 分鐘",
     "base_servings": 1,
-    "image": "images/carbonara_udon.png",
+    "image": "images/carbonara_udon.webp",
     "ingredient_ids": [
       "udon",
       "milk",
@@ -230,7 +230,7 @@
     "difficulty": "簡單",
     "time_estimate": "45 分鐘",
     "base_servings": 4,
-    "image": "images/curry-rice.png",
+    "image": "images/curry-rice.webp",
     "ingredient_ids": [
       "pork_belly",
       "potato",
@@ -414,7 +414,7 @@
     "difficulty": "中等",
     "time_estimate": "30 分鐘",
     "base_servings": 1,
-    "image": "images/french_chicken_stew.png",
+    "image": "images/french_chicken_stew.webp",
     "ingredient_ids": [
       "chicken_thigh",
       "onion",
@@ -627,7 +627,7 @@
     "difficulty": "簡單",
     "time_estimate": "20 分鐘",
     "base_servings": 2,
-    "image": "images/garlic_butter_tomato_shrimp.png",
+    "image": "images/garlic_butter_tomato_shrimp.webp",
     "ingredient_ids": [
       "shrimp_frozen",
       "tomato",
@@ -835,7 +835,7 @@
     "difficulty": "簡單",
     "time_estimate": "15 分鐘",
     "base_servings": 2,
-    "image": "images/gyudon.png",
+    "image": "images/gyudon.webp",
     "ingredient_ids": [
       "beef_slice",
       "onion",
@@ -1024,7 +1024,7 @@
     "difficulty": "簡單",
     "time_estimate": "15 分鐘",
     "base_servings": 1,
-    "image": "images/kimchi_tofu_stew.png",
+    "image": "images/kimchi_tofu_stew.webp",
     "ingredient_ids": [
       "kimchi",
       "onion",
@@ -1270,7 +1270,7 @@
     "difficulty": "簡單",
     "time_estimate": "12 分鐘",
     "base_servings": 1,
-    "image": "images/kimchi_udon.png",
+    "image": "images/kimchi_udon.webp",
     "ingredient_ids": [
       "udon",
       "kimchi",
@@ -1473,7 +1473,7 @@
     "difficulty": "簡單",
     "time_estimate": "12 分鐘",
     "base_servings": 1,
-    "image": "images/lemon_chicken_udon.png",
+    "image": "images/lemon_chicken_udon.webp",
     "ingredient_ids": [
       "udon",
       "chicken_meatball",
@@ -1640,7 +1640,7 @@
     "difficulty": "中等",
     "time_estimate": "20 分鐘",
     "base_servings": 2,
-    "image": "images/mapo_tofu_1776072339256.png",
+    "image": "images/mapo_tofu_1776072339256.webp",
     "ingredient_ids": [
       "tofu_silken",
       "ground_pork",
@@ -1830,7 +1830,7 @@
     "difficulty": "簡單",
     "time_estimate": "15 分鐘",
     "base_servings": 1,
-    "image": "images/pepper_sesame_soy_milk_noodle_1776072358665.png",
+    "image": "images/pepper_sesame_soy_milk_noodle_1776072358665.webp",
     "ingredient_ids": [
       "ramen_noodles",
       "soy_milk",
@@ -1976,7 +1976,7 @@
     "difficulty": "中等",
     "time_estimate": "25 分鐘",
     "base_servings": 1,
-    "image": "images/salted_egg_chicken_tofu.png",
+    "image": "images/salted_egg_chicken_tofu.webp",
     "ingredient_ids": [
       "chicken_thigh",
       "tofu",
@@ -2211,7 +2211,7 @@
     "difficulty": "中等",
     "time_estimate": "35 分鐘",
     "base_servings": 2,
-    "image": "images/shanghai-veg-rice.png",
+    "image": "images/shanghai-veg-rice.webp",
     "ingredient_ids": [
       "white_rice",
       "bok_choy",
@@ -2401,7 +2401,7 @@
     "difficulty": "簡單",
     "time_estimate": "10 分鐘",
     "base_servings": 1,
-    "image": "images/silky_egg_shimeji_rice_1776072373600.png",
+    "image": "images/silky_egg_shimeji_rice_1776072373600.webp",
     "ingredient_ids": [
       "white_rice",
       "egg",

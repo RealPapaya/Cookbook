@@ -18,7 +18,7 @@ const indexPayload = [
     difficulty: 'Easy',
     time_estimate: '10 min',
     base_servings: 1,
-    image: 'images/gyudon.png',
+    image: 'images/gyudon.webp',
     ingredient_ids: ['udon'],
     tastes: ['salty'],
     textures: ['smooth'],

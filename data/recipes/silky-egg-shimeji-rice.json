@@ -11,7 +11,7 @@
   "difficulty": "簡單",
   "time_estimate": "10 分鐘",
   "base_servings": 1,
-  "image": "images/silky_egg_shimeji_rice_1776072373600.png",
+  "image": "images/silky_egg_shimeji_rice_1776072373600.webp",
   "ingredients": [
     { "ingredient_id": "white_rice", "variant_id": "white_rice--cooked", "qty": 1, "unit": "碗", "scalable": true, "optional": false, "is_seasoning": false },
     { "ingredient_id": "egg", "variant_id": "egg--raw", "qty": 2, "unit": "顆", "scalable": true, "optional": false, "is_seasoning": false },
