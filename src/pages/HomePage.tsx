@@ -262,22 +262,18 @@ export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomeP
             ))}
           </div>
         </div>
+      </div>
 
-
-        <div className="filter-actions">
+      {activeFilterCount > 0 && (
+        <div id="active-filter-summary" style={{ margin: '0 28px 10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div className="card-tags" style={{ flex: 1 }}>
+            <span className="tag">已套用 {activeFilterCount} 個篩選條件</span>
+          </div>
           <button className="filter-clear-btn" type="button" onClick={clearAllFilters}>
             清除篩選
           </button>
         </div>
-      </div>
-
-      <div id="active-filter-summary" style={{ margin: '0 28px 10px' }}>
-        {activeFilterCount > 0 && (
-          <div className="card-tags">
-            <span className="tag">已套用 {activeFilterCount} 個篩選條件</span>
-          </div>
-        )}
-      </div>
+      )}
 
       <div className="recipe-grid" id="recipe-grid">
         {!loading && filteredRecipes.length === 0 && (

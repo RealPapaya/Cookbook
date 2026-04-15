@@ -489,26 +489,24 @@ body {
   font-weight: 600;
 }
 
-.filter-actions {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-}
-
 .filter-clear-btn {
-  padding: 7px 18px;
+  font-size: .7rem;
+  padding: 2px 12px;
   border-radius: 50px;
   border: 1px solid var(--border-accent);
   background: transparent;
   color: var(--accent);
   cursor: pointer;
-  font-size: 0.82rem;
   font-family: 'Noto Sans TC', sans-serif;
   transition: all var(--transition);
+  white-space: nowrap;
+  height: fit-content;
+  align-self: center;
 }
 
 .filter-clear-btn:hover {
   background: var(--accent-glow);
+  border-color: var(--accent);
 }
 
 /* ===========================
@@ -1833,6 +1831,7 @@ body {
 /* Left: ingredient accordion */
 .kitchen-left {
   width: 380px;
+  max-height: 40vh;
   flex-shrink: 0;
   overflow-y: auto;
   border-right: 1px solid var(--border);
@@ -2601,8 +2600,8 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .kitchen-left {
-    max-height: 50vh;
+    .kitchen-left {
+    max-height: 35vh;
     overflow-y: auto;
   }
 }
