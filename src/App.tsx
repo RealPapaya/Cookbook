@@ -45,11 +45,10 @@ const LeafIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const InfoIcon = ({ className }: { className?: string }) => (
+const ChefHatIcon = ({ className }: { className?: string }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M12 16v-4"/>
-    <path d="M12 8h.01"/>
+    <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+    <line x1="6" y1="17" x2="18" y2="17"/>
   </svg>
 );
 
@@ -128,12 +127,16 @@ export default function App() {
               <BookIcon className="nav-icon" /> 我的食譜
             </NavLink>
             <div className="nav-section-label">資訊</div>
-            <NavLink to="/ingredients" className={({ isActive }) => navClassName(isActive)}>
+                        <NavLink to="/ingredients" className={({ isActive }) => navClassName(isActive)}>
               <LeafIcon className="nav-icon" /> 食材百科
             </NavLink>
-            <NavLink to="/about" className={({ isActive }) => navClassName(isActive)}>
-              <InfoIcon className="nav-icon" /> 關於本站
-            </NavLink>
+            <button
+              type="button"
+              className={`nav-link ${kitchenOpen ? 'active' : ''}`}
+              onClick={() => setKitchenOpen(true)}
+            >
+              <ChefHatIcon className="nav-icon" /> 廚房
+            </button>
           </nav>
 
           <div className="sidebar-footer">
@@ -145,10 +148,11 @@ export default function App() {
           <Routes>
             <Route
               path="/"
-                            element={
+                                          element={
                 <HomePage
                   recipes={recipes}
                   loading={recipesLoading}
+                  onOpenKitchenPanel={() => setKitchenOpen(true)}
                 />
               }
             />
@@ -183,14 +187,18 @@ export default function App() {
           <BookIcon className="bnav-icon" />
           <span className="bnav-label">我的食譜</span>
         </NavLink>
-        <NavLink to="/ingredients" className={({ isActive }) => bottomNavClassName(isActive)}>
+                <NavLink to="/ingredients" className={({ isActive }) => bottomNavClassName(isActive)}>
           <LeafIcon className="bnav-icon" />
           <span className="bnav-label">食材</span>
         </NavLink>
-        <NavLink to="/about" className={({ isActive }) => bottomNavClassName(isActive)}>
-          <InfoIcon className="bnav-icon" />
-          <span className="bnav-label">關於本站</span>
-        </NavLink>
+        <button
+          type="button"
+          className={`bottom-nav-btn ${kitchenOpen ? 'active' : ''}`}
+          onClick={() => setKitchenOpen(true)}
+        >
+          <ChefHatIcon className="bnav-icon" />
+          <span className="bnav-label">廚房</span>
+        </button>
       </nav>
 
       <KitchenPanel
