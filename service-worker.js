@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cookbook-v17';
+const CACHE_NAME = 'cookbook-v18';
 const ASSETS = [
   '/',
   '/index.html',
@@ -37,6 +37,10 @@ const ASSETS = [
   '/images/miso-douban-hot-pot.webp',
   '/images/scallion-pork.webp',
   '/images/shacha-pork.webp',
+  '/images/scallion-oil-chicken.webp',
+  '/images/butter-salmon.webp',
+  '/images/mushroom-scallop.webp',
+  '/images/hamburger-steak.webp',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
 ];

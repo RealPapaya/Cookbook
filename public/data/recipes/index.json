@@ -1,5 +1,164 @@
 [
   {
+    "id": 18,
+    "slug": "butter-salmon",
+    "title": "奶油鮭魚",
+    "subtitle": "Butter Salmon",
+    "description": "奶油的脂香與鮭魚細緻的肉質相得益彰，搭配蒜香與檸檬汁，是一道做法簡單卻具備高級感的西式主菜。",
+    "category": "晚餐",
+    "cuisine": "西式",
+    "meal_type": "料理",
+    "tags": [
+      "鮭魚",
+      "海鮮",
+      "奶油",
+      "高蛋白"
+    ],
+    "difficulty": "簡單",
+    "time_estimate": "15 分鐘",
+    "base_servings": 1,
+    "image": "images/butter-salmon.webp",
+    "ingredient_ids": [
+      "salmon",
+      "butter",
+      "garlic_raw",
+      "lemon",
+      "broccoli",
+      "salt",
+      "black_pepper"
+    ],
+    "tastes": [
+      "甜",
+      "辣",
+      "苦",
+      "酸",
+      "鹹"
+    ],
+    "textures": [
+      "濃郁",
+      "滑順",
+      "清脆",
+      "多汁",
+      "顆粒"
+    ],
+    "method_types": [],
+    "ingredients": [
+      {
+        "ingredient_id": "salmon",
+        "variant_id": "salmon--fillet",
+        "qty": 200,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "butter",
+        "variant_id": "butter--unsalted",
+        "qty": 20,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "garlic_raw",
+        "variant_id": "garlic_raw--minced",
+        "qty": 2,
+        "unit": "瓣",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "lemon",
+        "variant_id": "lemon--juice",
+        "qty": 1,
+        "unit": "小匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "broccoli",
+        "variant_id": "broccoli--raw",
+        "qty": 100,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "燙熱備用"
+      },
+      {
+        "ingredient_id": "salt",
+        "variant_id": "salt--sea",
+        "qty": 1,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "black_pepper",
+        "variant_id": "black_pepper--ground",
+        "qty": 1,
+        "unit": "g",
+        "scalable": true,
+        "optional": true,
+        "is_seasoning": true
+      }
+    ],
+    "versions": [
+      {
+        "id": "stovetop",
+        "label": "爐灶版",
+        "note": "先將鮭魚皮煎至香脆後再加入奶油，能避免奶油焦化過頭。",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "鮭魚表面擦乾水分，均勻撒上鹽與黑胡椒醃 5 分鐘。",
+            "method_id": "marinate",
+            "duration_s": 300,
+            "ingredient_ids": [
+              "salmon--fillet",
+              "salt--sea",
+              "black_pepper--ground"
+            ]
+          },
+          {
+            "order": 2,
+            "instruction": "鍋中下少許油（非奶油），將鮭魚皮朝下，中火煎至皮脆且肉側變色約 3 分鐘，翻面再煎 2 分鐘。",
+            "method_id": "pan_fry_medium_heat",
+            "duration_s": 300,
+            "ingredient_ids": [
+              "salmon--fillet"
+            ]
+          },
+          {
+            "order": 3,
+            "instruction": "轉小火，放入奶油與蒜末，待奶油融化冒泡後，用湯匙不斷將奶油淋在鮭魚表面約 1 分鐘提香。",
+            "method_id": "stir_fry_low_heat",
+            "duration_s": 60,
+            "ingredient_ids": [
+              "butter--unsalted",
+              "garlic_raw--minced"
+            ]
+          },
+          {
+            "order": 4,
+            "instruction": "起鍋裝盤，淋上少許新鮮檸檬汁，最後搭配燙好的青花菜即可。",
+            "method_id": "mix",
+            "duration_s": 10,
+            "ingredient_ids": [
+              "lemon--juice",
+              "broccoli--raw"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": 1,
     "slug": "carbonara-udon",
     "title": "奶油培根蛋烏龍便當",
@@ -1008,6 +1167,170 @@
     ]
   },
   {
+    "id": 20,
+    "slug": "hamburger-steak",
+    "title": "漢堡排",
+    "subtitle": "Japanese Hamburger Steak (Hambagu)",
+    "description": "道地的日式洋食！牛豬混合絞肉能兼具牛肉香氣與豬肉油脂的柔軟，內含炒得甜潤的洋蔥丁與吸滿鮮奶的麵包粉，是會流出肉汁的夢幻美味。",
+    "category": "晚餐",
+    "cuisine": "日式",
+    "meal_type": "料理",
+    "tags": [
+      "絞肉",
+      "洋食",
+      "日式",
+      "經典"
+    ],
+    "difficulty": "中等",
+    "time_estimate": "40 分鐘",
+    "base_servings": 2,
+    "image": "images/hamburger-steak.webp",
+    "ingredient_ids": [
+      "ground_beef",
+      "ground_pork",
+      "onion",
+      "bread_crumb",
+      "egg_chicken",
+      "milk",
+      "salt",
+      "black_pepper"
+    ],
+    "tastes": [
+      "鹹",
+      "甜",
+      "辣",
+      "苦"
+    ],
+    "textures": [
+      "軟嫩",
+      "滑順",
+      "顆粒"
+    ],
+    "method_types": [
+      "stir_fry"
+    ],
+    "ingredients": [
+      {
+        "ingredient_id": "ground_beef",
+        "variant_id": "ground_beef--medium",
+        "qty": 200,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "建議 7:3 的比例 (牛:豬)"
+      },
+      {
+        "ingredient_id": "ground_pork",
+        "variant_id": "ground_pork--medium",
+        "qty": 100,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "onion",
+        "variant_id": "onion--yellow",
+        "qty": 0.5,
+        "unit": "顆",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "切碎"
+      },
+      {
+        "ingredient_id": "bread_crumb",
+        "variant_id": "bread_crumb--panko",
+        "qty": 30,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "egg_chicken",
+        "variant_id": "egg_chicken--raw",
+        "qty": 1,
+        "unit": "顆",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "milk",
+        "variant_id": "milk--raw",
+        "qty": 30,
+        "unit": "ml",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "salt",
+        "variant_id": "salt--sea",
+        "qty": 2,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "black_pepper",
+        "variant_id": "black_pepper--ground",
+        "qty": 1,
+        "unit": "g",
+        "scalable": true,
+        "optional": true,
+        "is_seasoning": true
+      }
+    ],
+    "versions": [
+      {
+        "id": "stovetop",
+        "label": "爐灶版",
+        "note": "製作時反覆在手中拍打出空氣，能防止煎烤時裂開。",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "洋蔥碎用少許油炒至金黃變軟且散發甜味，取出徹底放涼備用。麵包粉與牛奶於碗中混和預泡。",
+            "method_id": "stir_fry_medium_heat",
+            "duration_s": 300,
+            "ingredient_ids": [
+              "onion--yellow",
+              "bread_crumb--panko",
+              "milk--raw"
+            ]
+          },
+          {
+            "order": 2,
+            "instruction": "大碗中放入牛、豬絞肉與鹽，快速攪拌至產生黏性。加入冷卻的洋蔥、雞蛋、泡軟的麵包粉與黑胡椒攪拌均勻。",
+            "method_id": "mix",
+            "duration_s": 180,
+            "ingredient_ids": [
+              "ground_beef--medium",
+              "ground_pork--medium",
+              "egg_chicken--raw"
+            ]
+          },
+          {
+            "order": 3,
+            "instruction": "雙手抹油，將肉餡分成兩份揉圓，反覆左右手拍打出空氣，在中心壓一個小凹糟。",
+            "method_id": "none",
+            "ingredient_ids": []
+          },
+          {
+            "order": 4,
+            "instruction": "熱鍋熱油，下漢堡排中火煎 3 分鐘至上色，翻面後加入 50ml 水或紅酒，蓋上鍋蓋小火蒸煮 5-7 分鐘直到熟透。",
+            "method_id": "simmer_low_heat",
+            "duration_s": 420,
+            "ingredient_ids": []
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": 5,
     "slug": "kimchi-tofu-stew",
     "title": "韓式泡菜豆腐鍋",
@@ -1977,6 +2300,149 @@
     ]
   },
   {
+    "id": 19,
+    "slug": "mushroom-scallop",
+    "title": "野菇干貝",
+    "subtitle": "Wild Mushroom and Scallop",
+    "description": "大海的鮮味與大地的野性結合。干貝特有的甘甜在高溫快煎下散發誘人氣息，再配上吸飽汁液的多樣蕈菇，是頂級的味覺饗宴。",
+    "category": "晚餐",
+    "cuisine": "中西融合",
+    "meal_type": "料理",
+    "tags": [
+      "海鮮",
+      "菇類",
+      "低脂",
+      "鮮美"
+    ],
+    "difficulty": "中等",
+    "time_estimate": "20 分鐘",
+    "base_servings": 2,
+    "image": "images/mushroom-scallop.webp",
+    "ingredient_ids": [
+      "scallop",
+      "shimeji",
+      "shiitake",
+      "garlic_raw",
+      "butter",
+      "soy_sauce"
+    ],
+    "tastes": [
+      "鮮",
+      "鹹",
+      "辣",
+      "苦",
+      "甜"
+    ],
+    "textures": [
+      "嚼勁",
+      "滑順",
+      "軟嫩",
+      "清脆",
+      "濃郁",
+      "液體"
+    ],
+    "method_types": [
+      "stir_fry"
+    ],
+    "ingredients": [
+      {
+        "ingredient_id": "scallop",
+        "variant_id": "scallop--fresh",
+        "qty": 6,
+        "unit": "顆",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "shimeji",
+        "variant_id": "shimeji--brown",
+        "qty": 100,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "shiitake",
+        "variant_id": "shiitake--fresh",
+        "qty": 3,
+        "unit": "朵",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "切片"
+      },
+      {
+        "ingredient_id": "garlic_raw",
+        "variant_id": "garlic_raw--minced",
+        "qty": 3,
+        "unit": "瓣",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "butter",
+        "variant_id": "butter--unsalted",
+        "qty": 10,
+        "unit": "g",
+        "scalable": true,
+        "optional": true,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "soy_sauce",
+        "variant_id": "soy_sauce--regular",
+        "qty": 1,
+        "unit": "小匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      }
+    ],
+    "versions": [
+      {
+        "id": "stovetop",
+        "label": "爐灶版",
+        "note": "干貝不要煎太久，兩面金黃即可保持內裡軟嫩。",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "干貝兩面拍乾水分。起熱鍋下油，大火將干貝兩面各煎 1 分鐘至上色，取出備用。",
+            "method_id": "pan_fry_high_heat",
+            "duration_s": 120,
+            "ingredient_ids": [
+              "scallop--fresh"
+            ]
+          },
+          {
+            "order": 2,
+            "instruction": "原鍋（不洗）加入蒜末與所有菇類，中火翻炒至菇類出水變軟並略微縮小。",
+            "method_id": "stir_fry_medium_heat",
+            "duration_s": 240,
+            "ingredient_ids": [
+              "shimeji--brown",
+              "shiitake--fresh",
+              "garlic_raw--minced"
+            ]
+          },
+          {
+            "order": 3,
+            "instruction": "加入奶油與醬油調味，待奶油融化後將干貝放回鍋中，快速翻炒 30 秒混合氣味即完成。",
+            "method_id": "stir_fry_medium_heat",
+            "duration_s": 30,
+            "ingredient_ids": [
+              "butter--unsalted",
+              "soy_sauce--regular",
+              "scallop--fresh"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": 11,
     "slug": "pepper-sesame-soy-milk-noodle",
     "title": "椒麻豆漿麵",
@@ -2351,6 +2817,136 @@
               "white_pepper_powder--ground",
               "cornstarch--potato",
               "green_onion--chopped"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "slug": "scallion-oil-chicken",
+    "title": "蔥油雞肉",
+    "subtitle": "Scallion Oil Chicken",
+    "description": "經典的冷盤料理，鮮嫩多汁的雞腿搭配蔥薑交織出的辛香蔥油。先蒸煮保留肉質甜味，再淋上滾燙蔥油鎖住香氣，是宴客與家常皆宜的美味。",
+    "category": "中餐",
+    "cuisine": "台式",
+    "meal_type": "料理",
+    "tags": [
+      "雞肉",
+      "冷盤",
+      "蔥香",
+      "宴客"
+    ],
+    "difficulty": "簡單",
+    "time_estimate": "30 分鐘",
+    "base_servings": 2,
+    "image": "images/scallion-oil-chicken.webp",
+    "ingredient_ids": [
+      "chicken_thigh",
+      "green_onion",
+      "ginger",
+      "scallion_oil",
+      "salt"
+    ],
+    "tastes": [
+      "辣",
+      "甜",
+      "鹹"
+    ],
+    "textures": [
+      "清脆"
+    ],
+    "method_types": [],
+    "ingredients": [
+      {
+        "ingredient_id": "chicken_thigh",
+        "variant_id": "chicken_thigh--boneless",
+        "qty": 2,
+        "unit": "隻",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "去骨雞大腿"
+      },
+      {
+        "ingredient_id": "green_onion",
+        "variant_id": "green_onion--chopped",
+        "qty": 3,
+        "unit": "根",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "ginger",
+        "variant_id": "ginger--paste",
+        "qty": 1,
+        "unit": "小匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "scallion_oil",
+        "variant_id": "scallion_oil--standard",
+        "qty": 2,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "salt",
+        "variant_id": "salt--sea",
+        "qty": 2,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      }
+    ],
+    "versions": [
+      {
+        "id": "stovetop",
+        "label": "爐灶版",
+        "note": "利用清蒸雞肉留下的雞汁混合蔥油，風味更佳。",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "雞腿肉洗淨，抹上少許鹽巴與薑泥抓醃 15 分鐘。",
+            "method_id": "marinate",
+            "duration_s": 900,
+            "ingredient_ids": [
+              "chicken_thigh--boneless",
+              "salt--sea",
+              "ginger--paste"
+            ]
+          },
+          {
+            "order": 2,
+            "instruction": "將雞肉放入蒸盤中，水開後大火蒸 15 分鐘至完全熟透。",
+            "method_id": "steam",
+            "duration_s": 900,
+            "ingredient_ids": [
+              "chicken_thigh--boneless"
+            ]
+          },
+          {
+            "order": 3,
+            "instruction": "取出雞肉稍微放涼後切塊，盤底留下的雞精（雞汁）備用。切好大把蔥花放在雞肉上方。",
+            "method_id": "none",
+            "ingredient_ids": [
+              "green_onion--chopped"
+            ]
+          },
+          {
+            "order": 4,
+            "instruction": "加熱蔥油直到冒出微煙，混入剛才備用的雞汁，趁熱均勻淋在蔥花與雞肉上噴發香氣。",
+            "method_id": "mix",
+            "duration_s": 20,
+            "ingredient_ids": [
+              "scallion_oil--standard"
             ]
           }
         ]

@@ -1,0 +1,157 @@
+{
+  "id": 18,
+  "slug": "butter-salmon",
+  "title": "奶油鮭魚",
+  "subtitle": "Butter Salmon",
+  "description": "奶油的脂香與鮭魚細緻的肉質相得益彰，搭配蒜香與檸檬汁，是一道做法簡單卻具備高級感的西式主菜。",
+  "category": "晚餐",
+  "cuisine": "西式",
+  "meal_type": "料理",
+  "tags": [
+    "鮭魚",
+    "海鮮",
+    "奶油",
+    "高蛋白"
+  ],
+  "difficulty": "簡單",
+  "time_estimate": "15 分鐘",
+  "base_servings": 1,
+  "image": "images/butter-salmon.webp",
+  "ingredient_ids": [
+    "salmon",
+    "butter",
+    "garlic_raw",
+    "lemon",
+    "broccoli",
+    "salt",
+    "black_pepper"
+  ],
+  "tastes": [
+    "鹹",
+    "酸",
+    "奶香"
+  ],
+  "textures": [
+    "軟嫩",
+    "多汁",
+    "清脆"
+  ],
+  "method_types": [
+    "stir_fry"
+  ],
+  "ingredients": [
+    {
+      "ingredient_id": "salmon",
+      "variant_id": "salmon--fillet",
+      "qty": 200,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "butter",
+      "variant_id": "butter--unsalted",
+      "qty": 20,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "garlic_raw",
+      "variant_id": "garlic_raw--minced",
+      "qty": 2,
+      "unit": "瓣",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "lemon",
+      "variant_id": "lemon--juice",
+      "qty": 1,
+      "unit": "小匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "broccoli",
+      "variant_id": "broccoli--raw",
+      "qty": 100,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "燙熱備用"
+    },
+    {
+      "ingredient_id": "salt",
+      "variant_id": "salt--sea",
+      "qty": 1,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "black_pepper",
+      "variant_id": "black_pepper--ground",
+      "qty": 1,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "先將鮭魚皮煎至香脆後再加入奶油，能避免奶油焦化過頭。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "鮭魚表面擦乾水分，均勻撒上鹽與黑胡椒醃 5 分鐘。",
+          "method_id": "marinate",
+          "duration_s": 300,
+          "ingredient_ids": [
+            "salmon--fillet",
+            "salt--sea",
+            "black_pepper--ground"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "鍋中下少許油（非奶油），將鮭魚皮朝下，中火煎至皮脆且肉側變色約 3 分鐘，翻面再煎 2 分鐘。",
+          "method_id": "pan_fry_medium_heat",
+          "duration_s": 300,
+          "ingredient_ids": [
+            "salmon--fillet"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "轉小火，放入奶油與蒜末，待奶油融化冒泡後，用湯匙不斷將奶油淋在鮭魚表面約 1 分鐘提香。",
+          "method_id": "stir_fry_low_heat",
+          "duration_s": 60,
+          "ingredient_ids": [
+            "butter--unsalted",
+            "garlic_raw--minced"
+          ]
+        },
+        {
+          "order": 4,
+          "instruction": "起鍋裝盤，淋上少許新鮮檸檬汁，最後搭配燙好的青花菜即可。",
+          "method_id": "mix",
+          "duration_s": 10,
+          "ingredient_ids": [
+            "lemon--juice",
+            "broccoli--raw"
+          ]
+        }
+      ]
+    }
+  ]
+}

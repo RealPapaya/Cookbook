@@ -1,0 +1,164 @@
+{
+  "id": 20,
+  "slug": "hamburger-steak",
+  "title": "漢堡排",
+  "subtitle": "Japanese Hamburger Steak (Hambagu)",
+  "description": "道地的日式洋食！牛豬混合絞肉能兼具牛肉香氣與豬肉油脂的柔軟，內含炒得甜潤的洋蔥丁與吸滿鮮奶的麵包粉，是會流出肉汁的夢幻美味。",
+  "category": "晚餐",
+  "cuisine": "日式",
+  "meal_type": "料理",
+  "tags": [
+    "絞肉",
+    "洋食",
+    "日式",
+    "經典"
+  ],
+  "difficulty": "中等",
+  "time_estimate": "40 分鐘",
+  "base_servings": 2,
+  "image": "images/hamburger-steak.webp",
+  "ingredient_ids": [
+    "ground_beef",
+    "ground_pork",
+    "onion",
+    "bread_crumb",
+    "egg_chicken",
+    "milk",
+    "salt",
+    "black_pepper"
+  ],
+  "tastes": [
+    "鹹",
+    "甜",
+    "鮮"
+  ],
+  "textures": [
+    "軟嫩",
+    "多汁",
+    "濃郁"
+  ],
+  "method_types": [
+    "stir_fry",
+    "simmer"
+  ],
+  "ingredients": [
+    {
+      "ingredient_id": "ground_beef",
+      "variant_id": "ground_beef--medium",
+      "qty": 200,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "建議 7:3 的比例 (牛:豬)"
+    },
+    {
+      "ingredient_id": "ground_pork",
+      "variant_id": "ground_pork--medium",
+      "qty": 100,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "onion",
+      "variant_id": "onion--yellow",
+      "qty": 0.5,
+      "unit": "顆",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切碎"
+    },
+    {
+      "ingredient_id": "bread_crumb",
+      "variant_id": "bread_crumb--panko",
+      "qty": 30,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "egg_chicken",
+      "variant_id": "egg_chicken--raw",
+      "qty": 1,
+      "unit": "顆",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "milk",
+      "variant_id": "milk--raw",
+      "qty": 30,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "salt",
+      "variant_id": "salt--sea",
+      "qty": 2,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "black_pepper",
+      "variant_id": "black_pepper--ground",
+      "qty": 1,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "製作時反覆在手中拍打出空氣，能防止煎烤時裂開。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "洋蔥碎用少許油炒至金黃變軟且散發甜味，取出徹底放涼備用。麵包粉與牛奶於碗中混和預泡。",
+          "method_id": "stir_fry_medium_heat",
+          "duration_s": 300,
+          "ingredient_ids": [
+            "onion--yellow",
+            "bread_crumb--panko",
+            "milk--raw"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "大碗中放入牛、豬絞肉與鹽，快速攪拌至產生黏性。加入冷卻的洋蔥、雞蛋、泡軟的麵包粉與黑胡椒攪拌均勻。",
+          "method_id": "mix",
+          "duration_s": 180,
+          "ingredient_ids": [
+            "ground_beef--medium",
+            "ground_pork--medium",
+            "egg_chicken--raw"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "雙手抹油，將肉餡分成兩份揉圓，反覆左右手拍打出空氣，在中心壓一個小凹糟。",
+          "method_id": "none",
+          "ingredient_ids": []
+        },
+        {
+          "order": 4,
+          "instruction": "熱鍋熱油，下漢堡排中火煎 3 分鐘至上色，翻面後加入 50ml 水或紅酒，蓋上鍋蓋小火蒸煮 5-7 分鐘直到熟透。",
+          "method_id": "simmer_low_heat",
+          "duration_s": 420,
+          "ingredient_ids": []
+        }
+      ]
+    }
+  ]
+}

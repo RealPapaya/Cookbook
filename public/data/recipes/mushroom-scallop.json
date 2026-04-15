@@ -1,0 +1,138 @@
+{
+  "id": 19,
+  "slug": "mushroom-scallop",
+  "title": "野菇干貝",
+  "subtitle": "Wild Mushroom and Scallop",
+  "description": "大海的鮮味與大地的野性結合。干貝特有的甘甜在高溫快煎下散發誘人氣息，再配上吸飽汁液的多樣蕈菇，是頂級的味覺饗宴。",
+  "category": "晚餐",
+  "cuisine": "中西融合",
+  "meal_type": "料理",
+  "tags": [
+    "海鮮",
+    "菇類",
+    "低脂",
+    "鮮美"
+  ],
+  "difficulty": "中等",
+  "time_estimate": "20 分鐘",
+  "base_servings": 2,
+  "image": "images/mushroom-scallop.webp",
+  "ingredient_ids": [
+    "scallop",
+    "shimeji",
+    "shiitake",
+    "garlic_raw",
+    "butter",
+    "soy_sauce"
+  ],
+  "tastes": [
+    "鮮",
+    "鹹",
+    "甜"
+  ],
+  "textures": [
+    "軟嫩",
+    "多汁",
+    "清脆"
+  ],
+  "method_types": [
+    "stir_fry"
+  ],
+  "ingredients": [
+    {
+      "ingredient_id": "scallop",
+      "variant_id": "scallop--fresh",
+      "qty": 6,
+      "unit": "顆",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "shimeji",
+      "variant_id": "shimeji--brown",
+      "qty": 100,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "shiitake",
+      "variant_id": "shiitake--fresh",
+      "qty": 3,
+      "unit": "朵",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "切片"
+    },
+    {
+      "ingredient_id": "garlic_raw",
+      "variant_id": "garlic_raw--minced",
+      "qty": 3,
+      "unit": "瓣",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "butter",
+      "variant_id": "butter--unsalted",
+      "qty": 10,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "soy_sauce",
+      "variant_id": "soy_sauce--regular",
+      "qty": 1,
+      "unit": "小匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "干貝不要煎太久，兩面金黃即可保持內裡軟嫩。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "干貝兩面拍乾水分。起熱鍋下油，大火將干貝兩面各煎 1 分鐘至上色，取出備用。",
+          "method_id": "pan_fry_high_heat",
+          "duration_s": 120,
+          "ingredient_ids": [
+            "scallop--fresh"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "原鍋（不洗）加入蒜末與所有菇類，中火翻炒至菇類出水變軟並略微縮小。",
+          "method_id": "stir_fry_medium_heat",
+          "duration_s": 240,
+          "ingredient_ids": [
+            "shimeji--brown",
+            "shiitake--fresh",
+            "garlic_raw--minced"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "加入奶油與醬油調味，待奶油融化後將干貝放回鍋中，快速翻炒 30 秒混合氣味即完成。",
+          "method_id": "stir_fry_medium_heat",
+          "duration_s": 30,
+          "ingredient_ids": [
+            "butter--unsalted",
+            "soy_sauce--regular",
+            "scallop--fresh"
+          ]
+        }
+      ]
+    }
+  ]
+}

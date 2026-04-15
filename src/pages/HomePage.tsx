@@ -16,7 +16,6 @@ import type { FilterState, RecipeIndexEntry } from '../domain/types';
 interface HomePageProps {
   recipes: RecipeIndexEntry[];
   loading: boolean;
-  onOpenKitchenPanel: () => void;
 }
 
 const createSet = (): Set<string> => new Set<string>();
@@ -28,7 +27,7 @@ function toggleInSet(value: string, set: Set<string>): Set<string> {
   return next;
 }
 
-export default function HomePage({ recipes, loading, onOpenKitchenPanel }: HomePageProps) {
+export default function HomePage({ recipes, loading }: HomePageProps) {
   const navigate = useNavigate();
 
       const [search, setSearch] = useState('');

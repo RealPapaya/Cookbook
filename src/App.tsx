@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import AddRecipeModal from './components/AddRecipeModal';
-import KitchenPanel from './components/KitchenPanel';
 import AboutPage from './pages/AboutPage';
 import IngredientsPage from './pages/IngredientsPage';
 import HomePage from './pages/HomePage';
+import KitchenPage from './pages/KitchenPage';
 import MyRecipeDetailPage from './pages/MyRecipeDetailPage';
 import MyRecipesPage from './pages/MyRecipesPage';
 import RecipeDetailPage from './pages/RecipeDetailPage';
@@ -55,10 +55,9 @@ const ChefHatIcon = ({ className }: { className?: string }) => (
 export default function App() {
   const navigate = useNavigate();
 
-  const [recipes, setRecipes] = useState<RecipeIndexEntry[]>([]);
+    const [recipes, setRecipes] = useState<RecipeIndexEntry[]>([]);
   const [recipesLoading, setRecipesLoading] = useState(true);
   const [myRecipes, setMyRecipes] = useState<MyRecipe[]>(() => loadMyRecipes());
-  const [kitchenOpen, setKitchenOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [toast, setToast] = useState<ToastState>({ visible: false, message: '' });
 
@@ -87,20 +86,15 @@ export default function App() {
     };
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = kitchenOpen || addModalOpen ? 'hidden' : '';
+    useEffect(() => {
+    document.body.style.overflow = addModalOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [kitchenOpen, addModalOpen]);
+  }, [addModalOpen]);
 
-  const refreshMyRecipes = (): void => {
+    const refreshMyRecipes = (): void => {
     setMyRecipes(loadMyRecipes());
-  };
-
-  const openRecipeFromKitchen = (recipeId: number): void => {
-    setKitchenOpen(false);
-    navigate(`/recipes/${recipeId}`);
   };
 
   return (
@@ -126,17 +120,13 @@ export default function App() {
             <NavLink to="/my-recipes" className={({ isActive }) => navClassName(isActive)}>
               <BookIcon className="nav-icon" /> 我的食譜
             </NavLink>
-            <div className="nav-section-label">資訊</div>
-                        <NavLink to="/ingredients" className={({ isActive }) => navClassName(isActive)}>
+                        <div className="nav-section-label">資訊</div>
+            <NavLink to="/ingredients" className={({ isActive }) => navClassName(isActive)}>
               <LeafIcon className="nav-icon" /> 食材百科
             </NavLink>
-            <button
-              type="button"
-              className={`nav-link ${kitchenOpen ? 'active' : ''}`}
-              onClick={() => setKitchenOpen(true)}
-            >
+            <NavLink to="/kitchen" className={({ isActive }) => navClassName(isActive)}>
               <ChefHatIcon className="nav-icon" /> 廚房
-            </button>
+            </NavLink>
           </nav>
 
           <div className="sidebar-footer">
@@ -146,15 +136,9 @@ export default function App() {
 
         <div className="main-content">
           <Routes>
-            <Route
+                        <Route
               path="/"
-                                          element={
-                <HomePage
-                  recipes={recipes}
-                  loading={recipesLoading}
-                  onOpenKitchenPanel={() => setKitchenOpen(true)}
-                />
-              }
+              element={<HomePage recipes={recipes} loading={recipesLoading} />}
             />
             <Route path="/recipes/:recipeId" element={<RecipeDetailPage />} />
             <Route
@@ -171,8 +155,9 @@ export default function App() {
               }
             />
             <Route path="/my-recipes/:myRecipeId" element={<MyRecipeDetailPage recipes={myRecipes} />} />
-            <Route path="/about" element={<AboutPage />} />
+                        <Route path="/about" element={<AboutPage />} />
             <Route path="/ingredients" element={<IngredientsPage />} />
+            <Route path="/kitchen" element={<KitchenPage recipes={recipes} />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
@@ -183,30 +168,19 @@ export default function App() {
           <HomeIcon className="bnav-icon" />
           <span className="bnav-label">首頁</span>
         </NavLink>
-        <NavLink to="/my-recipes" className={({ isActive }) => bottomNavClassName(isActive)}>
+                <NavLink to="/my-recipes" className={({ isActive }) => bottomNavClassName(isActive)}>
           <BookIcon className="bnav-icon" />
           <span className="bnav-label">我的食譜</span>
         </NavLink>
-                <NavLink to="/ingredients" className={({ isActive }) => bottomNavClassName(isActive)}>
+        <NavLink to="/ingredients" className={({ isActive }) => bottomNavClassName(isActive)}>
           <LeafIcon className="bnav-icon" />
           <span className="bnav-label">食材</span>
         </NavLink>
-        <button
-          type="button"
-          className={`bottom-nav-btn ${kitchenOpen ? 'active' : ''}`}
-          onClick={() => setKitchenOpen(true)}
-        >
+        <NavLink to="/kitchen" className={({ isActive }) => bottomNavClassName(isActive)}>
           <ChefHatIcon className="bnav-icon" />
           <span className="bnav-label">廚房</span>
-        </button>
+        </NavLink>
       </nav>
-
-      <KitchenPanel
-        open={kitchenOpen}
-        recipes={recipes}
-        onClose={() => setKitchenOpen(false)}
-        onSelectRecipe={openRecipeFromKitchen}
-      />
 
       <AddRecipeModal
         open={addModalOpen}

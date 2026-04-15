@@ -1617,6 +1617,31 @@ body {
 }
 
 /* ===========================
+   Kitchen Page Header
+   =========================== */
+.kitchen-page-header {
+  margin-bottom: 24px;
+}
+
+.kitchen-page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.kitchen-page-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Kitchen page uses same body layout as panel */
+#view-kitchen .kitchen-body {
+  min-height: calc(100vh - 200px);
+}
+
+/* ===========================
    Kitchen Toggle Button
    =========================== */
 .kitchen-toggle-btn {

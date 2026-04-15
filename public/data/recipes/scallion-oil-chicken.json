@@ -1,0 +1,135 @@
+{
+  "id": 17,
+  "slug": "scallion-oil-chicken",
+  "title": "蔥油雞肉",
+  "subtitle": "Scallion Oil Chicken",
+  "description": "經典的冷盤料理，鮮嫩多汁的雞腿搭配蔥薑交織出的辛香蔥油。先蒸煮保留肉質甜味，再淋上滾燙蔥油鎖住香氣，是宴客與家常皆宜的美味。",
+  "category": "中餐",
+  "cuisine": "台式",
+  "meal_type": "料理",
+  "tags": [
+    "雞肉",
+    "冷盤",
+    "蔥香",
+    "宴客"
+  ],
+  "difficulty": "簡單",
+  "time_estimate": "30 分鐘",
+  "base_servings": 2,
+  "image": "images/scallion-oil-chicken.webp",
+  "ingredient_ids": [
+    "chicken_thigh",
+    "green_onion",
+    "ginger",
+    "scallion_oil",
+    "salt"
+  ],
+  "tastes": [
+    "鹹",
+    "鮮",
+    "甜"
+  ],
+  "textures": [
+    "軟嫩",
+    "滑順",
+    "油膩"
+  ],
+  "method_types": [
+    "steam",
+    "mix"
+  ],
+  "ingredients": [
+    {
+      "ingredient_id": "chicken_thigh",
+      "variant_id": "chicken_thigh--boneless",
+      "qty": 2,
+      "unit": "隻",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false,
+      "note": "去骨雞大腿"
+    },
+    {
+      "ingredient_id": "green_onion",
+      "variant_id": "green_onion--chopped",
+      "qty": 3,
+      "unit": "根",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "ginger",
+      "variant_id": "ginger--paste",
+      "qty": 1,
+      "unit": "小匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "scallion_oil",
+      "variant_id": "scallion_oil--standard",
+      "qty": 2,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "salt",
+      "variant_id": "salt--sea",
+      "qty": 2,
+      "unit": "g",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    }
+  ],
+  "versions": [
+    {
+      "id": "stovetop",
+      "label": "爐灶版",
+      "note": "利用清蒸雞肉留下的雞汁混合蔥油，風味更佳。",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "雞腿肉洗淨，抹上少許鹽巴與薑泥抓醃 15 分鐘。",
+          "method_id": "marinate",
+          "duration_s": 900,
+          "ingredient_ids": [
+            "chicken_thigh--boneless",
+            "salt--sea",
+            "ginger--paste"
+          ]
+        },
+        {
+          "order": 2,
+          "instruction": "將雞肉放入蒸盤中，水開後大火蒸 15 分鐘至完全熟透。",
+          "method_id": "steam",
+          "duration_s": 900,
+          "ingredient_ids": [
+            "chicken_thigh--boneless"
+          ]
+        },
+        {
+          "order": 3,
+          "instruction": "取出雞肉稍微放涼後切塊，盤底留下的雞精（雞汁）備用。切好大把蔥花放在雞肉上方。",
+          "method_id": "none",
+          "ingredient_ids": [
+            "green_onion--chopped"
+          ]
+        },
+        {
+          "order": 4,
+          "instruction": "加熱蔥油直到冒出微煙，混入剛才備用的雞汁，趁熱均勻淋在蔥花與雞肉上噴發香氣。",
+          "method_id": "mix",
+          "duration_s": 20,
+          "ingredient_ids": [
+            "scallion_oil--standard"
+          ]
+        }
+      ]
+    }
+  ]
+}
