@@ -903,4 +903,29 @@ export default [
     verified_at: '2024-11-01',
   },
 
+  // ── 豆漿 ─────────────────────────────────────────────────
+  {
+    id: 'soy_milk',
+    name: '豆漿',
+    name_en: 'Soy Milk',
+    categories: ['蛋白質', '乳製品'], // Used as dairy alternative or protein
+    variants: [
+      { id: 'soy_milk--unsweetened', label: '無糖豆漿',   state: 'raw', yield_ratio: 1.0 },
+      { id: 'soy_milk--sweetened',   label: '含糖豆漿',   state: 'raw', yield_ratio: 1.0 },
+      { id: 'soy_milk--savory',      label: '鹹豆漿',     state: 'cooked', yield_ratio: 1.0 },
+      { id: 'soy_milk--black',       label: '黑豆漿',     state: 'raw', yield_ratio: 1.0 },
+      { id: 'soy_milk--concentrated',label: '濃豆漿',     state: 'concentrated', yield_ratio: 1.0 },
+    ],
+    nutrition_per_100g: {
+      calories: 33, protein: 3.3, fat: 1.8, carbs: 1.1, sodium: 5,
+    },
+    substitutes: ['milk', 'oat_milk', 'almond_milk'],
+    allergens: ['soy'],
+    tastes: ['豆香', '鹹'],
+    textures: ['滑順'],
+    storage_tip: '冷藏保存，開封後三天內飲用完畢。',
+    verified_source: 'https://fdc.nal.usda.gov/',
+    verified_at: '2024-11-01',
+  },
+
 ];

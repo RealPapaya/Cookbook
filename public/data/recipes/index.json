@@ -1624,6 +1624,342 @@
     ]
   },
   {
+    "id": 10,
+    "slug": "mapo-tofu",
+    "title": "麻婆豆腐",
+    "subtitle": "Mapo Tofu",
+    "description": "經典川菜，香辣下飯，豆腐滑嫩與絞肉鮮香完美結合。",
+    "category": "晚餐",
+    "cuisine": "中式",
+    "meal_type": "料理",
+    "tags": [
+      "香辣",
+      "下飯",
+      "傳統味"
+    ],
+    "difficulty": "中等",
+    "time_estimate": "20 分鐘",
+    "base_servings": 2,
+    "image": "images/mapo_tofu_1776072339256.png",
+    "ingredient_ids": [
+      "tofu_silken",
+      "ground_pork",
+      "doubanjiang",
+      "green_onion",
+      "garlic",
+      "ginger",
+      "sichuan_pepper",
+      "soy_sauce",
+      "water",
+      "cornstarch",
+      "cooking_oil",
+      "chili_oil"
+    ],
+    "tastes": [
+      "鹹",
+      "辣",
+      "鮮",
+      "甜"
+    ],
+    "textures": [
+      "滑順",
+      "清脆",
+      "液體"
+    ],
+    "method_types": [],
+    "ingredients": [
+      {
+        "ingredient_id": "tofu_silken",
+        "variant_id": "tofu_silken--soft",
+        "qty": 300,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "ground_pork",
+        "variant_id": "ground_pork--lean",
+        "qty": 100,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "doubanjiang",
+        "variant_id": "doubanjiang--spicy",
+        "qty": 2,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "green_onion",
+        "variant_id": "green_onion--chopped",
+        "qty": 1,
+        "unit": "根",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "garlic",
+        "variant_id": "garlic--minced",
+        "qty": 2,
+        "unit": "瓣",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "ginger",
+        "variant_id": "ginger--minced",
+        "qty": 1,
+        "unit": "小匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "sichuan_pepper",
+        "variant_id": "sichuan_pepper--powder",
+        "qty": 0.5,
+        "unit": "小匙",
+        "scalable": true,
+        "optional": true,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "soy_sauce",
+        "variant_id": "soy_sauce--regular",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "water",
+        "variant_id": "water--cold",
+        "qty": 150,
+        "unit": "ml",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "cornstarch",
+        "variant_id": "cornstarch--potato",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "cooking_oil",
+        "variant_id": "cooking_oil--canola",
+        "qty": 2,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "chili_oil",
+        "variant_id": "chili_oil--sichuan",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": true,
+        "is_seasoning": true
+      }
+    ],
+    "versions": [
+      {
+        "method_id": "stovetop",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "豆腐切方塊，放入滾水中加少許鹽川燙1分鐘，撈出瀝乾備用（這能讓豆腐不易碎）。"
+          },
+          {
+            "order": 2,
+            "instruction": "小碗中將太白粉與水調勻備用（勾芡用）。"
+          },
+          {
+            "order": 3,
+            "instruction": "熱鍋冷油，下豬絞肉煸炒至變色並吐出些許油脂。"
+          },
+          {
+            "order": 4,
+            "instruction": "加入豆瓣醬炒出紅油，接著下蒜末、薑末炒香。"
+          },
+          {
+            "order": 5,
+            "instruction": "倒入清水和醬油，煮滾後放入汆燙好的豆腐，蓋鍋蓋中小火燉煮5分鐘讓豆腐入味。"
+          },
+          {
+            "order": 6,
+            "instruction": "分開兩至三次倒入太白粉水勾芡，每次用鍋鏟以推的方式攪拌均勻。"
+          },
+          {
+            "order": 7,
+            "instruction": "起鍋前淋入辣椒油，撒上花椒粉與蔥花即可上桌。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "slug": "pepper-sesame-soy-milk-noodle",
+    "title": "椒麻豆漿麵",
+    "subtitle": "Pepper Sesame Soy Milk Noodle",
+    "description": "濃郁豆香與芝麻醬結合，佐以香麻微辣的調味，是一道快速完成又美味的麵食。",
+    "category": "晚餐",
+    "cuisine": "台式",
+    "meal_type": "麵",
+    "tags": [
+      "濃郁",
+      "快手",
+      "香麻"
+    ],
+    "difficulty": "簡單",
+    "time_estimate": "15 分鐘",
+    "base_servings": 1,
+    "image": "images/pepper_sesame_soy_milk_noodle_1776072358665.png",
+    "ingredient_ids": [
+      "ramen_noodles",
+      "soy_milk",
+      "sesame_paste",
+      "soy_sauce",
+      "chili_oil",
+      "black_vinegar",
+      "green_onion",
+      "ground_pork"
+    ],
+    "tastes": [
+      "鹹",
+      "鮮",
+      "酸",
+      "甜",
+      "辣"
+    ],
+    "textures": [
+      "液體",
+      "清脆"
+    ],
+    "method_types": [],
+    "ingredients": [
+      {
+        "ingredient_id": "ramen_noodles",
+        "variant_id": "ramen_noodles--fresh",
+        "qty": 1,
+        "unit": "份",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "soy_milk",
+        "variant_id": "soy_milk--unsweetened",
+        "qty": 300,
+        "unit": "ml",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "sesame_paste",
+        "variant_id": "sesame_paste--regular",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "soy_sauce",
+        "variant_id": "soy_sauce--regular",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "chili_oil",
+        "variant_id": "chili_oil--sichuan",
+        "qty": 1,
+        "unit": "小匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "black_vinegar",
+        "variant_id": "black_vinegar--chinkiang",
+        "qty": 1,
+        "unit": "小匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "green_onion",
+        "variant_id": "green_onion--chopped",
+        "qty": 1,
+        "unit": "根",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "ground_pork",
+        "variant_id": "ground_pork--lean",
+        "qty": 50,
+        "unit": "g",
+        "scalable": true,
+        "optional": true,
+        "is_seasoning": false
+      }
+    ],
+    "versions": [
+      {
+        "method_id": "stovetop",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "煮一鍋滾水，將麵條煮至個人喜愛的熟度，撈出瀝乾備用。"
+          },
+          {
+            "order": 2,
+            "instruction": "同時熱鍋少許油，將豬絞肉炒熟焦香備用。"
+          },
+          {
+            "order": 3,
+            "instruction": "在麵碗中先加入芝麻醬，用少許熱水將芝麻醬化開。"
+          },
+          {
+            "order": 4,
+            "instruction": "微波或用小鍋將無糖豆漿加熱至溫熱（不要煮至完全大滾以免油水分離），倒入麵碗中與芝麻醬混合均勻。"
+          },
+          {
+            "order": 5,
+            "instruction": "加入醬油、烏醋（鎮江香醋）與四川紅油（花椒油），攪拌為濃郁的椒麻豆漿湯底。"
+          },
+          {
+            "order": 6,
+            "instruction": "將煮好的麵條放入湯中，頂部放上炒好的肉末，最後灑上蔥花即可上桌。"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": 7,
     "slug": "salted-egg-chicken-tofu",
     "title": "鹹蛋雞肉豆腐煲",
@@ -2042,6 +2378,180 @@
             "method_id": "mix",
             "duration_s": 300,
             "ingredient_ids": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "slug": "silky-egg-shimeji-rice",
+    "title": "滑蛋雪白菇飯",
+    "subtitle": "Silky Egg and White Jade Mushroom Rice",
+    "description": "滑嫩的雞蛋搭配清脆的雪白菇與金針菇，日式風味高湯燴煮後淋在白飯上，暖胃又療癒。",
+    "category": "中餐",
+    "cuisine": "日式",
+    "meal_type": "飯",
+    "tags": [
+      "滑嫩",
+      "日式",
+      "療癒",
+      "快速"
+    ],
+    "difficulty": "簡單",
+    "time_estimate": "10 分鐘",
+    "base_servings": 1,
+    "image": "images/silky_egg_shimeji_rice_1776072373600.png",
+    "ingredient_ids": [
+      "white_rice",
+      "egg",
+      "shimeji",
+      "enoki",
+      "onion",
+      "soy_sauce",
+      "mirin",
+      "chicken_broth",
+      "cornstarch",
+      "green_onion"
+    ],
+    "tastes": [
+      "鮮",
+      "鹹",
+      "甜",
+      "辣"
+    ],
+    "textures": [
+      "嚼勁",
+      "滑順",
+      "清脆",
+      "液體"
+    ],
+    "method_types": [],
+    "ingredients": [
+      {
+        "ingredient_id": "white_rice",
+        "variant_id": "white_rice--cooked",
+        "qty": 1,
+        "unit": "碗",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "egg",
+        "variant_id": "egg--raw",
+        "qty": 2,
+        "unit": "顆",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "shimeji",
+        "variant_id": "shimeji--white",
+        "qty": 50,
+        "unit": "g",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "enoki",
+        "variant_id": "enoki--raw",
+        "qty": 30,
+        "unit": "g",
+        "scalable": true,
+        "optional": true,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "onion",
+        "variant_id": "onion--yellow",
+        "qty": 0.25,
+        "unit": "顆",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false,
+        "note": "切絲"
+      },
+      {
+        "ingredient_id": "soy_sauce",
+        "variant_id": "soy_sauce--regular",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "mirin",
+        "variant_id": "mirin--hon_mirin",
+        "qty": 1,
+        "unit": "大匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true
+      },
+      {
+        "ingredient_id": "chicken_broth",
+        "variant_id": "chicken_broth--homemade",
+        "qty": 100,
+        "unit": "ml",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      },
+      {
+        "ingredient_id": "cornstarch",
+        "variant_id": "cornstarch--potato",
+        "qty": 1,
+        "unit": "小匙",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": true,
+        "note": "太白粉勾芡"
+      },
+      {
+        "ingredient_id": "green_onion",
+        "variant_id": "green_onion--chopped",
+        "qty": 1,
+        "unit": "根",
+        "scalable": true,
+        "optional": false,
+        "is_seasoning": false
+      }
+    ],
+    "versions": [
+      {
+        "method_id": "stovetop",
+        "steps": [
+          {
+            "order": 1,
+            "instruction": "將雪白菇切除根部撥散，金針菇洗淨切小段。洋蔥切絲。雞蛋打入碗中輕輕打散（保有蛋白蛋黃層次即可，不用打太均勻）。"
+          },
+          {
+            "order": 2,
+            "instruction": "平底鍋中加入高湯、醬油、味醂與洋蔥絲，中火煮至洋蔥變軟且湯汁微滾。"
+          },
+          {
+            "order": 3,
+            "instruction": "加入雪白菇與切碎的金針菇，煨煮約 2 分鐘至菇類釋放水分且熟透。"
+          },
+          {
+            "order": 4,
+            "instruction": "用太白粉加少許水調成太白粉水，倒入鍋中稍微勾芡讓湯汁濃稠（依照自己的喜好決定濃稠度）。"
+          },
+          {
+            "order": 5,
+            "instruction": "將打好的蛋液均勻以畫圈方式淋入鍋中，等待約 10-15 秒讓底部蛋液微凝固，再輕輕推動。"
+          },
+          {
+            "order": 6,
+            "instruction": "當蛋液呈現半熟滑嫩狀態（約 7 分熟），即可關火。"
+          },
+          {
+            "order": 7,
+            "instruction": "將滑蛋雪白菇連同湯汁一起滑在熱騰騰的白飯上，最後撒上蔥花即可享用。"
           }
         ]
       }

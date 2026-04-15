@@ -1,0 +1,41 @@
+{
+  "id": 12,
+  "slug": "silky-egg-shimeji-rice",
+  "title": "滑蛋雪白菇飯",
+  "subtitle": "Silky Egg and White Jade Mushroom Rice",
+  "description": "滑嫩的雞蛋搭配清脆的雪白菇與金針菇，日式風味高湯燴煮後淋在白飯上，暖胃又療癒。",
+  "category": "中餐",
+  "cuisine": "日式",
+  "meal_type": "飯",
+  "tags": ["滑嫩", "日式", "療癒", "快速"],
+  "difficulty": "簡單",
+  "time_estimate": "10 分鐘",
+  "base_servings": 1,
+  "image": "images/silky_egg_shimeji_rice_1776072373600.png",
+  "ingredients": [
+    { "ingredient_id": "white_rice", "variant_id": "white_rice--cooked", "qty": 1, "unit": "碗", "scalable": true, "optional": false, "is_seasoning": false },
+    { "ingredient_id": "egg", "variant_id": "egg--raw", "qty": 2, "unit": "顆", "scalable": true, "optional": false, "is_seasoning": false },
+    { "ingredient_id": "shimeji", "variant_id": "shimeji--white", "qty": 50, "unit": "g", "scalable": true, "optional": false, "is_seasoning": false },
+    { "ingredient_id": "enoki", "variant_id": "enoki--raw", "qty": 30, "unit": "g", "scalable": true, "optional": true, "is_seasoning": false },
+    { "ingredient_id": "onion", "variant_id": "onion--yellow", "qty": 0.25, "unit": "顆", "scalable": true, "optional": false, "is_seasoning": false, "note": "切絲" },
+    { "ingredient_id": "soy_sauce", "variant_id": "soy_sauce--regular", "qty": 1, "unit": "大匙", "scalable": true, "optional": false, "is_seasoning": true },
+    { "ingredient_id": "mirin", "variant_id": "mirin--hon_mirin", "qty": 1, "unit": "大匙", "scalable": true, "optional": false, "is_seasoning": true },
+    { "ingredient_id": "chicken_broth", "variant_id": "chicken_broth--homemade", "qty": 100, "unit": "ml", "scalable": true, "optional": false, "is_seasoning": false },
+    { "ingredient_id": "cornstarch", "variant_id": "cornstarch--potato", "qty": 1, "unit": "小匙", "scalable": true, "optional": false, "is_seasoning": true, "note": "太白粉勾芡" },
+    { "ingredient_id": "green_onion", "variant_id": "green_onion--chopped", "qty": 1, "unit": "根", "scalable": true, "optional": false, "is_seasoning": false }
+  ],
+  "versions": [
+    {
+      "method_id": "stovetop",
+      "steps": [
+        { "order": 1, "instruction": "將雪白菇切除根部撥散，金針菇洗淨切小段。洋蔥切絲。雞蛋打入碗中輕輕打散（保有蛋白蛋黃層次即可，不用打太均勻）。" },
+        { "order": 2, "instruction": "平底鍋中加入高湯、醬油、味醂與洋蔥絲，中火煮至洋蔥變軟且湯汁微滾。" },
+        { "order": 3, "instruction": "加入雪白菇與切碎的金針菇，煨煮約 2 分鐘至菇類釋放水分且熟透。" },
+        { "order": 4, "instruction": "用太白粉加少許水調成太白粉水，倒入鍋中稍微勾芡讓湯汁濃稠（依照自己的喜好決定濃稠度）。" },
+        { "order": 5, "instruction": "將打好的蛋液均勻以畫圈方式淋入鍋中，等待約 10-15 秒讓底部蛋液微凝固，再輕輕推動。" },
+        { "order": 6, "instruction": "當蛋液呈現半熟滑嫩狀態（約 7 分熟），即可關火。" },
+        { "order": 7, "instruction": "將滑蛋雪白菇連同湯汁一起滑在熱騰騰的白飯上，最後撒上蔥花即可享用。" }
+      ]
+    }
+  ]
+}

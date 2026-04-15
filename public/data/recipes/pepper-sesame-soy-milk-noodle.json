@@ -1,0 +1,124 @@
+{
+  "id": 11,
+  "slug": "pepper-sesame-soy-milk-noodle",
+  "title": "椒麻豆漿麵",
+  "subtitle": "Pepper Sesame Soy Milk Noodle",
+  "description": "濃郁豆香與芝麻醬結合，佐以香麻微辣的調味，是一道快速完成又美味的麵食。",
+  "category": "晚餐",
+  "cuisine": "台式",
+  "meal_type": "麵",
+  "tags": [
+    "濃郁",
+    "快手",
+    "香麻"
+  ],
+  "difficulty": "簡單",
+  "time_estimate": "15 分鐘",
+  "base_servings": 1,
+  "image": "images/pepper_sesame_soy_milk_noodle_1776072358665.png",
+  "ingredients": [
+    {
+      "ingredient_id": "ramen_noodles",
+      "variant_id": "ramen_noodles--fresh",
+      "qty": 1,
+      "unit": "份",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "soy_milk",
+      "variant_id": "soy_milk--unsweetened",
+      "qty": 300,
+      "unit": "ml",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "sesame_paste",
+      "variant_id": "sesame_paste--regular",
+      "qty": 1,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "soy_sauce",
+      "variant_id": "soy_sauce--regular",
+      "qty": 1,
+      "unit": "大匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "chili_oil",
+      "variant_id": "chili_oil--sichuan",
+      "qty": 1,
+      "unit": "小匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "black_vinegar",
+      "variant_id": "black_vinegar--chinkiang",
+      "qty": 1,
+      "unit": "小匙",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": true
+    },
+    {
+      "ingredient_id": "green_onion",
+      "variant_id": "green_onion--chopped",
+      "qty": 1,
+      "unit": "根",
+      "scalable": true,
+      "optional": false,
+      "is_seasoning": false
+    },
+    {
+      "ingredient_id": "ground_pork",
+      "variant_id": "ground_pork--lean",
+      "qty": 50,
+      "unit": "g",
+      "scalable": true,
+      "optional": true,
+      "is_seasoning": false
+    }
+  ],
+  "versions": [
+    {
+      "method_id": "stovetop",
+      "steps": [
+        {
+          "order": 1,
+          "instruction": "煮一鍋滾水，將麵條煮至個人喜愛的熟度，撈出瀝乾備用。"
+        },
+        {
+          "order": 2,
+          "instruction": "同時熱鍋少許油，將豬絞肉炒熟焦香備用。"
+        },
+        {
+          "order": 3,
+          "instruction": "在麵碗中先加入芝麻醬，用少許熱水將芝麻醬化開。"
+        },
+        {
+          "order": 4,
+          "instruction": "微波或用小鍋將無糖豆漿加熱至溫熱（不要煮至完全大滾以免油水分離），倒入麵碗中與芝麻醬混合均勻。"
+        },
+        {
+          "order": 5,
+          "instruction": "加入醬油、烏醋（鎮江香醋）與四川紅油（花椒油），攪拌為濃郁的椒麻豆漿湯底。"
+        },
+        {
+          "order": 6,
+          "instruction": "將煮好的麵條放入湯中，頂部放上炒好的肉末，最後灑上蔥花即可上桌。"
+        }
+      ]
+    }
+  ]
+}
